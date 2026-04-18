@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kevin O. Matta — Shigematsu Tech (Sole Proprietor)</title>
+  <meta name="description" content="Kevin O. Matta — Founder of Shigematsu Tech (Sole Proprietor). Truck driver, boat captain, software developer. Based in Tosu, Saga, Japan."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#04070e;--bg2:#070c18;--bg3:#0b1222;--border:#0e1c30;--blue:#2563eb;--blt:#60a5fa;--bdm:#1e3a5f;--text:#e2e8f0;--muted:#64748b;--dim:#2d3f55;--gold:#d4a843;--gold2:#f0c060;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    body::before{content:'';position:fixed;inset:0;opacity:.022;pointer-events:none;z-index:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes lineGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+    @keyframes glowPulse{0%,100%{opacity:.3}50%{opacity:.7}}
+    .fu{opacity:0;animation:fadeUp .65s ease forwards;}
+    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}
+
+    /* LANG */
+    .lang-switcher{display:flex;gap:2px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:2px;flex-shrink:0;}
+    .lang-btn{background:none;border:none;padding:5px 10px;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;color:var(--muted);letter-spacing:.06em;font-family:'Noto Sans JP',sans-serif;transition:all .18s;}
+    .lang-btn.active{background:var(--blue);color:#fff;}
+    .lang-btn:hover:not(.active){color:var(--text);}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,7,14,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%;}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;gap:14px;}
+    .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    .logo-mark{width:32px;height:32px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;color:#fff;}
+    .logo-text{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.04em;color:#f8fafc;}
+    .logo-text span{color:var(--blue);}
+    .logo-sub{font-size:9px;color:var(--muted);letter-spacing:.1em;}
+    .nav-right{display:flex;align-items:center;gap:10px;}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Noto Sans JP',sans-serif;border:none;}
+    .btn-p{background:var(--blue);color:#fff;}
+    .btn-p:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,99,235,.35);}
+    .btn-g{background:transparent;color:var(--muted);border:1px solid var(--border);}
+    .btn-g:hover{border-color:var(--blt);color:var(--blt);}
+
+    /* HERO */
+    .hero{position:relative;padding:130px 5% 80px;overflow:hidden;}
+    .hero-glow{position:absolute;top:-100px;right:10%;width:500px;height:400px;background:radial-gradient(ellipse,rgba(212,168,67,.07),transparent 70%);pointer-events:none;animation:glowPulse 5s ease-in-out infinite;}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:54px 54px;opacity:.3;}
+    .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:start;position:relative;z-index:1;}
+    .hero-photo{width:180px;height:220px;border-radius:12px;object-fit:cover;border:2px solid var(--bdm);background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:72px;flex-shrink:0;overflow:hidden;}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;}
+    .eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+    .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,5vw,68px);font-weight:900;line-height:.95;color:#f8fafc;margin-bottom:8px;letter-spacing:.01em;}
+    .hero-role{font-size:14px;color:var(--blt);font-weight:600;letter-spacing:.06em;margin-bottom:18px;}
+    .hero-bio{font-size:14px;color:var(--muted);line-height:1.9;max-width:560px;margin-bottom:24px;}
+    .flag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
+    .flag-chip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--dim);background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:3px 9px;}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
+
+    /* SECTION BASE */
+    section{padding:80px 5%;}
+    .wrap{max-width:1100px;margin:0 auto;}
+    .s-lbl{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--blue);margin-bottom:9px;text-transform:uppercase;}
+    .s-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;color:#f8fafc;line-height:1.05;margin-bottom:12px;}
+
+    /* SKILLS GRID */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px;}
+    .skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;}
+    .skill-card h3{font-size:13px;font-weight:700;color:#f8fafc;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+    .skill-icon{font-size:18px;}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:7px;}
+    .stag{font-size:11px;padding:3px 9px;border-radius:4px;background:var(--bg3);color:var(--muted);border:1px solid var(--border);}
+    .stag.hi{background:rgba(37,99,235,.1);color:var(--blt);border-color:rgba(37,99,235,.2);}
+    .stag.gold{background:rgba(212,168,67,.1);color:var(--gold2);border-color:rgba(212,168,67,.2);}
+
+    /* TIMELINE */
+    .timeline{position:relative;margin-top:52px;padding-left:28px;}
+    .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--bdm),transparent);transform-origin:top;animation:lineGrow 1.2s ease forwards;}
+    .tl-item{position:relative;margin-bottom:36px;}
+    .tl-dot{position:absolute;left:-35px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--bdm);flex-shrink:0;transition:border-color .2s;}
+    .tl-item:hover .tl-dot{border-color:var(--blue);}
+    .tl-item:hover .tl-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:rgba(37,99,235,.15);}
+    .tl-date{font-size:10px;color:var(--dim);letter-spacing:.12em;font-weight:500;margin-bottom:4px;}
+    .tl-role{font-size:15px;font-weight:700;color:#f8fafc;margin-bottom:2px;}
+    .tl-company{font-size:13px;color:var(--blt);margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+    .tl-loc{font-size:11px;color:var(--dim);display:flex;align-items:center;gap:4px;}
+    .tl-bullets{list-style:none;margin-top:6px;}
+    .tl-bullets li{font-size:13px;color:var(--muted);line-height:1.7;padding:2px 0;display:flex;gap:8px;}
+    .tl-bullets li::before{content:'→';color:var(--bdm);flex-shrink:0;font-weight:700;}
+    .tl-group{margin-bottom:52px;}
+    .tl-group-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+    .tl-group-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+
+    /* WORLD MAP COUNTRIES */
+    .countries{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;}
+    .country{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;display:flex;align-items:center;gap:9px;transition:border-color .2s;}
+    .country:hover{border-color:var(--bdm);}
+    .country-flag{font-size:22px;}
+    .country-name{font-size:13px;color:var(--text);font-weight:500;}
+    .country-role{font-size:11px;color:var(--muted);}
+
+    /* CERTS */
+    .certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:32px;}
+    .cert{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text);}
+    .cert-icon{font-size:18px;flex-shrink:0;}
+
+    /* FOOTER */
+    footer{background:#020509;border-top:1px solid var(--border);padding:36px 5%;}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+    .footer-inner p{font-size:12px;color:var(--dim);}
+    .footer-links{display:flex;gap:18px;}
+    .footer-links a{font-size:13px;color:var(--muted);transition:color .2s;}
+    .footer-links a:hover{color:var(--text);}
+
+    @media(max-width:860px){.hero-inner{grid-template-columns:1fr;gap:32px;}.hero-photo{width:120px;height:148px;font-size:48px;}.skills-grid{grid-template-columns:1fr 1fr;}.certs-grid{grid-template-columns:1fr;}}
+    @media(max-width:560px){.skills-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">ST</div>
+      <div><div class="logo-text">SHIGEMATSU<span>TECH</span></div><div class="logo-sub">重松テック — 個人事業主</div></div>
+    </a>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+      <a href="/" class="btn btn-g" data-i18n="nav.back">← Company site</a>
+      <a href="index.html#contact" class="btn btn-p" data-i18n="nav.contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-photo fu d1">👨‍💻</div>
+    <div>
+      <div class="eyebrow fu d1" data-i18n="hero.eyebrow">Founder · Shigematsu Tech (Sole Proprietor)</div>
+      <h1 class="fu d2">KEVIN O.<br/>MATTA</h1>
+      <div class="hero-role fu d2" data-i18n="hero.role">Founder — 重松テック — 個人事業主 · Tosu, Saga, Japan</div>
+      <p class="hero-bio fu d3" data-i18n="hero.bio">Software developer by night, truck driver by day. Former boat captain, kayak instructor, English teacher, scaffolder, and concierge across five countries. I build products that come from real operational experience — not just a desk.</p>
+      <div class="flag-row fu d3">
+        <div class="flag-chip">🇵🇷 Puerto Rico</div>
+        <div class="flag-chip">🇺🇸 USA</div>
+        <div class="flag-chip">🇦🇺 Australia</div>
+        <div class="flag-chip">🇳🇿 New Zealand</div>
+        <div class="flag-chip">🇯🇵 Japan</div>
+      </div>
+      <div class="hero-actions fu d4">
+        <a href="https://chikugo-dispatch.vercel.app" class="btn btn-p" data-i18n="hero.cta1">DispatchOS →</a>
+        <a href="index.html#products" class="btn btn-g" data-i18n="hero.cta2">All products</a>
+        <a href="/cdn-cgi/l/email-protection#fe959b889790888f84be99939f9792d09d9193" class="btn btn-g"><span class="__cf_email__" data-cfemail="b9d2dccfd0d7cfc8c3f9ded4d8d0d597dad6d4">[email&#160;protected]</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="s-lbl" data-i18n="skills.lbl">Skills & Certifications</div>
+    <h2 class="s-title" data-i18n="skills.title">Built in the field,<br/>not in a classroom.</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3><span class="skill-icon">💻</span> <span data-i18n="sk1.title">Software</span></h3>
+        <div class="skill-tags">
+          <span class="stag hi">React / Next.js</span><span class="stag hi">Firebase</span><span class="stag hi">Expo / React Native</span>
+          <span class="stag hi">Python</span><span class="stag hi">Stripe API</span><span class="stag hi">Claude API</span>
+          <span class="stag">HTML5</span><span class="stag">WordPress</span><span class="stag">Blender 3D</span>
+          <span class="stag">Photoshop</span><span class="stag">Final Cut</span><span class="stag">After Effects</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="skill-icon">⚓</span> <span data-i18n="sk2.title">Maritime & Transport</span></h3>
+        <div class="skill-tags">
+          <span class="stag gold">50-ton Master Captain (USCG)</span>
+          <span class="stag gold">NZ Class 2 Truck License</span>
+          <span class="stag gold">NZ Class 6 Motorcycle</span>
+          <span class="stag gold">Washington State DL</span>
+          <span class="stag">Forklift operator</span><span class="stag">Scaffolding</span>
+          <span class="stag">Essentials of Shipboard Safety (AU)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="skill-icon">🌐</span> <span data-i18n="sk3.title">Languages & Other</span></h3>
+        <div class="skill-tags">
+          <span class="stag hi">English (native)</span><span class="stag hi">Spanish (native)</span>
+          <span class="stag">Japanese (conversational)</span>
+          <span class="stag">First Aid & CPR</span><span class="stag">RSA QLD</span>
+          <span class="stag">ARSC Safety Course</span><span class="stag">Snuba Certified</span>
+          <span class="stag">Super Host — PR Tourism Co.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <div class="wrap">
+    <div class="s-lbl" data-i18n="exp.lbl">Experience</div>
+    <h2 class="s-title" data-i18n="exp.title">20 years across<br/>5 countries.</h2>
+
+    <div class="timeline">
+
+      <!-- TECH -->
+      <div class="tl-group">
+        <div class="tl-group-title">💻 <span data-i18n="grp.tech">Technology & Software</span></div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2024 — present</div>
+          <div class="tl-role" data-i18n="j.st.role">Founder</div>
+          <div class="tl-company">重松テック — 個人事業主 / Shigematsu Tech (Sole Proprietor) <span class="tl-loc">🇯🇵 Tosu, Saga</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.st.b1">Building DispatchOS — AI dispatch SaaS for Japanese logistics companies</li>
+            <li data-i18n="j.st.b2">Developing CastWise Japan, NihongoQuest, Boat Time Attack, AutoWatch, Memoria</li>
+            <li data-i18n="j.st.b3">React, Firebase, Expo, Claude API, Stripe — full-stack solo development</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2004 — present</div>
+          <div class="tl-role" data-i18n="j.self.role">Self-employed — Multimedia & Web</div>
+          <div class="tl-company"><span class="tl-loc">🇵🇷 Vieques, P.R.</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.self.b1">Mural creation and educational illustrations</li>
+            <li data-i18n="j.self.b2">Film, multimedia presentation production and editing</li>
+            <li data-i18n="j.self.b3">Logo design, web development, Blender 3D</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2012 — 2013</div>
+          <div class="tl-role" data-i18n="j.ki.role">Production Assistant</div>
+          <div class="tl-company">Kinetic Illusions <span class="tl-loc">🇺🇸 Sacramento, CA</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.ki.b1">Cinematography equipment operation</li>
+            <li data-i18n="j.ki.b2">Filming, editing and production of movies and multimedia presentations</li>
+            <li data-i18n="j.ki.b3">Website development</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2005 — 2007</div>
+          <div class="tl-role" data-i18n="j.vcht.role">Computer Center Admin & Marine Exhibit Asst. Manager</div>
+          <div class="tl-company">Vieques Conservation and Historical Trust <span class="tl-loc">🇵🇷 Vieques, P.R.</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.vcht.b1">Set up and maintained computer network for public internet resource room</li>
+            <li data-i18n="j.vcht.b2">Saltwater aquarium maintenance and species collection</li>
+            <li data-i18n="j.vcht.b3">Museum guided tours on history and attractions of Vieques</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LOGISTICS -->
+      <div class="tl-group">
+        <div class="tl-group-title">🚛 <span data-i18n="grp.logistics">Logistics & Transport</span></div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2023 — present</div>
+          <div class="tl-role" data-i18n="j.chikugo.role">Truck Driver — Container & Hazmat Transport</div>
+          <div class="tl-company">筑後運送 (Chikugo Unso) <span class="tl-loc">🇯🇵 Northern Kyushu</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.chikugo.b1">JR container pickup from rail depots — 12×8, 20ft, 40ft</li>
+            <li data-i18n="j.chikugo.b2">Hazardous liquid tank delivery across Kyushu</li>
+            <li data-i18n="j.chikugo.b3">Wing truck freight runs — Nakatsu to Yoshinogari and beyond</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2018 — 2020</div>
+          <div class="tl-role" data-i18n="j.lyft.role">Independent Driver</div>
+          <div class="tl-company">Gig Economy (Lyft) <span class="tl-loc">🇺🇸 Seattle, WA</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.lyft.b1">Passenger transport and package deliveries</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2017 — 2018</div>
+          <div class="tl-role" data-i18n="j.fh.role">Truck Driver & Scaffolder</div>
+          <div class="tl-company">Friday Homes <span class="tl-loc">🇳🇿 Wellington, NZ</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.fh.b1">Operating Class 2 vehicles around Wellington</li>
+            <li data-i18n="j.fh.b2">Scaffolding installations and removals</li>
+            <li data-i18n="j.fh.b3">Forklift operation</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2017</div>
+          <div class="tl-role" data-i18n="j.mm.role">Removalist</div>
+          <div class="tl-company">MiniMovers <span class="tl-loc">🇦🇺 Northgate QLD, Australia</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.mm.b1">Operating MR vehicles, pre-packing furniture and transport</li>
+            <li data-i18n="j.mm.b2">Highest Piano certification</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2008 — 2009</div>
+          <div class="tl-role" data-i18n="j.aa.role">Multi-functional Employee</div>
+          <div class="tl-company">A&A Machine Shop <span class="tl-loc">🇵🇷 Vieques, P.R.</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.aa.b1">Welding, shaping and cutting heavy and light metals</li>
+            <li data-i18n="j.aa.b2">Automobile mechanical work, forklift and mechanical lift operation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MARITIME -->
+      <div class="tl-group">
+        <div class="tl-group-title">⚓ <span data-i18n="grp.maritime">Maritime & Water</span></div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2014 — 2015 · 2015</div>
+          <div class="tl-role" data-i18n="j.rwwt.role">Captain</div>
+          <div class="tl-company">Rowes Wharf Water Transport <span class="tl-loc">🇺🇸 Boston, MA</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.rwwt.b1">Navigated Rowes Wharf vessel — single screw, 32 passengers, 15 knots cruise</li>
+            <li data-i18n="j.rwwt.b2">Multiple vessels including Rip Ridder V (twin 90hp), Beantown (front loader)</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2015</div>
+          <div class="tl-role" data-i18n="j.dean.role">Deckhand & Skilled Laborer</div>
+          <div class="tl-company">Dean Equipment <span class="tl-loc">🇺🇸 Harvey, LA</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.dean.b1">Deckhand and engineering on three 60-ton tugboats (TDW, Little T, Mary Jane)</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2013 — 2014</div>
+          <div class="tl-role" data-i18n="j.jak.role">Captain</div>
+          <div class="tl-company">JAK Water Sports <span class="tl-loc">🇵🇷 Vieques, P.R.</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.jak.b1">Navigated Murieta II — 22ft Spider fishing vessel</li>
+            <li data-i18n="j.jak.b2">SUP tours and snorkel tour guide</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2012 — 2014</div>
+          <div class="tl-role" data-i18n="j.mar.role">First Mate</div>
+          <div class="tl-company">Marauder Sailing Charters <span class="tl-loc">🇵🇷 Vieques, P.R.</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.mar.b1">First mate on Marauder — 1969 32ft Cal sail charter vessel</li>
+            <li data-i18n="j.mar.b2">Vessel maintenance, rigging and line handling underway</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2005 — 2012</div>
+          <div class="tl-role" data-i18n="j.ia.role">1st Mate & Bilingual Tour Guide</div>
+          <div class="tl-company">Island Adventures Inc. <span class="tl-loc">🇵🇷 Vieques, P.R.</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.ia.b1">Operating and maintaining vessel "Luminosa II"</li>
+            <li data-i18n="j.ia.b2">Bilingual educational presentations for tourists, residents and students</li>
+            <li data-i18n="j.ia.b3">Passenger check-in, security, boat handling and maintenance</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- HOSPITALITY -->
+      <div class="tl-group">
+        <div class="tl-group-title">🏨 <span data-i18n="grp.hosp">Hospitality & Education</span></div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2020 — 2023</div>
+          <div class="tl-role" data-i18n="j.seiha.role">English Teacher</div>
+          <div class="tl-company">Seiha English Academy <span class="tl-loc">🇯🇵 Fukuoka, Japan</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.seiha.b1">Teaching students ages 0–12 under the Seiha Method</li>
+            <li data-i18n="j.seiha.b2">Lesson planning and execution</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2016 — 2017</div>
+          <div class="tl-role" data-i18n="j.rl.role">Outdoor Activities Instructor</div>
+          <div class="tl-company">RiverLife <span class="tl-loc">🇦🇺 Kangaroo Point QLD, Australia</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.rl.b1">Kayak tour guide and instructor on Brisbane river</li>
+            <li data-i18n="j.rl.b2">Segway guide, laser tag instructor, SUP guide</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2016</div>
+          <div class="tl-role" data-i18n="j.bb.role">Casual Worker</div>
+          <div class="tl-company">Brisbane Backpackers Resort <span class="tl-loc">🇦🇺 West End QLD, Australia</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.bb.b1">Shuttle driver, front desk attendant, grounds keeper</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2009 — 2012</div>
+          <div class="tl-role" data-i18n="j.w.role">Insider / Concierge</div>
+          <div class="tl-company">W Hotel Retreat & Spa <span class="tl-loc">🇵🇷 Vieques, P.R.</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="j.w.b1">Keeping guests informed on local events and activities</li>
+            <li data-i18n="j.w.b2">Establishing connections with local vendors for guest satisfaction</li>
+            <li data-i18n="j.w.b3">Creating personalised guest itineraries</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="s-lbl" data-i18n="world.lbl">Around the world</div>
+    <h2 class="s-title" data-i18n="world.title">Lived & worked<br/>across 5 countries.</h2>
+    <div class="countries">
+      <div class="country"><div class="country-flag">🇵🇷</div><div><div class="country-name">Puerto Rico</div><div class="country-role" data-i18n="c.pr">Captain · Concierge · Marine Guide · Origin</div></div></div>
+      <div class="country"><div class="country-flag">🇺🇸</div><div><div class="country-name">United States</div><div class="country-role" data-i18n="c.us">Boat Captain (Boston) · Deckhand (Louisiana) · Driver (Seattle)</div></div></div>
+      <div class="country"><div class="country-flag">🇦🇺</div><div><div class="country-name">Australia</div><div class="country-role" data-i18n="c.au">Kayak Instructor · Removalist · Hostel Worker (Brisbane & Melbourne)</div></div></div>
+      <div class="country"><div class="country-flag">🇳🇿</div><div><div class="country-name">New Zealand</div><div class="country-role" data-i18n="c.nz">Truck Driver · Scaffolder (Wellington)</div></div></div>
+      <div class="country"><div class="country-flag">🇯🇵</div><div><div class="country-name">Japan</div><div class="country-role" data-i18n="c.jp">English Teacher (Fukuoka) · Truck Driver · Software Founder (Saga)</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>Kevin O. Matta — <span data-i18n="footer.city">Tosu, Saga, Japan</span> · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="402b2536292e36313a00272d21292c6e232f2d">[email&#160;protected]</a></p>
+    <div class="footer-links">
+      <a href="/" data-i18n="footer.company">← Shigematsu Tech</a>
+      <a href="/dispatchos">DispatchOS</a>
+      <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const T = {
+  en:{
+    "nav.back":"← Company site","nav.contact":"Contact",
+    "hero.eyebrow":"Founder · Shigematsu Tech (Sole Proprietor)",
+    "hero.role":"Founder — 重松テック — 個人事業主 · Tosu, Saga, Japan",
+    "hero.bio":"Software developer by night, truck driver by day. Former boat captain, kayak instructor, English teacher, scaffolder, and concierge across five countries. I build products that come from real operational experience — not just a desk.",
+    "hero.cta1":"DispatchOS →","hero.cta2":"All products",
+    "skills.lbl":"Skills & Certifications","skills.title":"Built in the field,\nnot in a classroom.",
+    "sk1.title":"Software","sk2.title":"Maritime & Transport","sk3.title":"Languages & Other",
+    "exp.lbl":"Experience","exp.title":"20 years across\n5 countries.",
+    "grp.tech":"Technology & Software","grp.logistics":"Logistics & Transport","grp.maritime":"Maritime & Water","grp.hosp":"Hospitality & Education",
+    "j.st.role":"Founder","j.st.b1":"Building DispatchOS — AI dispatch SaaS for Japanese logistics companies","j.st.b2":"Developing CastWise Japan, NihongoQuest, Boat Time Attack, AutoWatch, Memoria","j.st.b3":"React, Firebase, Expo, Claude API, Stripe — full-stack solo development",
+    "j.self.role":"Self-employed — Multimedia & Web","j.self.b1":"Mural creation and educational illustrations","j.self.b2":"Film, multimedia presentation production and editing","j.self.b3":"Logo design, web development, Blender 3D",
+    "j.ki.role":"Production Assistant","j.ki.b1":"Cinematography equipment operation","j.ki.b2":"Filming, editing and production of movies and multimedia","j.ki.b3":"Website development",
+    "j.vcht.role":"Computer Center Admin & Marine Exhibit Asst. Manager","j.vcht.b1":"Set up and maintained computer network for public internet resource room","j.vcht.b2":"Saltwater aquarium maintenance and species collection","j.vcht.b3":"Museum guided tours on history and attractions of Vieques",
+    "j.chikugo.role":"Truck Driver — Container & Hazmat Transport","j.chikugo.b1":"JR container pickup from rail depots — 12×8, 20ft, 40ft","j.chikugo.b2":"Hazardous liquid tank delivery across Kyushu","j.chikugo.b3":"Wing truck freight runs — Nakatsu to Yoshinogari and beyond",
+    "j.lyft.role":"Independent Driver","j.lyft.b1":"Passenger transport and package deliveries via Lyft platform",
+    "j.fh.role":"Truck Driver & Scaffolder","j.fh.b1":"Operating Class 2 vehicles around Wellington","j.fh.b2":"Scaffolding installations and removals","j.fh.b3":"Forklift operation",
+    "j.mm.role":"Removalist","j.mm.b1":"Operating MR vehicles, pre-packing furniture and transport","j.mm.b2":"Highest Piano certification",
+    "j.aa.role":"Multi-functional Employee","j.aa.b1":"Welding, shaping and cutting heavy and light metals","j.aa.b2":"Automobile mechanical work, forklift and mechanical lift operation",
+    "j.rwwt.role":"Captain","j.rwwt.b1":"Navigated Rowes Wharf vessel — single screw, 32 passengers, 15 knots cruise","j.rwwt.b2":"Multiple vessels including Rip Ridder V (twin 90hp), Beantown (front loader)",
+    "j.dean.role":"Deckhand & Skilled Laborer","j.dean.b1":"Deckhand and engineering on three 60-ton tugboats (TDW, Little T, Mary Jane)",
+    "j.jak.role":"Captain","j.jak.b1":"Navigated Murieta II — 22ft Spider fishing vessel","j.jak.b2":"SUP tours and snorkel tour guide",
+    "j.mar.role":"First Mate","j.mar.b1":"First mate on Marauder — 1969 32ft Cal sail charter vessel","j.mar.b2":"Vessel maintenance, rigging and line handling underway",
+    "j.ia.role":"1st Mate & Bilingual Tour Guide","j.ia.b1":"Operating and maintaining vessel Luminosa II","j.ia.b2":"Bilingual educational presentations for tourists, residents and students","j.ia.b3":"Passenger check-in, security, boat handling and maintenance",
+    "j.seiha.role":"English Teacher","j.seiha.b1":"Teaching students ages 0–12 under the Seiha Method","j.seiha.b2":"Lesson planning and execution",
+    "j.rl.role":"Outdoor Activities Instructor","j.rl.b1":"Kayak tour guide and instructor on Brisbane river","j.rl.b2":"Segway guide, laser tag instructor, SUP guide",
+    "j.bb.role":"Casual Worker","j.bb.b1":"Shuttle driver, front desk attendant, grounds keeper",
+    "j.w.role":"Insider / Concierge","j.w.b1":"Keeping guests informed on local events and activities","j.w.b2":"Establishing connections with local vendors for guest satisfaction","j.w.b3":"Creating personalised guest itineraries",
+    "world.lbl":"Around the world","world.title":"Lived & worked\nacross 5 countries.",
+    "c.pr":"Captain · Concierge · Marine Guide · Origin","c.us":"Boat Captain (Boston) · Deckhand (Louisiana) · Driver (Seattle)","c.au":"Kayak Instructor · Removalist · Hostel Worker (Brisbane & Melbourne)","c.nz":"Truck Driver · Scaffolder (Wellington)","c.jp":"English Teacher (Fukuoka) · Truck Driver · Software Founder (Saga)",
+    "footer.city":"Tosu, Saga, Japan","footer.company":"← Shigematsu Tech","footer.contact":"Contact"
+  },
+  ja:{
+    "nav.back":"← 会社サイト","nav.contact":"お問い合わせ",
+    "hero.eyebrow":"創業者 · 重松テック — 個人事業主",
+    "hero.role":"代表・個人事業主 — 重松テック · 佐賀県鳥栖市",
+    "hero.bio":"昼はトラックドライバー、夜はソフトウェア開発者。元船長、カヤックインストラクター、英語教師、足場工、コンシェルジュとして5カ国で経験を積む。デスクだけでなく、現場から生まれるプロダクトを作っています。",
+    "hero.cta1":"DispatchOS →","hero.cta2":"全プロダクト",
+    "skills.lbl":"スキル・資格","skills.title":"教室ではなく、\n現場で身につけたスキル。",
+    "sk1.title":"ソフトウェア","sk2.title":"海事・運送","sk3.title":"言語・その他",
+    "exp.lbl":"職歴","exp.title":"5カ国、20年の\n経験。",
+    "grp.tech":"テクノロジー・ソフトウェア","grp.logistics":"物流・運送","grp.maritime":"海事・水上","grp.hosp":"ホスピタリティ・教育",
+    "j.st.role":"代表・個人事業主","j.st.b1":"DispatchOS — 日本の運送会社向けAI配車SaaSを開発","j.st.b2":"CastWise Japan・NihongoQuest・Boat Time Attack・AutoWatch・Memoriaを開発","j.st.b3":"React・Firebase・Expo・Claude API・Stripe — フルスタック単独開発",
+    "j.self.role":"フリーランス — マルチメディア・Web","j.self.b1":"壁画制作・教育イラスト","j.self.b2":"映像・マルチメディア制作・編集","j.self.b3":"ロゴデザイン・Web開発・Blender 3D",
+    "j.ki.role":"プロダクションアシスタント","j.ki.b1":"映像機材の操作","j.ki.b2":"映画・マルチメディアの撮影・編集・制作","j.ki.b3":"Web開発",
+    "j.vcht.role":"コンピュータセンター管理者・海洋展示アシスタントマネージャー","j.vcht.b1":"公共インターネットリソースルームのネットワーク設置・管理","j.vcht.b2":"海水水族館の維持管理・生物採集","j.vcht.b3":"ビエケス島の歴史・観光案内ツアー",
+    "j.chikugo.role":"トラックドライバー — コンテナ・危険物輸送","j.chikugo.b1":"JRコンテナ集荷（12×8・20ft・40ft）","j.chikugo.b2":"危険物液体タンク配送（九州全域）","j.chikugo.b3":"ウイング車フレート（中津〜吉野ヶ里など）",
+    "j.lyft.role":"独立ドライバー","j.lyft.b1":"Lyftプラットフォームで旅客・荷物配送",
+    "j.fh.role":"トラックドライバー・足場工","j.fh.b1":"ウェリントン市内でClass 2車両を運行","j.fh.b2":"足場の組立・解体","j.fh.b3":"フォークリフト操作",
+    "j.mm.role":"引越し作業員","j.mm.b1":"MR車両運行、家具の梱包・輸送","j.mm.b2":"最高位ピアノ資格取得",
+    "j.aa.role":"多機能作業員","j.aa.b1":"重金属・軽金属の溶接・成形・切断","j.aa.b2":"自動車整備、フォークリフト・リフト操作",
+    "j.rwwt.role":"船長","j.rwwt.b1":"Rowes Wharf号操船 — シングルスクリュー・32名定員・15ノット","j.rwwt.b2":"複数船舶（Rip Ridder V・Beantown等）",
+    "j.dean.role":"デッキハンド・技能労働者","j.dean.b1":"60トンタグボート3隻（TDW・Little T・Mary Jane）でデッキハンド・機関",
+    "j.jak.role":"船長","j.jak.b1":"Murieta II（22フィート・スパイダー漁船）操船","j.jak.b2":"SUPツアー・スノーケルツアーガイド",
+    "j.mar.role":"一等航海士","j.mar.b1":"Marauder（1969年製32フィートCal帆船）一等航海士","j.mar.b2":"船体整備、航行中のリギング・ライン操作",
+    "j.ia.role":"一等航海士・バイリンガルガイド","j.ia.b1":"Luminosa II号の運航・整備","j.ia.b2":"観光客・住民・学生向けバイリンガル教育プレゼンテーション","j.ia.b3":"乗客チェックイン・保安・船体整備",
+    "j.seiha.role":"英語教師","j.seiha.b1":"0〜12歳対象、正栄メソッドによる授業","j.seiha.b2":"レッスンプランニング・実施",
+    "j.rl.role":"アウトドアアクティビティインストラクター","j.rl.b1":"ブリスベン川カヤックツアーガイド・インストラクター","j.rl.b2":"セグウェイガイド・レーザータグインストラクター・SUPガイド",
+    "j.bb.role":"臨時スタッフ","j.bb.b1":"シャトルドライバー・フロントデスク・グラウンドキーパー",
+    "j.w.role":"インサイダー / コンシェルジュ","j.w.b1":"地域イベント・観光情報のゲスト案内","j.w.b2":"地元ベンダーとの関係構築","j.w.b3":"ゲスト向け個別アクティビティプラン作成",
+    "world.lbl":"世界を渡り歩いた経歴","world.title":"5カ国で\n生活・就労。",
+    "c.pr":"船長・コンシェルジュ・海洋ガイド・出身地","c.us":"船長（ボストン）・デッキハンド（ルイジアナ）・ドライバー（シアトル）","c.au":"カヤックインストラクター・引越し作業員（ブリスベン・メルボルン）","c.nz":"トラックドライバー・足場工（ウェリントン）","c.jp":"英語教師（福岡）・トラックドライバー・ソフトウェア創業者（佐賀）",
+    "footer.city":"佐賀県鳥栖市","footer.company":"← 重松テック","footer.contact":"お問い合わせ"
+  },
+  es:{
+    "nav.back":"← Sitio de empresa","nav.contact":"Contacto",
+    "hero.eyebrow":"Fundador · Shigematsu Tech (Sole Proprietor)",
+    "hero.role":"Fundador — 重松テック — 個人事業主 · Tosu, Saga, Japón",
+    "hero.bio":"Desarrollador de software de noche, camionero de día. Ex capitán de barco, instructor de kayak, profesor de inglés, andamiero y conserje en cinco países. Creo productos que nacen de experiencia operativa real — no solo de una oficina.",
+    "hero.cta1":"DispatchOS →","hero.cta2":"Todos los productos",
+    "skills.lbl":"Habilidades y Certificaciones","skills.title":"Aprendido en el campo,\nno en un aula.",
+    "sk1.title":"Software","sk2.title":"Marítimo y Transporte","sk3.title":"Idiomas y Otros",
+    "exp.lbl":"Experiencia","exp.title":"20 años en\n5 países.",
+    "grp.tech":"Tecnología y Software","grp.logistics":"Logística y Transporte","grp.maritime":"Marítimo y Acuático","grp.hosp":"Hospitalidad y Educación",
+    "j.st.role":"Fundador","j.st.b1":"Desarrollando DispatchOS — SaaS de despacho con IA para empresas de logística japonesas","j.st.b2":"Desarrollando CastWise Japan, NihongoQuest, Boat Time Attack, AutoWatch, Memoria","j.st.b3":"React, Firebase, Expo, Claude API, Stripe — desarrollo full-stack en solitario",
+    "j.self.role":"Autónomo — Multimedia y Web","j.self.b1":"Creación de murales e ilustraciones educativas","j.self.b2":"Producción y edición de películas y presentaciones multimedia","j.self.b3":"Diseño de logos, desarrollo web, Blender 3D",
+    "j.ki.role":"Asistente de Producción","j.ki.b1":"Operación de equipos de cinematografía","j.ki.b2":"Filmación, edición y producción de películas y multimedia","j.ki.b3":"Desarrollo web",
+    "j.vcht.role":"Administrador del Centro de Computación y Asistente de Exhibición Marina","j.vcht.b1":"Instalación y mantenimiento de red de computadoras para sala de recursos públicos","j.vcht.b2":"Mantenimiento de acuario de agua salada y recolección de especies","j.vcht.b3":"Visitas guiadas sobre historia y atracciones de Vieques",
+    "j.chikugo.role":"Camionero — Transporte de Contenedores y Materiales Peligrosos","j.chikugo.b1":"Recogida de contenedores JR en depósitos ferroviarios — 12×8, 20ft, 40ft","j.chikugo.b2":"Entrega de cisternas de líquidos peligrosos en toda Kyushu","j.chikugo.b3":"Rutas de carga con camión abierto — Nakatsu a Yoshinogari y más",
+    "j.lyft.role":"Conductor Independiente","j.lyft.b1":"Transporte de pasajeros y entregas de paquetes mediante la plataforma Lyft",
+    "j.fh.role":"Camionero y Andamiero","j.fh.b1":"Conducción de vehículos Clase 2 por Wellington","j.fh.b2":"Instalaciones y desmontajes de andamios","j.fh.b3":"Operación de montacargas",
+    "j.mm.role":"Mudancero","j.mm.b1":"Conducción de vehículos MR, embalaje previo y transporte de muebles","j.mm.b2":"Certificación máxima en transporte de piano",
+    "j.aa.role":"Empleado Multifuncional","j.aa.b1":"Soldadura, conformación y corte de metales pesados y ligeros","j.aa.b2":"Mecánica automotriz, operación de montacargas y elevadores mecánicos",
+    "j.rwwt.role":"Capitán","j.rwwt.b1":"Navegación del Rowes Wharf — hélice simple, 32 pasajeros, 15 nudos","j.rwwt.b2":"Múltiples embarcaciones incluyendo Rip Ridder V (twin 90hp), Beantown",
+    "j.dean.role":"Marinero y Obrero Especializado","j.dean.b1":"Marinero e ingeniería en tres remolcadores de 60 toneladas (TDW, Little T, Mary Jane)",
+    "j.jak.role":"Capitán","j.jak.b1":"Navegación de Murieta II — embarcación pesquera Spider de 22 pies","j.jak.b2":"Tours en SUP y guía de snorkel",
+    "j.mar.role":"Primer Oficial","j.mar.b1":"Primer oficial en Marauder — velero Cal 32 pies de 1969","j.mar.b2":"Mantenimiento del barco, manejo de aparejo y cabos durante la navegación",
+    "j.ia.role":"Primer Oficial y Guía Bilingüe","j.ia.b1":"Operación y mantenimiento del barco Luminosa II","j.ia.b2":"Presentaciones educativas bilingües para turistas, residentes y estudiantes","j.ia.b3":"Check-in de pasajeros, seguridad, manejo y mantenimiento del barco",
+    "j.seiha.role":"Profesor de Inglés","j.seiha.b1":"Enseñanza a estudiantes de 0 a 12 años bajo el Método Seiha","j.seiha.b2":"Planificación y ejecución de lecciones",
+    "j.rl.role":"Instructor de Actividades al Aire Libre","j.rl.b1":"Guía e instructor de kayak en el río Brisbane","j.rl.b2":"Guía de Segway, instructor de laser tag, guía de SUP",
+    "j.bb.role":"Trabajador Casual","j.bb.b1":"Conductor de shuttle, recepcionista, encargado de instalaciones",
+    "j.w.role":"Insider / Conserje","j.w.b1":"Informar a huéspedes sobre eventos y actividades locales","j.w.b2":"Establecer conexiones con proveedores locales para satisfacción del cliente","j.w.b3":"Crear itinerarios personalizados de actividades para huéspedes",
+    "world.lbl":"Por el mundo","world.title":"Vivido y trabajado\nen 5 países.",
+    "c.pr":"Capitán · Conserje · Guía Marina · Origen","c.us":"Capitán (Boston) · Marinero (Louisiana) · Conductor (Seattle)","c.au":"Instructor de Kayak · Mudancero · Trabajador de Hostel (Brisbane y Melbourne)","c.nz":"Camionero · Andamiero (Wellington)","c.jp":"Profesor de Inglés (Fukuoka) · Camionero · Fundador de Software (Saga)",
+    "footer.city":"Tosu, Saga, Japón","footer.company":"← Shigematsu Tech","footer.contact":"Contacto"
+  }
+};
+
+let lang = 'en';
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l==='ja'?'ja':l==='es'?'es':'en';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim()===(l==='ja'?'日本語':l==='en'?'EN':'ES')));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[l][el.getAttribute('data-i18n')];
+    if (v !== undefined) el.innerHTML = v.replace(/\n/g,'<br/>');
+  });
+}
+
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+}), {threshold:.06});
+document.querySelectorAll('.tl-item,.skill-card,.country,.cert').forEach((el,i) => {
+  el.style.opacity='0'; el.style.transform='translateY(12px)';
+  el.styl

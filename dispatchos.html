@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DispatchOS | AI配車管理 — 重松テック — 個人事業主</title>
+  <meta name="description" content="AIが毎朝の配車を自動化。JR 12×8・20ft・40ftコンテナ、危険物タンク車、ウイング車対応。14日間無料。"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#05080f;--bg2:#080e1c;--bg3:#0c1628;--border:#0f1f35;--blue:#2563eb;--blt:#60a5fa;--bdm:#1e3a5f;--text:#e2e8f0;--muted:#64748b;--dim:#334155;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;}
+    *{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    body::before{content:'';position:fixed;inset:0;opacity:.025;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+    .grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:58px 58px;opacity:.38;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes glowPulse{0%,100%{opacity:.3}50%{opacity:.7}}
+    @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes pulseDot{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
+    .fu{opacity:0;animation:fadeUp .65s ease forwards;}
+    .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
+
+    /* LANG SWITCHER */
+    .lang-switcher{display:flex;gap:2px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:2px;flex-shrink:0;}
+    .lang-btn{background:none;border:none;padding:5px 10px;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;color:var(--muted);letter-spacing:.06em;font-family:'Noto Sans JP',sans-serif;transition:all .18s;}
+    .lang-btn.active{background:var(--blue);color:#fff;}
+    .lang-btn:hover:not(.active){color:var(--text);}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,8,15,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 5%;}
+    .nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;gap:14px;}
+    .nav-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    .nav-back{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px;transition:color .2s;}
+    .nav-back:hover{color:var(--text);}
+    .nav-sep{width:1px;height:18px;background:var(--border);}
+    .nav-product{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:900;letter-spacing:.04em;color:#f8fafc;}
+    .nav-product span{color:var(--blue);}
+    .nav-links{display:flex;gap:22px;}
+    .nav-links a{font-size:13px;color:var(--muted);transition:color .2s;}
+    .nav-links a:hover{color:var(--text);}
+    .nav-right{display:flex;gap:10px;align-items:center;}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Noto Sans JP',sans-serif;border:none;}
+    .btn-p{background:var(--blue);color:#fff;}
+    .btn-p:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,99,235,.35);}
+    .btn-g{background:transparent;color:var(--muted);border:1px solid var(--border);}
+    .btn-g:hover{border-color:var(--blt);color:var(--blt);}
+    .btn-lg{padding:14px 36px;font-size:15px;border-radius:50px;}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;overflow:hidden;}
+    .hero-glow{position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(37,99,235,.15),transparent 70%);pointer-events:none;animation:glowPulse 4s ease-in-out infinite;}
+    .hero-inner{max-width:1160px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+    .badge{display:inline-flex;align-items:center;gap:7px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.3);border-radius:50px;padding:4px 13px;font-size:11px;color:var(--blt);font-weight:600;letter-spacing:.08em;margin-bottom:20px;}
+    .bdot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulseDot 2s infinite;}
+    .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(44px,5.5vw,76px);font-weight:900;line-height:1;color:#f8fafc;margin-bottom:9px;}
+    .hero h1 .ac{color:var(--blue);}
+    .hero-tagline{font-size:clamp(16px,2vw,24px);font-weight:700;color:var(--blt);margin-bottom:16px;}
+    .hero-body{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:28px;max-width:450px;}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
+    .trust-row{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--dim);}
+    .trust-row span::before{content:'✓';color:var(--green);font-weight:800;margin-right:4px;}
+    /* Mock */
+    .mock-win{background:var(--bg2);border:1px solid var(--border);border-radius:13px;overflow:hidden;box-shadow:0 36px 72px rgba(0,0,0,.6);}
+    .mock-bar{background:#030912;padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--border);}
+    .mdot{width:9px;height:9px;border-radius:50%;}
+    .mtitle{font-size:10px;color:var(--dim);margin-left:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.1em;}
+    .mbody{padding:16px;}
+    .mstats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:13px;}
+    .mstat{background:#030912;border:1px solid var(--border);border-radius:6px;padding:9px;text-align:center;}
+    .msv{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;color:#f8fafc;}
+    .msl{font-size:9px;color:var(--dim);letter-spacing:.1em;margin-top:2px;}
+    .mdr{display:flex;align-items:center;justify-content:space-between;background:#030912;border:1px solid var(--border);border-radius:6px;padding:8px 11px;margin-bottom:6px;}
+    .mdi{display:flex;align-items:center;gap:8px;}
+    .mav{width:28px;height:28px;border-radius:50%;background:#0f2040;display:flex;align-items:center;justify-content:center;font-size:13px;}
+    .mdn{font-size:11px;font-weight:600;color:var(--text);}
+    .mdv{font-size:10px;color:var(--muted);}
+    .mdh{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#f8fafc;text-align:right;}
+    .mbar{height:3px;background:var(--border);border-radius:2px;margin-top:3px;width:48px;}
+    .mfill{height:100%;border-radius:2px;}
+    .aibox{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);border-radius:6px;padding:9px 12px;margin-top:10px;}
+    .ailbl{font-size:9px;color:var(--blt);font-weight:700;letter-spacing:.14em;margin-bottom:4px;}
+    .aitxt{font-size:11px;color:var(--muted);line-height:1.6;}
+
+    /* TICKER */
+    .ticker{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;overflow:hidden;}
+    .ticker-track{display:flex;white-space:nowrap;animation:scrollX 28s linear infinite;}
+    .titem{display:inline-flex;align-items:center;gap:7px;padding:0 30px;font-size:12px;color:var(--dim);}
+    .titem .d{color:var(--blt);}
+
+    /* SECTIONS */
+    section{padding:80px 5%;}
+    .wrap{max-width:1160px;margin:0 auto;}
+    .slbl{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--blue);margin-bottom:9px;text-transform:uppercase;}
+    .stitle{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3.8vw,50px);font-weight:900;color:#f8fafc;line-height:1.05;margin-bottom:12px;}
+    .sbody{font-size:15px;color:var(--muted);line-height:1.85;max-width:540px;}
+
+    /* PROBLEMS */
+    .probs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;}
+    .prob{background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:26px;position:relative;overflow:hidden;transition:transform .2s;}
+    .prob:hover{transform:translateY(-2px);}
+    .prob::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),transparent);}
+    .prob-ic{font-size:32px;margin-bottom:13px;}
+    .prob h3{font-size:16px;font-weight:700;color:#f8fafc;margin-bottom:9px;}
+    .prob p{font-size:13px;color:var(--muted);line-height:1.8;}
+
+    /* FEATURES */
+    .feats{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:48px;border:1px solid var(--border);border-radius:13px;overflow:hidden;}
+    .feat{background:var(--bg2);padding:32px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .feat:nth-child(2n){border-right:none;}.feat:nth-last-child(-n+2){border-bottom:none;}
+    .feat-ic{width:42px;height:42px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:16px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);}
+    .feat h3{font-size:16px;font-weight:700;color:#f8fafc;margin-bottom:8px;}
+    .feat p{font-size:13px;color:var(--muted);line-height:1.8;}
+    .ftag{display:inline-block;margin-top:9px;font-size:11px;color:var(--blt);background:rgba(37,99,235,.1);padding:2px 8px;border-radius:4px;font-weight:600;}
+
+    /* STEPS */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;position:relative;}
+    .steps::before{content:'';position:absolute;top:24px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--bdm),var(--bdm),transparent);}
+    .step{text-align:center;padding:0 14px;}
+    .snum{width:48px;height:48px;border-radius:50%;background:var(--bg3);border:1px solid var(--bdm);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;color:var(--blt);margin:0 auto 16px;}
+    .step h3{font-size:14px;font-weight:700;color:#f8fafc;margin-bottom:6px;}
+    .step p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+    /* VEHICLES */
+    .vehs{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:40px;}
+    .veh{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:20px;display:flex;gap:13px;transition:border-color .2s,transform .2s;}
+    .veh:hover{border-color:var(--bdm);transform:translateY(-2px);}
+    .vem{font-size:28px;flex-shrink:0;}
+    .veh h3{font-size:14px;font-weight:700;color:#f8fafc;margin-bottom:4px;}
+    .veh p{font-size:12px;color:var(--muted);line-height:1.6;}
+    .vtags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;}
+    .vtag{font-size:10px;padding:2px 7px;border-radius:3px;font-weight:600;}
+
+    /* TRUST */
+    .trust-band{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:13px;overflow:hidden;margin-top:48px;}
+    .titem2{background:var(--bg2);padding:26px;text-align:center;}
+    .tnum{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--blt);line-height:1;}
+    .tlbl{font-size:12px;color:var(--muted);margin-top:5px;}
+
+    /* PRICING */
+    .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
+    .pcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px 26px;position:relative;transition:transform .2s;}
+    .pcard:hover{transform:translateY(-3px);}
+    .pcard.hot{border-color:var(--blue);background:linear-gradient(135deg,#0a1628,#0d1e36);}
+    .pcard.hot::before{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;padding:3px 13px;border-radius:50px;letter-spacing:.08em;background:var(--blue);color:#fff;}
+    .pn{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;text-transform:uppercase;}
+    .pa{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:#f8fafc;line-height:1;}
+    .pu{font-size:13px;color:var(--muted);}
+    .pp{font-size:12px;color:var(--dim);margin-bottom:24px;}
+    .pf{list-style:none;margin-bottom:24px;}
+    .pf li{padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;}
+    .pf li::before{content:'→';color:var(--blt);font-weight:700;flex-shrink:0;}
+    .pt{font-size:11px;color:var(--dim);text-align:center;margin-top:12px;}
+
+    /* CTA BAND */
+    .cta-band{background:linear-gradient(135deg,#080e1c,#0a1628);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .cta-inner{max-width:680px;margin:0 auto;text-align:center;padding:80px 5%;}
+    .cta-inner h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,4.5vw,56px);font-weight:900;color:#f8fafc;line-height:1.1;margin-bottom:12px;}
+    .cta-inner p{font-size:15px;color:var(--muted);margin-bottom:32px;line-height:1.85;}
+    .cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:18px;}
+    .cta-note{font-size:12px;color:var(--dim);}
+
+    /* CONTACT */
+    .cform{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:36px;max-width:600px;margin:48px auto 0;}
+    .fg{margin-bottom:13px;}
+    .fg label{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.1em;margin-bottom:6px;}
+    .fg input,.fg select,.fg textarea{width:100%;background:#030912;border:1px solid var(--border);border-radius:7px;padding:10px 13px;color:var(--text);font-size:14px;font-family:'Noto Sans JP',sans-serif;transition:border-color .2s;}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--blue);}
+    .fg textarea{min-height:82px;resize:vertical;}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+    .fsucc{display:none;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:7px;padding:12px;text-align:center;color:#4ade80;font-size:13px;margin-top:9px;}
+
+    /* FOOTER */
+    footer{background:#030912;border-top:1px solid var(--border);padding:36px 5%;}
+    .footer-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+    .footer-inner p{font-size:12px;color:var(--dim);}
+    .footer-links{display:flex;gap:18px;}
+    .footer-links a{font-size:13px;color:var(--muted);transition:color .2s;}
+    .footer-links a:hover{color:var(--text);}
+
+    @media(max-width:900px){.hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}.probs,.feats,.pgrid{grid-template-columns:1fr;}.steps{grid-template-columns:1fr 1fr;gap:28px;}.steps::before{display:none;}.vehs{grid-template-columns:1fr 1fr;}.trust-band{grid-template-columns:1fr 1fr;}.nav-links{display:none;}}
+    @media(max-width:600px){.vehs,.trust-band{grid-template-columns:1fr;}.frow{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <a href="/" class="nav-back" data-i18n="nav.back">← 重松テック</a>
+      <div class="nav-sep"></div>
+      <div class="nav-product">DISPATCH<span>OS</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#features" data-i18n="nav.features">機能</a>
+      <a href="#vehicles" data-i18n="nav.vehicles">対応車両</a>
+      <a href="#pricing" data-i18n="nav.pricing">料金</a>
+      <a href="#contact" data-i18n="nav.contact">お問い合わせ</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+      <a href="https://chikugo-dispatch.vercel.app" target="_blank" class="btn btn-g" data-i18n="nav.demo">デモを見る</a>
+      <a href="#contact" class="btn btn-p" data-i18n="nav.cta">無料で試す →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner" style="position:relative;z-index:1;">
+    <div>
+      <div class="badge fu d1"><span class="bdot"></span><span data-i18n="hero.badge">九州・日本全国の運送会社向け</span></div>
+      <h1 class="fu d2">DISPATCH<span class="ac">OS</span></h1>
+      <div class="hero-tagline fu d2" data-i18n="hero.tagline">AIが配車を、秒で終わらせる。</div>
+      <p class="hero-body fu d3" data-i18n="hero.body">毎朝1〜2時間かかる手動配車を自動化。JRコンテナ規格・危険物タンク・ウイング車の車両マッチングをAIが自動判定し、最適なドライバーへ即時割当。</p>
+      <div class="hero-actions fu d4">
+        <a href="#contact" class="btn btn-p btn-lg" data-i18n="hero.cta1">14日間 無料トライアル</a>
+        <a href="https://chikugo-dispatch.vercel.app" target="_blank" class="btn btn-g btn-lg" data-i18n="hero.cta2">デモを操作する →</a>
+      </div>
+      <div class="trust-row fu d4">
+        <span data-i18n="hero.t1">クレジットカード不要</span>
+        <span data-i18n="hero.t2">設定5分で完了</span>
+        <span data-i18n="hero.t3">九州エリア対応</span>
+      </div>
+    </div>
+    <div class="hero-visual fu d3">
+      <div class="mock-win">
+        <div class="mock-bar">
+          <div class="mdot" style="background:#ef4444"></div><div class="mdot" style="background:#f59e0b"></div><div class="mdot" style="background:#22c55e"></div>
+          <span class="mtitle" data-i18n="mock.title">DISPATCHOS — 今日の配車 ⚡ 自動配車済み</span>
+        </div>
+        <div class="mbody">
+          <div class="mstats">
+            <div class="mstat"><div class="msv" style="color:#60a5fa">5/6</div><div class="msl" data-i18n="mock.s1">出勤中</div></div>
+            <div class="mstat"><div class="msv">8</div><div class="msl" data-i18n="mock.s2">本日の仕事</div></div>
+            <div class="mstat"><div class="msv" style="color:#f59e0b">3.4h</div><div class="msl" data-i18n="mock.s3">平均負荷</div></div>
+            <div class="mstat"><div class="msv" style="color:#22c55e">0</div><div class="msl" data-i18n="mock.s4">未割当</div></div>
+          </div>
+          <div class="mdr"><div class="mdi"><div class="mav">🚛</div><div><div class="mdn" data-i18n="mock.d1n">山本 亮</div><div class="mdv" data-i18n="mock.d1v">トレーラー 12×8 JR</div></div></div><div><div class="mdh">3.0h</div><div class="mbar"><div class="mfill" style="width:55%;background:#3b82f6"></div></div></div></div>
+          <div class="mdr"><div class="mdi"><div class="mav">⚗️</div><div><div class="mdn" data-i18n="mock.d2n">佐藤 弘</div><div class="mdv" data-i18n="mock.d2v">タンクトレーラー</div></div></div><div><div class="mdh">5.0h</div><div class="mbar"><div class="mfill" style="width:90%;background:#ef4444"></div></div></div></div>
+          <div class="mdr"><div class="mdi"><div class="mav">🚐</div><div><div class="mdn" data-i18n="mock.d3n">田中 賢二</div><div class="mdv" data-i18n="mock.d3v">ウイング車 4t</div></div></div><div><div class="mdh">2.5h</div><div class="mbar"><div class="mfill" style="width:40%;background:#3b82f6"></div></div></div></div>
+          <div class="aibox"><div class="ailbl">🤖 AI</div><div class="aitxt" data-i18n="mock.ai">本日8件を5名のドライバーへ自動割当完了。高優先度ジョブはすべてカバー済み。</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t1">JR 12×8コンテナ対応</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t2">危険物タンク車対応</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t3">ウイング車対応</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t4">20ft / 40ft ISO対応</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t5">リアルタイム状況管理</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t6">ドライバーPINログイン</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t7">AI配車レポート</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t8">負荷バランス自動調整</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t1">JR 12×8コンテナ対応</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t2">危険物タンク車対応</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t3">ウイング車対応</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t4">20ft / 40ft ISO対応</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t5">リアルタイム状況管理</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t6">ドライバーPINログイン</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t7">AI配車レポート</span></span>
+    <span class="titem"><span class="d">⚡</span><span data-i18n="t8">負荷バランス自動調整</span></span>
+  </div>
+</div>
+
+<!-- PROBLEMS -->
+<section><div class="wrap">
+  <div class="slbl" data-i18n="prob.lbl">課題</div>
+  <h2 class="stitle" data-i18n="prob.title">手動配車の3つの問題</h2>
+  <div class="probs">
+    <div class="prob"><div class="prob-ic">⏰</div><h3 data-i18n="prob1.h">毎朝1〜2時間の作業</h3><p data-i18n="prob1.p">電話・メモ・ホワイトボードで配車担当者が毎日手作業。熟練者不在で業務が止まる。</p></div>
+    <div class="prob"><div class="prob-ic">❌</div><h3 data-i18n="prob2.h">車両マッチングミス</h3><p data-i18n="prob2.p">40ftコンテナに12×8トレーラーを手配。危険物資格なしのドライバーが誤って割り当てられる。</p></div>
+    <div class="prob"><div class="prob-ic">⚖️</div><h3 data-i18n="prob3.h">不公平な負荷配分</h3><p data-i18n="prob3.p">特定ドライバーに仕事が偏る。誰が何時間働いているか把握できない。</p></div>
+  </div>
+</div></section>
+
+<!-- FEATURES -->
+<section id="features" style="background:var(--bg2)"><div class="wrap">
+  <div class="slbl" data-i18n="feat.lbl">機能</div>
+  <h2 class="stitle" data-i18n="feat.title">配車のすべてを、自動化する。</h2>
+  <div class="feats">
+    <div class="feat"><div class="feat-ic">🤖</div><h3 data-i18n="f1.h">AI自動配車</h3><p data-i18n="f1.p">高優先度の仕事から順に、対応可能な車両のドライバーへ自動割当。稼働時間を均等化し公平な負荷配分を実現。</p><span class="ftag" data-i18n="f1.tag">優先度・車両・時間を同時最適化</span></div>
+    <div class="feat"><div class="feat-ic">🚛</div><h3 data-i18n="f2.h">車両×貨物マッチング</h3><p data-i18n="f2.p">JR 12×8・20ft・40ftコンテナの規格判定、危険物タンク専用車、ウイング車の貨物制限をシステムが自動チェック。</p><span class="ftag" data-i18n="f2.tag">人的ミスをゼロへ</span></div>
+    <div class="feat"><div class="feat-ic">📱</div><h3 data-i18n="f3.h">ドライバー専用モバイル画面</h3><p data-i18n="f3.p">4桁PINを入力するだけ。今日の仕事・集荷先・納品先をスマホで確認。「開始」「完了」タップで状況を即時更新。</p><span class="ftag" data-i18n="f3.tag">アプリDL不要・ブラウザ動作</span></div>
+    <div class="feat"><div class="feat-ic">📊</div><h3 data-i18n="f4.h">リアルタイム進捗管理</h3><p data-i18n="f4.p">全ドライバーの状況をダッシュボードでリアルタイム確認。未着手→進行中→完了のステータスが即時反映。</p><span class="ftag" data-i18n="f4.tag">事務所とドライバーをつなぐ</span></div>
+    <div class="feat"><div class="feat-ic">⚙️</div><h3 data-i18n="f5.h">自社仕様にカスタマイズ</h3><p data-i18n="f5.p">車両の種類・貨物カテゴリ・対応可否を自社の運用に合わせて自由設定。テンプレートから5分で完了。</p><span class="ftag" data-i18n="f5.tag">初期設定5分</span></div>
+    <div class="feat"><div class="feat-ic">📋</div><h3 data-i18n="f6.h">配車履歴・公平性レポート</h3><p data-i18n="f6.p">過去の配車実績・ドライバー別稼働時間・未割当案件を記録。労務管理・給与計算の根拠データとして活用可能。</p><span class="ftag" data-i18n="f6.tag">データで経営判断を支援</span></div>
+  </div>
+</div></section>
+
+<!-- HOW IT WORKS -->
+<section><div class="wrap">
+  <div class="slbl" data-i18n="how.lbl">使い方</div>
+  <h2 class="stitle" data-i18n="how.title">4ステップで今日から使える</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><h3 data-i18n="s1.h">自社設定</h3><p data-i18n="s1.p">会社名・車両タイプ・貨物カテゴリをテンプレートから選んで5分で完了。</p></div>
+    <div class="step"><div class="snum">2</div><h3 data-i18n="s2.h">ドライバー登録</h3><p data-i18n="s2.p">ドライバー名・担当車両・PINコードを登録。当日の出勤状況はスイッチで切替。</p></div>
+    <div class="step"><div class="snum">3</div><h3 data-i18n="s3.h">仕事を入力</h3><p data-i18n="s3.p">集荷先・納品先・貨物種別・優先度・所要時間を入力。</p></div>
+    <div class="step"><div class="snum">4</div><h3 data-i18n="s4.h">⚡ 自動配車</h3><p data-i18n="s4.p">ボタン1つでAIが瞬時に最適配車。ドライバーはスマホで確認して出発。</p></div>
+  </div>
+</div></section>
+
+<!-- VEHICLES -->
+<section id="vehicles" style="background:var(--bg2)"><div class="wrap">
+  <div class="slbl" data-i18n="veh.lbl">対応車両</div>
+  <h2 class="stitle" data-i18n="veh.title">日本の物流現場に<br/>特化した車両管理</h2>
+  <p class="sbody" data-i18n="veh.body">JR規格のコンテナから危険物タンク車まで、国内の運送業務で使われる車両タイプに完全対応。</p>
+  <div class="vehs">
+    <div class="veh"><div class="vem">🚐</div><div><h3 data-i18n="v1.h">ウイング車（4t）</h3><p data-i18n="v1.p">パレット・小口貨物の配送に。荷室両側が開くウイング構造で積み下ろし効率化。</p><div class="vtags"><span class="vtag" style="background:rgba(56,189,248,.15);color:#38bdf8" data-i18n="v1.t1">パレット</span><span class="vtag" style="background:rgba(56,189,248,.15);color:#38bdf8" data-i18n="v1.t2">小口貨物</span></div></div></div>
+    <div class="veh"><div class="vem">🚛</div><div><h3 data-i18n="v2.h">トレーラー（JR 12×8）</h3><p data-i18n="v2.p">国内鉄道貨物で最も多く使われる小型コンテナ専用。JRコンテナ集荷に対応。</p><div class="vtags"><span class="vtag" style="background:rgba(52,211,153,.15);color:#34d399" data-i18n="v2.t1">12×8 JRコンテナ</span></div></div></div>
+    <div class="veh"><div class="vem">🚛</div><div><h3 data-i18n="v3.h">トレーラー（20ft）</h3><p data-i18n="v3.p">ISO規格20ftコンテナ対応。12×8も積載可能な汎用トレーラー。</p><div class="vtags"><span class="vtag" style="background:rgba(129,140,248,.15);color:#818cf8">20ft ISO</span><span class="vtag" style="background:rgba(52,211,153,.15);color:#34d399">12×8</span></div></div></div>
+    <div class="veh"><div class="vem">🚛</div><div><h3 data-i18n="v4.h">トレーラー（40ft）</h3><p data-i18n="v4.p">大型ISOコンテナ対応。希少な大型案件を確実に対応可能なドライバーへ自動割当。</p><div class="vtags"><span class="vtag" style="background:rgba(192,132,252,.15);color:#c084fc">40ft</span><span class="vtag" style="background:rgba(129,140,248,.15);color:#818cf8">20ft</span><span class="vtag" style="background:rgba(52,211,153,.15);color:#34d399">12×8</span></div></div></div>
+    <div class="veh"><div class="vem">⚗️</div><div><h3 data-i18n="v5.h">タンクトレーラー（危険物）</h3><p data-i18n="v5.p">液体危険物専用。危険物取扱資格を持つドライバーのみに自動割当。誤配車をゼロに。</p><div class="vtags"><span class="vtag" style="background:rgba(248,113,113,.15);color:#f87171" data-i18n="v5.t1">危険物専用</span></div></div></div>
+    <div class="veh" style="border-style:dashed"><div class="vem">⚙️</div><div><h3 data-i18n="v6.h">カスタム車両</h3><p data-i18n="v6.p">平車・冷蔵車・クレーン車など、上記以外の車両も自由に追加設定できます。</p><div class="vtags"><span class="vtag" style="background:rgba(100,116,139,.15);color:#64748b" data-i18n="v6.t1">自由設定</span></div></div></div>
+  </div>
+  <div class="trust-band">
+    <div class="titem2"><div class="tnum" data-i18n="tr1.n">1〜2h</div><div class="tlbl" data-i18n="tr1.l">毎日の配車時間を削減</div></div>
+    <div class="titem2"><div class="tnum" data-i18n="tr2.n">0件</div><div class="tlbl" data-i18n="tr2.l">車両マッチングミス</div></div>
+    <div class="titem2"><div class="tnum" data-i18n="tr3.n">5分</div><div class="tlbl" data-i18n="tr3.l">初期設定完了時間</div></div>
+    <div class="titem2"><div class="tnum" data-i18n="tr4.n">14日</div><div class="tlbl" data-i18n="tr4.l">無料トライアル期間</div></div>
+  </div>
+</div></section>
+
+<!-- PRICING -->
+<section id="pricing"><div class="wrap">
+  <div class="slbl" data-i18n="price.lbl">料金プラン</div>
+  <h2 class="stitle" data-i18n="price.title">シンプルな月額料金</h2>
+  <p class="sbody" data-i18n="price.body">14日間の無料トライアルあり。クレジットカード登録不要でお試しいただけます。</p>
+  <div class="pgrid">
+    <div class="pcard">
+      <div class="pn" data-i18n="p1.name">スタータープラン</div>
+      <div style="display:flex;align-items:baseline;gap:3px"><div class="pa">¥9,800</div><div class="pu" data-i18n="price.mo">/月</div></div>
+      <div class="pp" data-i18n="price.tax">（税別）</div>
+      <ul class="pf">
+        <li data-i18n="p1.f1">ドライバー最大10名</li><li data-i18n="p1.f2">管理者アカウント1名</li>
+        <li data-i18n="p1.f3">全車両タイプ対応</li><li data-i18n="p1.f4">AI自動配車・レポート</li>
+        <li data-i18n="p1.f5">ドライバーモバイル画面</li>
+      </ul>
+      <a href="#contact" class="btn btn-g" style="width:100%;justify-content:center" data-i18n="price.free">無料で始める</a>
+      <div class="pt" data-i18n="price.trial">14日間無料 · カード不要</div>
+    </div>
+    <div class="pcard hot">
+      <div class="pn" data-i18n="p2.name">グロースプラン</div>
+      <div style="display:flex;align-items:baseline;gap:3px"><div class="pa">¥24,800</div><div class="pu" data-i18n="price.mo">/月</div></div>
+      <div class="pp" data-i18n="price.tax">（税別）</div>
+      <ul class="pf">
+        <li data-i18n="p2.f1">ドライバー最大30名</li><li data-i18n="p2.f2">管理者アカウント3名</li>
+        <li data-i18n="p2.f3">配車履歴・公平性レポート</li><li data-i18n="p2.f4">優先サポート対応</li>
+        <li data-i18n="p2.f5">カスタム貨物タイプ無制限</li>
+      </ul>
+      <a href="#contact" class="btn btn-p" style="width:100%;justify-content:center" data-i18n="price.free">無料で始める</a>
+      <div class="pt" data-i18n="price.trial">14日間無料 · カード不要</div>
+    </div>
+    <div class="pcard">
+      <div class="pn" data-i18n="p3.name">フリートプラン</div>
+      <div style="display:flex;align-items:baseline;gap:3px"><div class="pa">¥49,800</div><div class="pu" data-i18n="price.mo">/月</div></div>
+      <div class="pp" data-i18n="price.tax">（税別）</div>
+      <ul class="pf">
+        <li data-i18n="p3.f1">ドライバー無制限</li><li data-i18n="p3.f2">管理者アカウント無制限</li>
+        <li data-i18n="p3.f3">API連携対応</li><li data-i18n="p3.f4">専任サポート担当</li>
+        <li data-i18n="p3.f5">カスタム開発相談可</li>
+      </ul>
+      <a href="#contact" class="btn btn-g" style="width:100%;justify-content:center" data-i18n="price.contact">お問い合わせ</a>
+      <div class="pt" data-i18n="p3.note">要件に応じてご相談ください</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <h2 data-i18n="cta.title">今日から、配車を変える。</h2>
+    <p data-i18n="cta.body">設定5分・クレジットカード不要。14日間のトライアルで、自社の配車業務に合うか確かめてください。</p>
+    <div class="cta-actions">
+      <a href="#contact" class="btn btn-p btn-lg" data-i18n="cta.cta1">無料トライアルを申し込む</a>
+      <a href="https://chikugo-dispatch.vercel.app" target="_blank" class="btn btn-g btn-lg" data-i18n="cta.cta2">デモを操作する</a>
+    </div>
+    <p class="cta-note" data-i18n="cta.note">九州エリアの運送会社には導入サポートを無償提供しています。</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact"><div class="wrap">
+  <div style="text-align:center;margin-bottom:12px">
+    <div class="slbl" data-i18n="con.lbl">お問い合わせ</div>
+    <h2 class="stitle" data-i18n="con.title">まずはご相談ください</h2>
+    <p class="sbody" style="margin:0 auto" data-i18n="con.body">導入前のご質問・デモのご依頼・お見積もりはこちらから。九州エリアは訪問対応も可能です。</p>
+  </div>
+  <div class="cform">
+    <div class="frow">
+      <div class="fg"><label data-i18n="form.co">会社名 *</label><input type="text" id="fco" data-i18n-ph="form.co.ph"/></div>
+      <div class="fg"><label data-i18n="form.nm">お名前 *</label><input type="text" id="fnm" data-i18n-ph="form.nm.ph"/></div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label data-i18n="form.em">メールアドレス *</label><input type="email" id="fem" placeholder="example@company.co.jp"/></div>
+      <div class="fg"><label data-i18n="form.ph">電話番号</label><input type="tel" id="fph" data-i18n-ph="form.ph.ph"/></div>
+    </div>
+    <div class="fg"><label data-i18n="form.dr">ドライバー数の目安</label>
+      <select id="fdr">
+        <option value="" data-i18n="form.dr.0">選択してください</option>
+        <option data-i18n="form.dr.1">5名以下</option><option data-i18n="form.dr.2">6〜10名</option>
+        <option data-i18n="form.dr.3">11〜20名</option><option data-i18n="form.dr.4">21〜30名</option>
+        <option data-i18n="form.dr.5">31名以上</option>
+      </select>
+    </div>
+    <div class="fg"><label data-i18n="form.ms">お問い合わせ内容</label><textarea id="fms" data-i18n-ph="form.ms.ph"></textarea></div>
+    <button class="btn btn-p" style="width:100%;justify-content:center;padding:12px" onclick="submitForm()" data-i18n="form.send">送信する →</button>
+    <div class="fsucc" id="fsc" data-i18n="form.ok">✅ お問い合わせを受け付けました。2営業日以内にご連絡いたします。</div>
+    <p style="font-size:12px;color:var(--dim);text-align:center;margin-top:12px">重松テック — 個人事業主 / Shigematsu Tech (Sole Proprietor) — <span data-i18n="footer.city">佐賀県鳥栖市</span></p>
+  </div>
+</div></section>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 重松テック — 個人事業主 · <a href="/" data-i18n="footer.back">← 会社サイトに戻る</a></p>
+    <div class="footer-links">
+      <a href="#contact" data-i18n="footer.contact">お問い合わせ</a>
+      <a href="#" data-i18n="footer.privacy">プライバシーポリシー</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const T = {
+  ja:{
+    "nav.back":"← 重松テック","nav.features":"機能","nav.vehicles":"対応車両","nav.pricing":"料金","nav.contact":"お問い合わせ","nav.demo":"デモを見る","nav.cta":"無料で試す →",
+    "hero.badge":"九州・日本全国の運送会社向け","hero.tagline":"AIが配車を、秒で終わらせる。",
+    "hero.body":"毎朝1〜2時間かかる手動配車を自動化。JRコンテナ規格・危険物タンク・ウイング車の車両マッチングをAIが自動判定し、最適なドライバーへ即時割当。",
+    "hero.cta1":"14日間 無料トライアル","hero.cta2":"デモを操作する →","hero.t1":"クレジットカード不要","hero.t2":"設定5分で完了","hero.t3":"九州エリア対応",
+    "mock.title":"DISPATCHOS — 今日の配車 ⚡ 自動配車済み","mock.s1":"出勤中","mock.s2":"本日の仕事","mock.s3":"平均負荷","mock.s4":"未割当",
+    "mock.d1n":"山本 亮","mock.d1v":"トレーラー 12×8 JR","mock.d2n":"佐藤 弘","mock.d2v":"タンクトレーラー","mock.d3n":"田中 賢二","mock.d3v":"ウイング車 4t",
+    "mock.ai":"本日8件を5名のドライバーへ自動割当完了。高優先度ジョブはすべてカバー済み。",
+    "t1":"JR 12×8コンテナ対応","t2":"危険物タンク車対応","t3":"ウイング車対応","t4":"20ft / 40ft ISO対応","t5":"リアルタイム状況管理","t6":"ドライバーPINログイン","t7":"AI配車レポート","t8":"負荷バランス自動調整",
+    "prob.lbl":"課題","prob.title":"手動配車の3つの問題",
+    "prob1.h":"毎朝1〜2時間の作業","prob1.p":"電話・メモ・ホワイトボードで配車担当者が毎日手作業。熟練者不在で業務が止まる。",
+    "prob2.h":"車両マッチングミス","prob2.p":"40ftコンテナに12×8トレーラーを手配。危険物資格なしのドライバーが誤って割り当てられる。",
+    "prob3.h":"不公平な負荷配分","prob3.p":"特定ドライバーに仕事が偏る。誰が何時間働いているか把握できない。",
+    "feat.lbl":"機能","feat.title":"配車のすべてを、自動化する。",
+    "f1.h":"AI自動配車","f1.p":"高優先度の仕事から順に、対応可能な車両のドライバーへ自動割当。稼働時間を均等化し公平な負荷配分を実現。","f1.tag":"優先度・車両・時間を同時最適化",
+    "f2.h":"車両×貨物マッチング","f2.p":"JR 12×8・20ft・40ftコンテナの規格判定、危険物タンク専用車、ウイング車の貨物制限をシステムが自動チェック。","f2.tag":"人的ミスをゼロへ",
+    "f3.h":"ドライバー専用モバイル画面","f3.p":"4桁PINを入力するだけ。今日の仕事・集荷先・納品先をスマホで確認。「開始」「完了」タップで状況を即時更新。","f3.tag":"アプリDL不要・ブラウザ動作",
+    "f4.h":"リアルタイム進捗管理","f4.p":"全ドライバーの状況をダッシュボードでリアルタイム確認。未着手→進行中→完了のステータスが即時反映。","f4.tag":"事務所とドライバーをつなぐ",
+    "f5.h":"自社仕様にカスタマイズ","f5.p":"車両の種類・貨物カテゴリ・対応可否を自社の運用に合わせて自由設定。テンプレートから5分で完了。","f5.tag":"初期設定5分",
+    "f6.h":"配車履歴・公平性レポート","f6.p":"過去の配車実績・ドライバー別稼働時間・未割当案件を記録。労務管理・給与計算の根拠データとして活用可能。","f6.tag":"データで経営判断を支援",
+    "how.lbl":"使い方","how.title":"4ステップで今日から使える",
+    "s1.h":"自社設定","s1.p":"会社名・車両タイプ・貨物カテゴリをテンプレートから選んで5分で完了。",
+    "s2.h":"ドライバー登録","s2.p":"ドライバー名・担当車両・PINコードを登録。当日の出勤状況はスイッチで切替。",
+    "s3.h":"仕事を入力","s3.p":"集荷先・納品先・貨物種別・優先度・所要時間を入力。",
+    "s4.h":"⚡ 自動配車","s4.p":"ボタン1つでAIが瞬時に最適配車。ドライバーはスマホで確認して出発。",
+    "veh.lbl":"対応車両","veh.title":"日本の物流現場に<br/>特化した車両管理","veh.body":"JR規格のコンテナから危険物タンク車まで、国内の運送業務で使われる車両タイプに完全対応。",
+    "v1.h":"ウイング車（4t）","v1.p":"パレット・小口貨物の配送に。荷室両側が開くウイング構造で積み下ろし効率化。","v1.t1":"パレット","v1.t2":"小口貨物",
+    "v2.h":"トレーラー（JR 12×8）","v2.p":"国内鉄道貨物で最も多く使われる小型コンテナ専用。JRコンテナ集荷に対応。","v2.t1":"12×8 JRコンテナ",
+    "v3.h":"トレーラー（20ft）","v3.p":"ISO規格20ftコンテナ対応。12×8も積載可能な汎用トレーラー。",
+    "v4.h":"トレーラー（40ft）","v4.p":"大型ISOコンテナ対応。希少な大型案件を確実に対応可能なドライバーへ自動割当。",
+    "v5.h":"タンクトレーラー（危険物）","v5.p":"液体危険物専用。危険物取扱資格を持つドライバーのみに自動割当。誤配車をゼロに。","v5.t1":"危険物専用",
+    "v6.h":"カスタム車両","v6.p":"平車・冷蔵車・クレーン車など、上記以外の車両も自由に追加設定できます。","v6.t1":"自由設定",
+    "tr1.n":"1〜2h","tr1.l":"毎日の配車時間を削減","tr2.n":"0件","tr2.l":"車両マッチングミス","tr3.n":"5分","tr3.l":"初期設定完了時間","tr4.n":"14日","tr4.l":"無料トライアル期間",
+    "price.lbl":"料金プラン","price.title":"シンプルな月額料金","price.body":"14日間の無料トライアルあり。クレジットカード登録不要でお試しいただけます。","price.mo":"/月","price.tax":"（税別）","price.free":"無料で始める","price.trial":"14日間無料 · カード不要","price.contact":"お問い合わせ",
+    "p1.name":"スタータープラン","p1.f1":"ドライバー最大10名","p1.f2":"管理者アカウント1名","p1.f3":"全車両タイプ対応","p1.f4":"AI自動配車・レポート","p1.f5":"ドライバーモバイル画面",
+    "p2.name":"グロースプラン","p2.f1":"ドライバー最大30名","p2.f2":"管理者アカウント3名","p2.f3":"配車履歴・公平性レポート","p2.f4":"優先サポート対応","p2.f5":"カスタム貨物タイプ無制限",
+    "p3.name":"フリートプラン","p3.f1":"ドライバー無制限","p3.f2":"管理者アカウント無制限","p3.f3":"API連携対応","p3.f4":"専任サポート担当","p3.f5":"カスタム開発相談可","p3.note":"要件に応じてご相談ください",
+    "cta.title":"今日から、配車を変える。","cta.body":"設定5分・クレジットカード不要。14日間のトライアルで、自社の配車業務に合うか確かめてください。","cta.cta1":"無料トライアルを申し込む","cta.cta2":"デモを操作する","cta.note":"九州エリアの運送会社には導入サポートを無償提供しています。",
+    "con.lbl":"お問い合わせ","con.title":"まずはご相談ください","con.body":"導入前のご質問・デモのご依頼・お見積もりはこちらから。九州エリアは訪問対応も可能です。",
+    "form.co":"会社名 *","form.co.ph":"例：筑後運送株式会社","form.nm":"お名前 *","form.nm.ph":"例：山田 太郎","form.em":"メールアドレス *","form.ph":"電話番号","form.ph.ph":"0942-XX-XXXX",
+    "form.dr":"ドライバー数の目安","form.dr.0":"選択してください","form.dr.1":"5名以下","form.dr.2":"6〜10名","form.dr.3":"11〜20名","form.dr.4":"21〜30名","form.dr.5":"31名以上",
+    "form.ms":"お問い合わせ内容","form.ms.ph":"「デモを見たい」「料金について聞きたい」など、お気軽にご記入ください。","form.send":"送信する →","form.ok":"✅ お問い合わせを受け付けました。2営業日以内にご連絡いたします。",
+    "footer.city":"佐賀県鳥栖市","footer.back":"← 会社サイトに戻る","footer.contact":"お問い合わせ","footer.privacy":"プライバシーポリシー"
+  },
+  en:{
+    "nav.back":"← Shigematsu Tech","nav.features":"Features","nav.vehicles":"Vehicles","nav.pricing":"Pricing","nav.contact":"Contact","nav.demo":"View demo","nav.cta":"Start free →",
+    "hero.badge":"For logistics companies across Japan & worldwide","hero.tagline":"AI dispatches your fleet in seconds.",
+    "hero.body":"Automates 1–2 hours of daily manual dispatch planning. AI matches vehicles to jobs — JR containers, hazmat tankers, wing trucks — and instantly assigns the optimal driver.",
+    "hero.cta1":"14-day free trial","hero.cta2":"Try the demo →","hero.t1":"No credit card required","hero.t2":"5-minute setup","hero.t3":"Kyushu support included",
+    "mock.title":"DISPATCHOS — Today's dispatch ⚡ Auto-assigned","mock.s1":"On duty","mock.s2":"Jobs today","mock.s3":"Avg load","mock.s4":"Unassigned",
+    "mock.d1n":"Yamamoto R.","mock.d1v":"Trailer 12×8 JR","mock.d2n":"Sato H.","mock.d2v":"Tank trailer","mock.d3n":"Tanaka K.","mock.d3v":"Wing truck 4t",
+    "mock.ai":"8 jobs auto-assigned to 5 drivers. All high-priority jobs covered. Tank trailer load is high.",
+    "t1":"JR 12×8 container","t2":"Hazmat tank truck","t3":"Wing truck","t4":"20ft / 40ft ISO container","t5":"Real-time status tracking","t6":"Driver PIN login","t7":"AI dispatch report","t8":"Auto load balancing",
+    "prob.lbl":"Problems","prob.title":"3 problems with manual dispatch",
+    "prob1.h":"1–2 hours every morning","prob1.p":"Dispatcher manually calls drivers, writes on whiteboards, shuffles notes. One person absent and the whole operation stalls.",
+    "prob2.h":"Vehicle mismatch errors","prob2.p":"A 12×8 trailer assigned to a 40ft container job. A driver without hazmat certification assigned to a tank run.",
+    "prob3.h":"Unfair workload distribution","prob3.p":"Some drivers get overloaded while others are underused. No visibility into who worked how many hours.",
+    "feat.lbl":"Features","feat.title":"Automate everything about dispatch.",
+    "f1.h":"AI auto-dispatch","f1.p":"Highest-priority jobs go first. AI picks the right driver for each job and balances hours across the whole team automatically.","f1.tag":"Priority · vehicle · hours — all optimised at once",
+    "f2.h":"Vehicle × cargo matching","f2.p":"Automatically checks JR 12×8 / 20ft / 40ft container compatibility, hazmat certification, and wing truck cargo limits. Zero human error.","f2.tag":"Vehicle mismatch errors → zero",
+    "f3.h":"Driver mobile view","f3.p":"Drivers enter a 4-digit PIN on their phone. See today's jobs, pickup and dropoff locations. Tap Start and Done to update status in real time.","f3.tag":"No app download · runs in browser",
+    "f4.h":"Real-time progress tracking","f4.p":"Manager dashboard shows every driver's live status. Pending → In progress → Done updates instantly as drivers tap their phones.","f4.tag":"Office and drivers — connected",
+    "f5.h":"Customise for your operation","f5.p":"Add your own vehicle types, cargo categories, and compatibility rules. Choose from a template and complete setup in 5 minutes.","f5.tag":"5-minute setup",
+    "f6.h":"Dispatch history & fairness reports","f6.p":"Every dispatch saved. Driver-level hours, unassigned jobs, and workload distribution tracked over time. Supports payroll and HR decisions.","f6.tag":"Data-driven operations",
+    "how.lbl":"How it works","how.title":"4 steps, ready today",
+    "s1.h":"Configure your company","s1.p":"Name, vehicle types, cargo categories. Pick a template and finish in 5 minutes.",
+    "s2.h":"Register drivers","s2.p":"Add driver names, vehicle assignments, and 4-digit PINs. Toggle availability each morning.",
+    "s3.h":"Enter today's jobs","s3.p":"Pickup, dropoff, cargo type, priority, estimated hours. Add as many jobs as needed.",
+    "s4.h":"⚡ Auto-dispatch","s4.p":"One button. AI assigns everything instantly. Drivers check their phone and head out.",
+    "veh.lbl":"Supported vehicles","veh.title":"Built for<br/>Japan's logistics industry","veh.body":"From JR-standard containers to hazmat tank trailers — every vehicle type used in Japanese freight operations.",
+    "v1.h":"Wing Truck (4t)","v1.p":"For pallets and small freight. Side-opening wing panels for fast, efficient loading and unloading.","v1.t1":"Pallets","v1.t2":"Small freight",
+    "v2.h":"Trailer — JR 12×8","v2.p":"The most common container in Japan's rail freight network. Handles JR container pickups at rail depots.","v2.t1":"12×8 JR container",
+    "v3.h":"Trailer — 20ft ISO","v3.p":"Standard ISO 20ft container. Also handles 12×8 JR containers — versatile daily workhorse.",
+    "v4.h":"Trailer — 40ft ISO","v4.p":"Large ISO containers. Rare specialist jobs automatically routed to the only compatible driver.",
+    "v5.h":"Tank Trailer (Hazmat)","v5.p":"Hazardous liquid only. System guarantees only certified drivers receive tank assignments. Zero mismatch risk.","v5.t1":"Hazmat only",
+    "v6.h":"Custom vehicle","v6.p":"Flatbeds, refrigerated trucks, crane lorries — add any vehicle type not listed above.","v6.t1":"Fully configurable",
+    "tr1.n":"1–2h","tr1.l":"Daily dispatch time saved","tr2.n":"Zero","tr2.l":"Vehicle mismatch errors","tr3.n":"5 min","tr3.l":"Setup time","tr4.n":"14 days","tr4.l":"Free trial",
+    "price.lbl":"Pricing","price.title":"Simple monthly pricing","price.body":"14-day free trial. No credit card required to get started.","price.mo":"/mo","price.tax":"(excl. tax)","price.free":"Start free","price.trial":"14-day free · no card","price.contact":"Contact us",
+    "p1.name":"Starter","p1.f1":"Up to 10 drivers","p1.f2":"1 manager account","p1.f3":"All vehicle types","p1.f4":"AI dispatch & reports","p1.f5":"Driver mobile view",
+    "p2.name":"Growth","p2.f1":"Up to 30 drivers","p2.f2":"3 manager accounts","p2.f3":"Dispatch history & fairness reports","p2.f4":"Priority support","p2.f5":"Unlimited custom cargo types",
+    "p3.name":"Fleet","p3.f1":"Unlimited drivers","p3.f2":"Unlimited managers","p3.f3":"API access","p3.f4":"Dedicated support","p3.f5":"Custom development available","p3.note":"Contact us for tailored pricing",
+    "cta.title":"Change how you dispatch. Today.","cta.body":"5-minute setup, no credit card. Try it free for 14 days and see if it fits your operation.","cta.cta1":"Start free trial","cta.cta2":"Try the demo","cta.note":"Free onboarding support for companies in the Kyushu region.",
+    "con.lbl":"Contact","con.title":"Let's talk","con.body":"Questions before signing up, demo requests, quotes — all welcome. In-person visits available in Kyushu.",
+    "form.co":"Company *","form.co.ph":"e.g. Acme Transport Co.","form.nm":"Name *","form.nm.ph":"e.g. John Smith","form.em":"Email *","form.ph":"Phone","form.ph.ph":"+81-XX-XXXX-XXXX",
+    "form.dr":"Approx. number of drivers","form.dr.0":"Select","form.dr.1":"1–5","form.dr.2":"6–10","form.dr.3":"11–20","form.dr.4":"21–30","form.dr.5":"31+",
+    "form.ms":"Message","form.ms.ph":"Tell us what you need — a demo, a quote, or just a question.","form.send":"Send →","form.ok":"✅ Thanks — we'll be in touch within 2 business days.",
+    "footer.city":"Tosu, Saga, Japan","footer.back":"← Shigematsu Tech","footer.contact":"Contact","footer.privacy":"Privacy Policy"
+  },
+  es:{
+    "nav.back":"← Shigematsu Tech","nav.features":"Funciones","nav.vehicles":"Vehículos","nav.pricing":"Precios","nav.contact":"Contacto","nav.demo":"Ver demo","nav.cta":"Empezar gratis →",
+    "hero.badge":"Para empresas de logística en Japón y el mundo","hero.tagline":"La IA despacha tu flota en segundos.",
+    "hero.body":"Automatiza 1-2 horas de planificación manual diaria. La IA asigna vehículos a trabajos — contenedores JR, cisternas, camiones abiertos — e instantáneamente asigna al conductor óptimo.",
+    "hero.cta1":"14 días gratis","hero.cta2":"Probar el demo →","hero.t1":"Sin tarjeta de crédito","hero.t2":"Configuración en 5 min","hero.t3":"Soporte en Kyushu incluido",
+    "mock.title":"DISPATCHOS — Despacho de hoy ⚡ Asignado automáticamente","mock.s1":"De servicio","mock.s2":"Trabajos hoy","mock.s3":"Carga media","mock.s4":"Sin asignar",
+    "mock.d1n":"Yamamoto R.","mock.d1v":"Trailer 12×8 JR","mock.d2n":"Sato H.","mock.d2v":"Cisterna","mock.d3n":"Tanaka K.","mock.d3v":"Camión abierto 4t",
+    "mock.ai":"8 trabajos asignados automáticamente a 5 conductores. Todos los trabajos prioritarios cubiertos.",
+    "t1":"Contenedor JR 12×8","t2":"Cisterna de materiales peligrosos","t3":"Camión abierto","t4":"Contenedor ISO 20ft / 40ft","t5":"Seguimiento en tiempo real","t6":"Login PIN del conductor","t7":"Informe de despacho IA","t8":"Equilibrio de carga automático",
+    "prob.lbl":"Problemas","prob.title":"3 problemas del despacho manual",
+    "prob1.h":"1–2 horas cada mañana","prob1.p":"El despachador llama conductores, escribe en pizarras, baraja notas. Si falta una persona, toda la operación se detiene.",
+    "prob2.h":"Errores de asignación de vehículos","prob2.p":"Un trailer 12×8 asignado a un trabajo de contenedor 40ft. Un conductor sin certificación de materiales peligrosos asignado a una cisterna.",
+    "prob3.h":"Distribución injusta de carga","prob3.p":"Algunos conductores están sobrecargados mientras otros tienen poco trabajo. Sin visibilidad de quién trabajó cuántas horas.",
+    "feat.lbl":"Funciones","feat.title":"Automatiza todo el despacho.",
+    "f1.h":"Despacho automático con IA","f1.p":"Los trabajos de mayor prioridad van primero. La IA elige al conductor adecuado para cada trabajo y equilibra las horas de todo el equipo automáticamente.","f1.tag":"Prioridad · vehículo · horas — todo optimizado",
+    "f2.h":"Coincidencia vehículo × carga","f2.p":"Verifica automáticamente la compatibilidad de contenedores JR 12×8 / 20ft / 40ft, certificación de materiales peligrosos y límites de carga. Cero error humano.","f2.tag":"Errores de asignación → cero",
+    "f3.h":"Vista móvil del conductor","f3.p":"Los conductores ingresan un PIN de 4 dígitos en su teléfono. Ven los trabajos del día, recogida y entrega. Tocan Inicio y Hecho para actualizar el estado.","f3.tag":"Sin descarga de app · funciona en navegador",
+    "f4.h":"Seguimiento en tiempo real","f4.p":"El panel del gerente muestra el estado en vivo de cada conductor. Pendiente → En progreso → Hecho se actualiza instantáneamente.","f4.tag":"Oficina y conductores — conectados",
+    "f5.h":"Personaliza tu operación","f5.p":"Agrega tus propios tipos de vehículos, categorías de carga y reglas de compatibilidad. Elige una plantilla y completa la configuración en 5 minutos.","f5.tag":"Configuración en 5 minutos",
+    "f6.h":"Historial e informes de equidad","f6.p":"Cada despacho guardado. Horas por conductor, trabajos sin asignar y distribución de carga seguidos a lo largo del tiempo.","f6.tag":"Operaciones basadas en datos",
+    "how.lbl":"Cómo funciona","how.title":"4 pasos, listo hoy",
+    "s1.h":"Configura tu empresa","s1.p":"Nombre, tipos de vehículo, categorías de carga. Elige una plantilla y termina en 5 minutos.",
+    "s2.h":"Registra conductores","s2.p":"Agrega nombres, vehículos asignados y PINs de 4 dígitos. Cambia la disponibilidad cada mañana.",
+    "s3.h":"Ingresa los trabajos de hoy","s3.p":"Recogida, entrega, tipo de carga, prioridad, horas estimadas.",
+    "s4.h":"⚡ Despacho automático","s4.p":"Un botón. La IA lo asigna todo al instante. Los conductores revisan su teléfono y salen.",
+    "veh.lbl":"Vehículos soportados","veh.title":"Diseñado para<br/>la logística de Japón","veh.body":"Desde contenedores estándar JR hasta cisternas de materiales peligrosos — todos los tipos de vehículos usados en el flete japonés.",
+    "v1.h":"Camión abierto (4t)","v1.p":"Para palés y carga pequeña. Paneles laterales abatibles para carga y descarga rápida.","v1.t1":"Palés","v1.t2":"Carga pequeña",
+    "v2.h":"Trailer — JR 12×8","v2.p":"El contenedor más común en la red ferroviaria de carga de Japón. Maneja recogidas de contenedores JR en depósitos ferroviarios.","v2.t1":"Contenedor JR 12×8",
+    "v3.h":"Trailer — ISO 20ft","v3.p":"Contenedor ISO estándar de 20ft. También maneja contenedores JR 12×8 — polivalente para uso diario.",
+    "v4.h":"Trailer — ISO 40ft","v4.p":"Contenedores ISO grandes. Los trabajos raros de gran tamaño se enrutan automáticamente al único conductor compatible.",
+    "v5.h":"Cisterna (Materiales peligrosos)","v5.p":"Solo para líquidos peligrosos. El sistema garantiza que solo conductores certificados reciban asignaciones de cisterna.","v5.t1":"Solo mat. peligrosos",
+    "v6.h":"Vehículo personalizado","v6.p":"Plataformas, refrigerados, grúas — agrega cualquier tipo de vehículo no listado arriba.","v6.t1":"Totalmente configurable",
+    "tr1.n":"1–2h","tr1.l":"Tiempo de despacho diario ahorrado","tr2.n":"Cero","tr2.l":"Errores de asignación","tr3.n":"5 min","tr3.l":"Tiempo de configuración","tr4.n":"14 días","tr4.l":"Prueba gratuita",
+    "price.lbl":"Precios","price.title":"Precios mensuales simples","price.body":"Prueba gratuita de 14 días. No se requiere tarjeta de crédito para empezar.","price.mo":"/mes","price.tax":"(sin IVA)","price.free":"Empezar gratis","price.trial":"14 días gratis · sin tarjeta","price.contact":"Contáctanos",
+    "p1.name":"Inicial","p1.f1":"Hasta 10 conductores","p1.f2":"1 cuenta de gerente","p1.f3":"Todos los tipos de vehículo","p1.f4":"Despacho IA e informes","p1.f5":"Vista móvil del conductor",
+    "p2.name":"Crecimiento","p2.f1":"Hasta 30 conductores","p2.f2":"3 cuentas de gerente","p2.f3":"Historial e informes de equidad","p2.f4":"Soporte prioritario","p2.f5":"Tipos de carga personalizados ilimitados",
+    "p3.name":"Flota","p3.f1":"Conductores ilimitados","p3.f2":"Gerentes ilimitados","p3.f3":"Acceso a API","p3.f4":"Soporte dedicado","p3.f5":"Desarrollo personalizado disponible","p3.note":"Contáctanos para precios personalizados",
+    "cta.title":"Cambia cómo despachas. Hoy.","cta.body":"Configuración en 5 minutos, sin tarjeta de crédito. Pruébalo gratis 14 días y comprueba si se adapta a tu operación.","cta.cta1":"Iniciar prueba gratuita","cta.cta2":"Probar el demo","cta.note":"Soporte de incorporación gratuito para empresas en la región de Kyushu.",
+    "con.lbl":"Contacto","con.title":"Hablemos","con.body":"Preguntas antes de registrarte, solicitudes de demo, presupuestos — todo bienvenido.",
+    "form.co":"Empresa *","form.co.ph":"ej. Transportes García S.A.","form.nm":"Nombre *","form.nm.ph":"ej. Juan García","form.em":"Correo electrónico *","form.ph":"Teléfono","form.ph.ph":"+XX-XXX-XXX-XXXX",
+    "form.dr":"Número aproximado de conductores","form.dr.0":"Seleccionar","form.dr.1":"1–5","form.dr.2":"6–10","form.dr.3":"11–20","form.dr.4":"21–30","form.dr.5":"31+",
+    "form.ms":"Mensaje","form.ms.ph":"Cuéntanos qué necesitas — un demo, un presupuesto o solo una pregunta.","form.send":"Enviar →","form.ok":"✅ Gracias — te contactaremos en 2 días hábiles.",
+    "footer.city":"Tosu, Saga, Japón","footer.back":"← Shigematsu Tech","footer.contact":"Contacto","footer.privacy":"Política de privacidad"
+  }
+};
+
+let lang = 'ja';
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l === 'ja' ? 'ja' : l === 'es' ? 'es' : 'en';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === (l==='ja'?'日本語':l==='en'?'EN':'ES')));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[l][el.getAttribute('data-i18n')];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const v = T[l][el.getAttribute('data-i18n-ph')];
+    if (v !== undefined) el.placeholder = v;
+  });
+  // Recommended badge label
+  const hot = document.querySelector('.pcard.hot::before');
+  const hotLabel = {ja:'おすすめ', en:'Popular', es:'Recomendado'};
+  document.querySelectorAll('.pcard.hot').forEach(c => c.style.setProperty('--badge', `"${hotLabel[l]}"`));
+}
+
+function submitForm() {
+  const co = document.getElementById('fco').value;
+  const nm = document.getElementById('fnm').value;
+  const em = document.getElementById('fem').value;
+  if (!co || !nm || !em) {
+    const msg = {ja:'会社名・お名前・メールアドレスをご入力ください。', en:'Please fill in company, name, and email.', es:'Por favor completa empresa, nombre y correo.'};
+    alert(msg[lang]); return;
+  }
+  document.getElementById('fsc').style.display = 'block';
+}
+
+const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }}), {threshold:.08});
+document.querySelectorAll('.prob,.feat,.step,.veh,.pcard').forEach((el,i) => {
+  el.style.opacity='0'; el.style.transform='translateY(14px)';
+  el.style.transition=`opacity .5s ease ${i*.04}s, transform .5s ease ${i*.04}s`;
+  obs.observe(el);
+});
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) { e.preventDefault(); window.scrollTo({top:t.offsetTop-68, behavior:'smooth'}); }
+}));
+</script>
+</body>
+</html>
