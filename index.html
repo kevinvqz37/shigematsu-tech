@@ -1,625 +1,1425 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>重松テック — 個人事業主 | Shigematsu Tech (Sole Proprietor)</title>
-  <meta name="description" content="九州・佐賀県鳥栖市発のソフトウェア会社。Software company from Kyushu, Japan."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
-  <style>
-    :root{--bg:#04070e;--bg2:#070c18;--bg3:#0b1222;--border:#0e1c30;--blue:#2563eb;--blt:#60a5fa;--bdm:#1e3a5f;--text:#e2e8f0;--muted:#64748b;--dim:#2d3f55;}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden;}
-    a{color:inherit;text-decoration:none;}
-    body::before{content:'';position:fixed;inset:0;opacity:.022;pointer-events:none;z-index:0;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-    @keyframes glowPulse{0%,100%{opacity:.3}50%{opacity:.7}}
-    @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .fu{opacity:0;animation:fadeUp .65s ease forwards;}
-    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>重松テック / Shigematsu Tech — ソフトウェア・ハードウェア開発</title>
+<meta name="description" content="九州・佐賀県鳥栖市発。運送・エンタメ・教育向けのソフトウェアとハードウェアを設計する個人事業主。"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --paper:    #ffffff;         /* pure white */
+  --paper-2:  #f4f4f2;         /* very light gray for bands */
+  --paper-3:  #c8c6c0;         /* strong border gray */
+  --ink:      #000000;         /* pure black */
+  --ink-2:    #1a1a1a;         /* near black for body */
+  --ink-3:    #3a3a38;         /* strong secondary — still readable */
+  --ink-4:    #5a5a55;         /* minimum readable gray */
+  --red:      #b91c27;         /* stronger red, more contrast */
+  --red-deep: #7f1119;         /* red on hover */
+  --serif:    'Noto Serif JP', 'Noto Serif', Georgia, serif;
+  --jp:       'Noto Sans JP', sans-serif;
+  --sans:     'Inter', -apple-system, sans-serif;
+  --mono:     'IBM Plex Mono', 'Menlo', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 17px; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
 
-    /* ── LANGUAGE SWITCHER ── */
-    .lang-switcher{display:flex;gap:2px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:2px;flex-shrink:0;}
-    .lang-btn{background:none;border:none;padding:5px 10px;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;color:var(--muted);letter-spacing:.06em;font-family:'Noto Sans JP',sans-serif;transition:all .18s;}
-    .lang-btn.active{background:var(--blue);color:#fff;}
-    .lang-btn:hover:not(.active){color:var(--text);}
+/* ── PAPER GRAIN TEXTURE ─────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: .015;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
 
-    /* ── NAV ── */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,7,14,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%;}
-    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px;}
-    .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-    .logo-mark{width:32px;height:32px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;color:#fff;}
-    .logo-text{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.04em;color:#f8fafc;}
-    .logo-text span{color:var(--blue);}
-    .logo-sub{font-size:9px;color:var(--muted);letter-spacing:.1em;}
-    .nav-links{display:flex;gap:24px;}
-    .nav-links a{font-size:13px;color:var(--muted);transition:color .2s;}
-    .nav-links a:hover{color:var(--text);}
-    .nav-right{display:flex;align-items:center;gap:10px;}
-    .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Noto Sans JP',sans-serif;border:none;}
-    .btn-p{background:var(--blue);color:#fff;}
-    .btn-p:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,99,235,.35);}
-    .btn-g{background:transparent;color:var(--muted);border:1px solid var(--border);}
-    .btn-g:hover{border-color:var(--blt);color:var(--blt);}
-    .btn-lg{padding:13px 34px;font-size:15px;border-radius:50px;}
+/* ── RED STRIPE — the one signature element ─────── */
+.red-rail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--red);
+  z-index: 50;
+}
 
-    /* ── HERO ── */
-    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 5% 80px;overflow:hidden;}
-    .hero-orb{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(37,99,235,.16),transparent 70%);pointer-events:none;animation:glowPulse 4s ease-in-out infinite;}
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:54px 54px;opacity:.35;}
-    .eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);border-radius:50px;padding:4px 13px;font-size:11px;color:var(--blt);font-weight:600;letter-spacing:.1em;margin-bottom:24px;}
-    .ew-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:glowPulse 2s infinite;}
-    .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(48px,7.5vw,90px);font-weight:900;line-height:.95;color:#f8fafc;margin-bottom:8px;}
-    .hero h1 em{color:var(--blue);font-style:normal;}
-    .hero-tagline{font-size:clamp(15px,1.8vw,21px);font-weight:500;color:var(--blt);margin-bottom:18px;letter-spacing:.04em;}
-    .hero-body{font-size:15px;color:var(--muted);line-height:1.9;max-width:540px;margin:0 auto 36px;}
-    .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:44px;}
-    .hero-meta{display:flex;gap:22px;font-size:12px;color:var(--dim);flex-wrap:wrap;justify-content:center;}
-    .hero-meta span::before{content:'✓';color:#22c55e;font-weight:800;margin-right:5px;}
+/* ── NAV ──────────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--paper);
+  border-bottom: 1px solid var(--paper-3);
+  padding: 0 32px 0 36px;
+}
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+.nav-logo .mark {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border: 1px solid var(--red);
+  border-radius: 2px;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--jp);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--red); }
+.nav-cta {
+  font-family: var(--jp);
+  font-size: 15px;
+  font-weight: 700;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 11px 20px;
+  border-radius: 2px;
+  border: 2px solid var(--ink);
+  transition: all .15s;
+}
+.nav-cta:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--paper);
+}
+.lang {
+  display: flex;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.lang button {
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  color: var(--ink-4);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: color .15s;
+}
+.lang button:hover { color: var(--ink); }
+.lang button.active { color: var(--red); border-bottom: 1px solid var(--red); }
 
-    /* ── TICKER ── */
-    .ticker{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:13px 0;overflow:hidden;}
-    .ticker-track{display:flex;white-space:nowrap;animation:scrollX 26s linear infinite;}
-    .ticker-item{display:inline-flex;align-items:center;gap:7px;padding:0 30px;font-size:12px;color:var(--dim);}
-    .ticker-item b{color:var(--blt);}
+/* ── MOBILE MENU ─────────────────────────────────── */
+.burger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-direction: column;
+  gap: 4px;
+}
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+}
 
-    /* ── SECTIONS ── */
-    section{padding:88px 5%;}
-    .wrap{max-width:1200px;margin:0 auto;}
-    .slbl{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--blue);margin-bottom:9px;text-transform:uppercase;}
-    .stitle{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3.8vw,50px);font-weight:900;color:#f8fafc;line-height:1.05;margin-bottom:12px;}
-    .sbody{font-size:15px;color:var(--muted);line-height:1.85;max-width:540px;}
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  position: relative;
+  padding: 80px 32px 60px 36px;
+  border-bottom: 1px solid var(--paper-3);
+  overflow: hidden;
+}
+.hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: end;
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-meta .dash { width: 28px; height: 1px; background: var(--ink-3); }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(56px, 9vw, 128px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.hero h1 .en {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(32px, 5vw, 72px);
+  display: block;
+  color: var(--ink-2);
+  margin-top: 12px;
+  letter-spacing: -0.025em;
+}
+.hero-lead {
+  font-family: var(--jp);
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.85;
+  color: var(--ink);
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 28px;
+  font-family: var(--jp);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid;
+  border-radius: 2px;
+  transition: all .15s;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.btn-primary:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+.btn-primary .arrow {
+  display: inline-block;
+  transition: transform .2s;
+}
+.btn-primary:hover .arrow { transform: translateX(4px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.hero-plate {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  text-align: right;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding-right: 8px;
+  border-right: 1px solid var(--paper-3);
+  align-self: stretch;
+}
 
-    /* ── PRODUCTS ── */
-    .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px;}
-    .pcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:border-color .25s,transform .25s;}
-    .pcard:hover{border-color:var(--bdm);transform:translateY(-3px);}
-    .pcard.feat{border-color:var(--bdm);background:linear-gradient(135deg,#080f1e,#0a1628);}
-    .pcard.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);}
-    .picon{font-size:38px;margin-bottom:16px;display:block;animation:floatY 4s ease-in-out infinite;}
-    .ptag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:.1em;padding:2px 9px;border-radius:4px;margin-bottom:12px;text-transform:uppercase;}
-    .t-live{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.2);}
-    .t-saas{background:rgba(37,99,235,.12);color:var(--blt);border:1px solid rgba(37,99,235,.2);}
-    .t-mob{background:rgba(251,146,60,.12);color:#fb923c;border:1px solid rgba(251,146,60,.2);}
-    .t-beta{background:rgba(245,158,11,.12);color:#fbbf24;border:1px solid rgba(245,158,11,.2);}
-    .t-concept{background:rgba(167,139,250,.12);color:#a78bfa;border:1px solid rgba(167,139,250,.2);}
-    .pcard h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;color:#f8fafc;margin-bottom:5px;}
-    .psub{font-size:11px;color:var(--muted);margin-bottom:10px;}
-    .pdesc{font-size:13px;color:var(--muted);line-height:1.75;flex:1;margin-bottom:16px;}
-    .pmets{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--border);margin-bottom:14px;}
-    .pmet b{color:var(--text);font-size:14px;display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;}
-    .pmet span{font-size:10px;color:var(--dim);}
-    .plink{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--blt);margin-top:auto;transition:gap .2s;}
-    .plink:hover{gap:9px;}
+/* ── STATS BAR ────────────────────────────────────── */
+.stats {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 32px 36px;
+  border-bottom: 1px solid var(--ink);
+}
+.stats-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.stat { border-left: 2px solid var(--red); padding-left: 14px; }
+.stat-val {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.stat-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(245, 242, 237, 0.5);
+  text-transform: uppercase;
+}
 
-    /* ── ABOUT ── */
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:52px;}
-    .about-text h3{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:800;color:#f8fafc;margin-bottom:14px;line-height:1.1;}
-    .about-text p{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:12px;}
-    .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-    .vcard{background:var(--bg3);border:1px solid var(--border);border-radius:11px;padding:18px;}
-    .vcard h4{font-size:13px;font-weight:700;color:#f8fafc;margin-bottom:5px;}
-    .vcard p{font-size:12px;color:var(--muted);line-height:1.7;}
+/* ── SECTION STRUCTURE ───────────────────────────── */
+section {
+  padding: 96px 32px 96px 36px;
+  border-bottom: 1px solid var(--paper-3);
+  position: relative;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label .num {
+  font-family: var(--mono);
+  color: var(--ink-4);
+  font-weight: 400;
+}
+.section-title {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 24px;
+  max-width: 920px;
+}
+.section-title .small {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 0.5em;
+  color: var(--ink-3);
+  display: block;
+  margin-top: 10px;
+  letter-spacing: -0.02em;
+}
+.section-intro {
+  font-family: var(--jp);
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.85;
+  color: var(--ink);
+  max-width: 720px;
+  margin-bottom: 56px;
+}
 
-    /* ── FOUNDER ── */
-    .founder-band{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-    .founder-inner{max-width:880px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:center;padding:72px 5%;}
-    .fav{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--bg3),var(--bdm));border:2px solid var(--bdm);display:flex;align-items:center;justify-content:center;font-size:48px;flex-shrink:0;}
-    .fbio h3{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:#f8fafc;margin-bottom:3px;}
-    .frole{font-size:11px;color:var(--blt);margin-bottom:12px;font-weight:600;letter-spacing:.08em;}
-    .fbio p{font-size:13px;color:var(--muted);line-height:1.85;margin-bottom:9px;}
-    .ftags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-    .ftag{font-size:11px;padding:3px 9px;border-radius:4px;background:var(--bg3);color:var(--muted);border:1px solid var(--border);}
+/* ── PRODUCTS — editorial layout ─────────────────── */
+.products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+.product {
+  display: grid;
+  grid-template-columns: 60px 200px 1fr auto;
+  gap: 40px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--paper-3);
+  align-items: start;
+  transition: background .2s;
+}
+.product:hover { background: var(--paper-2); }
+.product:hover .p-num { color: var(--red); }
+.product:hover .p-arrow { transform: translate(4px, -4px); color: var(--red); }
+.p-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ink-4);
+  transition: color .2s;
+  padding-top: 6px;
+}
+.p-cat {
+  font-family: var(--jp);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  padding-top: 8px;
+  line-height: 1.5;
+}
+.p-cat .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  padding: 3px 7px;
+  border: 1px solid var(--red);
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+.p-body h3 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.p-body h3 .en {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-3);
+  display: block;
+  margin-top: 2px;
+}
+.p-body p {
+  font-family: var(--jp);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+  color: var(--ink);
+  max-width: 580px;
+  margin-top: 14px;
+}
+.p-body .status {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.p-body .status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+}
+.p-body .status.dev::before { background: var(--ink-4); }
+.p-arrow {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--ink-3);
+  padding-top: 4px;
+  transition: all .2s;
+}
 
-    /* ── STACK ── */
-    .sgrid{display:flex;flex-wrap:wrap;gap:9px;margin-top:32px;}
-    .sitem{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 14px;font-size:13px;color:var(--muted);transition:border-color .2s,color .2s;}
-    .sitem:hover{border-color:var(--bdm);color:var(--text);}
+/* ── VALUES / PHILOSOPHY — 3 columns ─────────────── */
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.value {
+  padding: 48px 32px 48px 0;
+  border-right: 1px solid var(--paper-3);
+  position: relative;
+}
+.value:last-child { border-right: none; padding-right: 0; }
+.value:not(:first-child) { padding-left: 32px; }
+.value .v-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+.value h3 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.value p {
+  font-family: var(--jp);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.85;
+  color: var(--ink);
+}
 
-    /* ── CONTACT ── */
-    .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:48px;align-items:start;}
-    .cinfo h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;color:#f8fafc;margin-bottom:12px;}
-    .cinfo p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:18px;}
-    .cdet{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);}
-    .cico{width:32px;height:32px;border-radius:7px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
-    .cform{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:30px;}
-    .fg{margin-bottom:13px;}
-    .fg label{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.1em;margin-bottom:6px;}
-    .fg input,.fg select,.fg textarea{width:100%;background:#030912;border:1px solid var(--border);border-radius:7px;padding:10px 13px;color:var(--text);font-size:14px;font-family:'Noto Sans JP',sans-serif;transition:border-color .2s;}
-    .fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--blue);}
-    .fg textarea{min-height:84px;resize:vertical;}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
-    .fsucc{display:none;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:7px;padding:12px;text-align:center;color:#4ade80;font-size:13px;margin-top:9px;}
+/* ── FOUNDER CARD ────────────────────────────────── */
+.founder {
+  background: var(--paper-2);
+}
+.founder-inner {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.founder-photo {
+  width: 180px;
+  height: 220px;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid var(--ink);
+  position: relative;
+}
+.founder-photo::before {
+  content: '📷';
+  font-size: 48px;
+  opacity: .3;
+  margin-bottom: 12px;
+}
+.founder-photo .placeholder {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--ink-4);
+  text-align: center;
+  line-height: 1.6;
+}
+.founder-photo::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px solid var(--red);
+  z-index: -1;
+}
+.founder-body h3 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.founder-body .role {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.founder-body p {
+  font-family: var(--jp);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.9;
+  color: var(--ink);
+  margin-bottom: 14px;
+  max-width: 660px;
+}
+.founder-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.founder-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+  padding: 5px 10px;
+  border: 1px solid var(--paper-3);
+  background: var(--paper);
+  border-radius: 2px;
+}
+.founder-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  font-family: var(--jp);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  transition: all .15s;
+}
+.founder-link:hover { color: var(--red); border-color: var(--red); }
 
-    /* ── FOOTER ── */
-    footer{background:#020509;border-top:1px solid var(--border);padding:48px 5% 30px;}
-    .footer-wrap{max-width:1200px;margin:0 auto;}
-    .ftop{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:52px;margin-bottom:40px;}
-    .fbrand p{font-size:12px;color:var(--dim);line-height:1.8;max-width:230px;margin-top:11px;}
-    .fcol h4{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px;}
-    .fcol a{display:block;font-size:13px;color:var(--dim);margin-bottom:8px;transition:color .2s;}
-    .fcol a:hover{color:var(--text);}
-    .fbot{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-    .fbot p{font-size:12px;color:var(--dim);}
+/* ── CONTACT ──────────────────────────────────────── */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-info {
+  border-top: 1px solid var(--ink);
+  padding-top: 32px;
+}
+.contact-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--paper-3);
+  align-items: baseline;
+}
+.contact-item:last-child { border-bottom: none; }
+.contact-item .label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.contact-item .value {
+  font-family: var(--jp);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.contact-form {
+  border: 1px solid var(--ink);
+  padding: 36px;
+  background: var(--paper);
+}
+.form-row { margin-bottom: 20px; }
+.form-row.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-row label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.form-row input,
+.form-row textarea,
+.form-row select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--ink);
+  padding: 10px 0;
+  font-family: var(--jp);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .15s;
+  border-radius: 0;
+}
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus { border-color: var(--red); }
+.form-row textarea { resize: vertical; min-height: 80px; }
+.form-submit {
+  width: 100%;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 18px 24px;
+  font-family: var(--jp);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 0.02em;
+  transition: background .15s;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.form-submit:hover { background: var(--red); }
+.form-success {
+  display: none;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--paper-2);
+  border-left: 3px solid var(--red);
+  font-family: var(--jp);
+  font-size: 13px;
+  color: var(--ink);
+}
 
-    @media(max-width:960px){.pgrid{grid-template-columns:1fr 1fr;}.about-grid,.cgrid{grid-template-columns:1fr;gap:36px;}.nav-links{display:none;}.founder-inner{grid-template-columns:1fr;text-align:center;}.fav{margin:0 auto;}.ftags{justify-content:center;}.ftop{grid-template-columns:1fr 1fr;}}
-    @media(max-width:600px){.pgrid,.vgrid,.ftop{grid-template-columns:1fr;}.frow{grid-template-columns:1fr;}}
-  </style>
+/* ── FOOTER ──────────────────────────────────────── */
+footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 64px 32px 24px 36px;
+  border-top: 1px solid var(--ink);
+}
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 56px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(245, 242, 237, 0.15);
+}
+.footer-brand .logo {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.footer-brand .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(245, 242, 237, 0.5);
+  margin-bottom: 24px;
+}
+.footer-brand p {
+  font-family: var(--jp);
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(245, 242, 237, 0.7);
+  max-width: 400px;
+}
+.footer-col h4 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.footer-col a {
+  display: block;
+  font-family: var(--jp);
+  font-size: 13px;
+  color: rgba(245, 242, 237, 0.7);
+  padding: 5px 0;
+  transition: color .15s;
+}
+.footer-col a:hover { color: var(--paper); }
+.footer-bottom {
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(245, 242, 237, 0.4);
+  letter-spacing: 0.06em;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ── ANIMATIONS ──────────────────────────────────── */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero h1,
+.hero-lead,
+.hero-actions,
+.hero-meta {
+  opacity: 0;
+  animation: rise .7s cubic-bezier(.2,.6,.2,1) forwards;
+}
+.hero-meta { animation-delay: .05s; }
+.hero h1 { animation-delay: .12s; }
+.hero-lead { animation-delay: .25s; }
+.hero-actions { animation-delay: .38s; }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
+.reveal.on { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-plate { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .product { grid-template-columns: 40px 1fr; gap: 20px; }
+  .product .p-cat { display: none; }
+  .product .p-arrow { display: none; }
+  .values { grid-template-columns: 1fr; }
+  .value { padding: 32px 0 !important; border-right: none; border-bottom: 1px solid var(--paper-3); }
+  .value:last-child { border-bottom: none; }
+  .founder-inner { grid-template-columns: 1fr; gap: 32px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: var(--paper); border-bottom: 1px solid var(--paper-3); padding: 16px 32px; gap: 16px; align-items: stretch; }
+  .burger { display: flex; }
+}
+
+/* hidden — for lang toggles */
+.hide { display: none !important; }
+</style>
 </head>
 <body>
 
+<div class="red-rail"></div>
+
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <div class="logo-mark">ST</div>
-      <div><div class="logo-text">SHIGEMATSU<span>TECH</span></div><div class="logo-sub">重松テック — 個人事業主</div></div>
-    </a>
-    <div class="nav-links">
-      <a href="#products" data-i18n="nav.products">プロダクト</a>
-      <a href="#about" data-i18n="nav.about">会社情報</a>
-      <a href="#stack" data-i18n="nav.stack">技術</a>
+    <div class="nav-logo">
+      <span class="mark">ST</span>
+      <span lang="ja">重松テック</span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="#products" data-i18n="nav.products">製品</a>
+      <a href="#philosophy" data-i18n="nav.philosophy">理念</a>
+      <a href="#founder" data-i18n="nav.founder">代表</a>
       <a href="#contact" data-i18n="nav.contact">お問い合わせ</a>
-    </div>
-    <div class="nav-right">
-      <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <div class="lang">
+        <button class="active" onclick="setLang('ja')">JA</button>
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('es')">ES</button>
       </div>
-      <a href="https://chikugo-dispatch.vercel.app" class="btn btn-p" data-i18n="nav.cta">DispatchOS →</a>
+      <a href="https://chikugo-dispatch.vercel.app" class="nav-cta">DispatchOS →</a>
     </div>
+    <button class="burger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-orb"></div>
-  <div style="position:relative;z-index:1;">
-    <div class="eyebrow fu d1"><span class="ew-dot"></span><span data-i18n="hero.eyebrow">佐賀県鳥栖市 発 · Made in Kyushu</span></div>
-    <h1 class="fu d2">SHIGEMATSU<br/><em>TECH</em></h1>
-    <div class="hero-tagline fu d2" data-i18n="hero.tagline">九州から、世界へ届くソフトウェアを。</div>
-    <p class="hero-body fu d3" data-i18n="hero.body">物流・教育・アウトドア・エンターテインメント分野の課題を、テクノロジーで解決するプロダクトを開発しています。</p>
-    <div class="hero-actions fu d4">
-      <a href="#products" class="btn btn-p btn-lg" data-i18n="hero.cta1">プロダクトを見る →</a>
-      <a href="#contact" class="btn btn-g btn-lg" data-i18n="hero.cta2">お問い合わせ</a>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-meta">
+        <span>REG. 2025</span>
+        <span class="dash"></span>
+        <span data-i18n="hero.meta">佐賀県鳥栖市 · 個人事業主</span>
+        <span class="dash"></span>
+        <span>SAGA, JP</span>
+      </div>
+      <h1>
+        <span data-i18n="hero.jp">現場から生まれる、<br/>次世代の道具。</span>
+        <span class="en" data-i18n="hero.en">Tools, born on the ground.</span>
+      </h1>
+      <p class="hero-lead" data-i18n="hero.lead">
+        九州・佐賀県鳥栖市発。物流、教育、エンターテイメント、伝統文化。<br/>
+        現場で働く人たちが本当に必要とする、ソフトウェアとハードウェアを<br/>
+        一つずつ、丁寧に作っています。
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">
+          <span data-i18n="hero.cta1">製品を見る</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#contact" class="btn btn-ghost" data-i18n="hero.cta2">お問い合わせ</a>
+      </div>
     </div>
-    <div class="hero-meta fu d4">
-      <span data-i18n="hero.m1">佐賀県鳥栖市拠点</span>
-      <span data-i18n="hero.m2">B2B SaaS · 消費者アプリ</span>
-      <span data-i18n="hero.m3">React · Firebase · Expo</span>
+    <div class="hero-plate">
+      SHIGEMATSU TECH · EST. 2025 · KYUSHU
     </div>
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">🚛 <b>DispatchOS</b> — <span data-i18n="ticker.dispatch">AI配車管理SaaS</span></span>
-    <span class="ticker-item">🎣 <b>CastWise Japan</b> — <span data-i18n="ticker.castwise">釣りナビアプリ</span></span>
-    <span class="ticker-item">🎌 <b>NihongoQuest</b> — <span data-i18n="ticker.nihongo">日本語学習アプリ</span></span>
-    <span class="ticker-item">⛵ <b>Boat Time Attack</b> — <span data-i18n="ticker.boat">モバイルレーシングゲーム</span></span>
-    <span class="ticker-item">🏎️ <b>AutoWatch</b> — <span data-i18n="ticker.autowatch">車両メンテナンストラッカー</span></span>
-    <span class="ticker-item">🕯️ <b>Memoria</b> — <span data-i18n="ticker.memoria">AIメモリアルデバイス</span></span>
-    <span class="ticker-item">🚛 <b>DispatchOS</b> — <span data-i18n="ticker.dispatch">AI配車管理SaaS</span></span>
-    <span class="ticker-item">🎣 <b>CastWise Japan</b> — <span data-i18n="ticker.castwise">釣りナビアプリ</span></span>
-    <span class="ticker-item">🎌 <b>NihongoQuest</b> — <span data-i18n="ticker.nihongo">日本語学習アプリ</span></span>
-    <span class="ticker-item">⛵ <b>Boat Time Attack</b> — <span data-i18n="ticker.boat">モバイルレーシングゲーム</span></span>
-    <span class="ticker-item">🏎️ <b>AutoWatch</b> — <span data-i18n="ticker.autowatch">車両メンテナンストラッカー</span></span>
-    <span class="ticker-item">🕯️ <b>Memoria</b> — <span data-i18n="ticker.memoria">AIメモリアルデバイス</span></span>
+<!-- ═══════════════ STATS BAR ═══════════════ -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-val">06</div>
+      <div class="stat-lbl" data-i18n="stats.products">Products Shipping</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">05</div>
+      <div class="stat-lbl" data-i18n="stats.countries">Countries Lived In</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">03</div>
+      <div class="stat-lbl" data-i18n="stats.languages">Languages</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">01</div>
+      <div class="stat-lbl" data-i18n="stats.founder">Founder, Operator</div>
+    </div>
   </div>
 </div>
 
-<!-- PRODUCTS -->
+<!-- ═══════════════ PRODUCTS ═══════════════ -->
 <section id="products">
-  <div class="wrap">
-    <div class="slbl" data-i18n="products.label">プロダクト</div>
-    <h2 class="stitle" data-i18n="products.title">課題ごとに、<br/>専用のツールを。</h2>
-    <p class="sbody" data-i18n="products.body">物流・教育・レジャー・エンタメ — それぞれの分野でユーザーが本当に必要とするものを設計・開発しています。</p>
-    <div class="pgrid">
-      <div class="pcard feat">
-        <span class="picon">🚛</span>
-        <div class="ptag t-saas">● SaaS</div>
-        <h3>DispatchOS</h3>
-        <div class="psub" data-i18n="p.dispatch.sub">AI配車管理システム</div>
-        <p class="pdesc" data-i18n="p.dispatch.desc">毎朝の手動配車を自動化。JRコンテナ規格・危険物タンク・ウイング車の車両マッチングをAIが判定し最適なドライバーへ即時割当。</p>
-        <div class="pmets">
-          <div class="pmet"><b>¥9,800~</b><span data-i18n="p.dispatch.m1">月額</span></div>
-          <div class="pmet"><b>14<span data-i18n="p.dispatch.m2">日</span></b><span data-i18n="p.dispatch.m2l">無料試用</span></div>
-          <div class="pmet"><b>5<span data-i18n="p.dispatch.m3">分</span></b><span data-i18n="p.dispatch.m3l">導入</span></div>
+  <div class="container reveal">
+    <div class="section-label">
+      <span class="num">01 ／</span>
+      <span data-i18n="products.label">製品一覧</span>
+    </div>
+    <h2 class="section-title">
+      <span data-i18n="products.title">現場の課題から、<br/>一つひとつ。</span>
+      <span class="small" data-i18n="products.titleEn">One tool, one real problem.</span>
+    </h2>
+    <p class="section-intro" data-i18n="products.intro">
+      重松テックは、複数の業界の現場で実際に困っている人たちの話を聞き、
+      ソフトウェアとハードウェアで解決策を作っています。
+      派手な機能ではなく、毎日使える道具を。
+    </p>
+
+    <div class="products">
+
+      <a href="https://chikugo-dispatch.vercel.app" class="product">
+        <div class="p-num">01</div>
+        <div class="p-cat">
+          <span class="tag">SaaS</span><br/>
+          <span data-i18n="p.dispatch.cat">運送業向け<br/>スマート配車</span>
         </div>
-        <a href="/dispatchos" class="plink" data-i18n="p.dispatch.link">詳しく見る · 無料で試す →</a>
+        <div class="p-body">
+          <h3>
+            <span>DispatchOS</span>
+            <span class="en">AI Dispatch Platform</span>
+          </h3>
+          <p data-i18n="p.dispatch.body">
+            毎朝1〜2時間の手動配車を、AIが10秒で完了。車両×貨物マッチング、危険物判定、
+            ドライバーモバイル、リアルタイム同期。日本の運送会社のために設計。
+          </p>
+          <div class="status" data-i18n="p.dispatch.status">販売中 · LIVE</div>
+        </div>
+        <div class="p-arrow">↗</div>
+      </a>
+
+      <a href="#" class="product">
+        <div class="p-num">02</div>
+        <div class="p-cat">
+          <span class="tag">EdTech</span><br/>
+          <span data-i18n="p.nihongo.cat">日本語学習<br/>アプリ</span>
+        </div>
+        <div class="p-body">
+          <h3>
+            <span>NihongoQuest</span>
+            <span class="en">Structured Japanese Learning</span>
+          </h3>
+          <p data-i18n="p.nihongo.body">
+            5段階の構造化された日本語学習。AIが生成する問題、XP・ストリーク機能、
+            習熟度に応じた復習。Duolingoを超える、本気の学習体験。
+          </p>
+          <div class="status dev" data-i18n="p.nihongo.status">開発中 · IN DEVELOPMENT</div>
+        </div>
+        <div class="p-arrow">↗</div>
+      </a>
+
+      <a href="#" class="product">
+        <div class="p-num">03</div>
+        <div class="p-cat">
+          <span class="tag">Hardware</span><br/>
+          <span data-i18n="p.memoria.cat">AI追憶装置<br/>オフライン対応</span>
+        </div>
+        <div class="p-body">
+          <h3>
+            <span>Memoria</span>
+            <span class="en">Offline-first Remembrance Device</span>
+          </h3>
+          <p data-i18n="p.memoria.body">
+            故人の声と記憶を保存し、家族が対話できる小型AI装置。
+            仏壇文化と現代技術の融合。有田焼・八女提灯職人との連携も検討中。
+          </p>
+          <div class="status dev" data-i18n="p.memoria.status">プロトタイプ · PROTOTYPE</div>
+        </div>
+        <div class="p-arrow">↗</div>
+      </a>
+
+      <a href="#" class="product">
+        <div class="p-num">04</div>
+        <div class="p-cat">
+          <span class="tag">SaaS</span><br/>
+          <span data-i18n="p.auto.cat">車両管理<br/>メンテナンス</span>
+        </div>
+        <div class="p-body">
+          <h3>
+            <span>AutoWatch</span>
+            <span class="en">Vehicle Maintenance Tracker</span>
+          </h3>
+          <p data-i18n="p.auto.body">
+            複数車両の整備記録・消耗品管理。グランツーリスモ風UIで、
+            作業者が使いたくなる設計。軽自動車から大型トラックまで対応。
+          </p>
+          <div class="status" data-i18n="p.auto.status">販売中 · LIVE</div>
+        </div>
+        <div class="p-arrow">↗</div>
+      </a>
+
+      <a href="#" class="product">
+        <div class="p-num">05</div>
+        <div class="p-cat">
+          <span class="tag">App</span><br/>
+          <span data-i18n="p.cast.cat">フライフィッシング<br/>コンパニオン</span>
+        </div>
+        <div class="p-body">
+          <h3>
+            <span>CastWise</span>
+            <span class="en">釣りナビ PRO · Fly Fishing Companion</span>
+          </h3>
+          <p data-i18n="p.cast.body">
+            日本の渓流・管理釣り場向け。ハッチカレンダー、キャスティング教材、
+            テンカラ解説、AI毛鉤選択。英語・日本語の完全バイリンガル。
+          </p>
+          <div class="status" data-i18n="p.cast.status">販売中 · LIVE</div>
+        </div>
+        <div class="p-arrow">↗</div>
+      </a>
+
+      <a href="#" class="product">
+        <div class="p-num">06</div>
+        <div class="p-cat">
+          <span class="tag">Brand</span><br/>
+          <span data-i18n="p.aqua.cat">ビーチウェア<br/>アパレル</span>
+        </div>
+        <div class="p-body">
+          <h3>
+            <span>Aquanauts</span>
+            <span class="en">Beachwear &amp; Ocean Lifestyle</span>
+          </h3>
+          <p data-i18n="p.aqua.body">
+            深海の美学をテーマにしたビーチウェアブランド。アジア太平洋地域に向けた
+            段階的な展開を計画中。ソフトウェアとハードウェアだけが技術ではない。
+          </p>
+          <div class="status dev" data-i18n="p.aqua.status">立ち上げ準備中 · LAUNCHING</div>
+        </div>
+        <div class="p-arrow">↗</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PHILOSOPHY ═══════════════ -->
+<section id="philosophy">
+  <div class="container reveal">
+    <div class="section-label">
+      <span class="num">02 ／</span>
+      <span data-i18n="philosophy.label">理念 · PHILOSOPHY</span>
+    </div>
+    <h2 class="section-title">
+      <span data-i18n="philosophy.title">作り手が、<br/>使い手でもあること。</span>
+      <span class="small" data-i18n="philosophy.titleEn">The builder is the user.</span>
+    </h2>
+
+    <div class="values">
+      <div class="value">
+        <div class="v-num">01</div>
+        <h3 data-i18n="v1.title">現場主義</h3>
+        <p data-i18n="v1.body">
+          代表自身がトラックドライバーとして日々JR・港湾コンテナ・危険物タンクを運んでいます。
+          DispatchOSは、自分の配車表を改善するために書かれた最初の一行から生まれました。
+        </p>
       </div>
-      <div class="pcard">
-        <span class="picon" style="animation-delay:.5s">🎣</span>
-        <div class="ptag t-mob">● App</div>
-        <h3>CastWise Japan</h3>
-        <div class="psub" data-i18n="p.cw.sub">釣りナビ PRO</div>
-        <p class="pdesc" data-i18n="p.cw.desc">日本全国16魚種の図鑑・フライフィッシング百科・テンカラ解説・ハッチカレンダーを収録。¥480/月のPROプラン搭載。</p>
-        <div class="pmets">
-          <div class="pmet"><b>16</b><span data-i18n="p.cw.m1">魚種</span></div>
-          <div class="pmet"><b>EN/JP</b><span data-i18n="p.cw.m2">対応</span></div>
-          <div class="pmet"><b>AdMob</b><span data-i18n="p.cw.m3">収益化</span></div>
-        </div>
-        <a href="#contact" class="plink" data-i18n="p.cw.link">リリース情報を受け取る →</a>
+      <div class="value">
+        <div class="v-num">02</div>
+        <h3 data-i18n="v2.title">丁寧な製品</h3>
+        <p data-i18n="v2.body">
+          速く作ることよりも、正しく作ること。バグ、UI、日本語、すべての細部を大切にします。
+          お客様のデータを預かる以上、信頼に値する品質が必要です。
+        </p>
       </div>
-      <div class="pcard">
-        <span class="picon" style="animation-delay:1s">🎌</span>
-        <div class="ptag t-mob">● App</div>
-        <h3>NihongoQuest</h3>
-        <div class="psub" data-i18n="p.nq.sub">日本語学習アプリ</div>
-        <p class="pdesc" data-i18n="p.nq.desc">ひらがな→カタカナ→文法→会話→漢字の5ステージ構成。AIクイズ生成・XP・ストリーク搭載。Duolingo対抗の本格学習アプリ。</p>
-        <div class="pmets">
-          <div class="pmet"><b>5</b><span data-i18n="p.nq.m1">ステージ</span></div>
-          <div class="pmet"><b>AI</b><span data-i18n="p.nq.m2">クイズ</span></div>
-          <div class="pmet"><b>XP</b><span data-i18n="p.nq.m3">システム</span></div>
-        </div>
-        <a href="#contact" class="plink" data-i18n="p.nq.link">ベータ参加を申し込む →</a>
-      </div>
-      <div class="pcard">
-        <span class="picon" style="animation-delay:.3s">⛵</span>
-        <div class="ptag t-beta">● Beta</div>
-        <h3>Boat Time Attack</h3>
-        <div class="psub" data-i18n="p.boat.sub">モバイルレーシングゲーム</div>
-        <p class="pdesc" data-i18n="p.boat.desc">物理演算ボートレース×ゴーストレーシング×AdMob報酬広告。Expo + React Native + Skia で構築。iOS/Android対応。</p>
-        <div class="pmets">
-          <div class="pmet"><b>Ghost</b><span data-i18n="p.boat.m1">レース</span></div>
-          <div class="pmet"><b>AdMob</b><span data-i18n="p.boat.m2">収益化</span></div>
-          <div class="pmet"><b>iOS/Android</b><span></span></div>
-        </div>
-        <a href="#contact" class="plink" data-i18n="p.boat.link">テスターに参加する →</a>
-      </div>
-      <div class="pcard">
-        <span class="picon" style="animation-delay:.8s">🏎️</span>
-        <div class="ptag t-live">● Live</div>
-        <h3>AutoWatch</h3>
-        <div class="psub" data-i18n="p.aw.sub">車両メンテナンストラッカー</div>
-        <p class="pdesc" data-i18n="p.aw.desc">複数車両のメンテ記録・21項目チェックリスト・サービス履歴を管理。NFS風ガレージUI。軽自動車・旧車オーナー向け。</p>
-        <div class="pmets">
-          <div class="pmet"><b>21</b><span data-i18n="p.aw.m1">点検項目</span></div>
-          <div class="pmet"><b data-i18n="p.aw.m2">複数台</b><span data-i18n="p.aw.m2l">管理</span></div>
-          <div class="pmet"><b>Web</b><span>App</span></div>
-        </div>
-        <a href="#contact" class="plink" data-i18n="p.aw.link">詳細を見る →</a>
-      </div>
-      <div class="pcard">
-        <span class="picon" style="animation-delay:1.2s">🕯️</span>
-        <div class="ptag t-concept">● Concept</div>
-        <h3>Memoria</h3>
-        <div class="psub" data-i18n="p.mem.sub">AIメモリアルデバイス</div>
-        <p class="pdesc" data-i18n="p.mem.desc">故人の声・記憶をオンデバイスAIで再現。クラウド不要・サブスク不要の現代仏壇。八女漆器×有田焼×最先端AI。</p>
-        <div class="pmets">
-          <div class="pmet"><b data-i18n="p.mem.m1">完全</b><span data-i18n="p.mem.m1l">オフライン</span></div>
-          <div class="pmet"><b data-i18n="p.mem.m2">八女漆器</b><span data-i18n="p.mem.m2l">筐体</span></div>
-          <div class="pmet"><b data-i18n="p.mem.m3">投資家</b><span data-i18n="p.mem.m3l">募集中</span></div>
-        </div>
-        <a href="#contact" class="plink" data-i18n="p.mem.link">投資・提携の相談 →</a>
+      <div class="value">
+        <div class="v-num">03</div>
+        <h3 data-i18n="v3.title">地域への還元</h3>
+        <p data-i18n="v3.body">
+          九州エリアの企業様には、無料の訪問セットアップを提供します。
+          地元の仏壇職人、焼き物職人、技術者との協働で、新しい日本の道具を作ります。
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="slbl" data-i18n="about.label">会社について</div>
-    <div class="about-grid">
-      <div class="about-text">
-        <h3 data-i18n="about.title">九州から、<br/>本物のプロダクトを。</h3>
-        <p data-i18n="about.p1">重松テック — 個人事業主は、佐賀県鳥栖市を拠点に、現場の課題をソフトウェアで解決するプロダクトを開発しています。</p>
-        <p data-i18n="about.p2">創業者自身が物流会社のドライバーとして働きながら、毎日の配車作業の非効率さを実感したことがDispatchOS誕生のきっかけです。</p>
-        <p data-i18n="about.p3">B2B SaaSから消費者向けモバイルアプリ、ハードウェアコンセプトまで、多様な分野で開発を続けています。</p>
-      </div>
-      <div class="vgrid">
-        <div class="vcard"><div style="font-size:20px;margin-bottom:8px">⚡</div><h4 data-i18n="v1.title">現場ファースト</h4><p data-i18n="v1.body">机上の設計より、実際の現場で使えるものを。自社の物流業務を検証環境として活用。</p></div>
-        <div class="vcard"><div style="font-size:20px;margin-bottom:8px">🎯</div><h4 data-i18n="v2.title">シンプルに届ける</h4><p data-i18n="v2.body">機能を詰め込むより、1つのことを完璧に。設定5分・使い方1分が設計の基準。</p></div>
-        <div class="vcard"><div style="font-size:20px;margin-bottom:8px">🌏</div><h4 data-i18n="v3.title">日本から世界へ</h4><p data-i18n="v3.body">九州・日本市場で実証してから、グローバル展開。日本品質を世界基準に。</p></div>
-        <div class="vcard"><div style="font-size:20px;margin-bottom:8px">🔨</div><h4 data-i18n="v4.title">作り続ける</h4><p data-i18n="v4.body">アイデアより実行。設計より出荷。毎日コードを書き、毎週プロダクトを改善。</p></div>
-      </div>
+<!-- ═══════════════ FOUNDER ═══════════════ -->
+<section id="founder" class="founder">
+  <div class="container reveal">
+    <div class="section-label">
+      <span class="num">03 ／</span>
+      <span data-i18n="founder.label">代表 · FOUNDER</span>
     </div>
-  </div>
-</section>
+    <h2 class="section-title" style="margin-bottom: 48px;">
+      <span data-i18n="founder.title">昼はトラック、<br/>夜はコード。</span>
+      <span class="small" data-i18n="founder.titleEn">Trucks by day, code by night.</span>
+    </h2>
 
-<!-- FOUNDER -->
-<div class="founder-band">
-  <div class="founder-inner">
-    <div class="fav">👨‍💻</div>
-    <div class="fbio">
-      <h3>Kevin Matta（重松 Kevin）</h3>
-      <div class="frole" data-i18n="founder.role">Founder — 重松テック — 個人事業主</div>
-      <p data-i18n="founder.p1">佐賀県鳥栖市在住。日中は筑後運送でトラックドライバーとして勤務しながら、夜間・休日にプロダクト開発を続けるフルスタック開発者。</p>
-      <p data-i18n="founder.p2">物流現場の一次情報をプロダクト設計に直結させることが強み。趣味はフライフィッシングと1994年式パジェロミニのメンテナンス。</p>
-      <div class="ftags">
-        <span class="ftag">React / Next.js</span><span class="ftag">Firebase</span><span class="ftag">Expo / React Native</span>
-        <span class="ftag">Python</span><span class="ftag">Logistics</span><span class="ftag" data-i18n="founder.location">佐賀県鳥栖市</span>
-        <span class="ftag">🇵🇷 🇺🇸 🇦🇺 🇳🇿 🇯🇵</span>
+    <div class="founder-inner">
+      <div class="founder-photo">
+        <div class="placeholder">KEVIN O. MATTA<br/>重松 ケビン</div>
       </div>
-      <a href="/kevin" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--blt);transition:gap .2s;" data-i18n="founder.profile">Full profile &amp; work history →</a>
-    </div>
-  </div>
-</div>
-
-<!-- STACK -->
-<section id="stack">
-  <div class="wrap">
-    <div class="slbl" data-i18n="stack.label">技術スタック</div>
-    <h2 class="stitle" data-i18n="stack.title">モダンで、実績あるスタックで。</h2>
-    <div class="sgrid">
-      <div class="sitem">⚛️ React / Next.js</div><div class="sitem">📱 Expo · React Native</div>
-      <div class="sitem">🔥 Firebase · Firestore</div><div class="sitem">🤖 Anthropic Claude API</div>
-      <div class="sitem">▲ Vercel</div><div class="sitem">💳 Stripe</div>
-      <div class="sitem">🐍 Python</div><div class="sitem">🎨 Skia (React Native)</div>
-      <div class="sitem">📊 AdMob</div><div class="sitem">🔔 Firebase Cloud Messaging</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="slbl" data-i18n="contact.label">お問い合わせ</div>
-    <h2 class="stitle" data-i18n="contact.title">一緒に何か作りませんか。</h2>
-    <div class="cgrid">
-      <div class="cinfo">
-        <h3 data-i18n="contact.h3">お気軽にご連絡ください</h3>
-        <p data-i18n="contact.body">プロダクトの導入相談・投資・業務提携・受託開発のご相談、なんでもお気軽にどうぞ。九州エリアは訪問対応も可能です。</p>
-        <div class="cdet"><div class="cico">📍</div><span data-i18n="contact.d1">佐賀県鳥栖市（九州・福岡近郊）</span></div>
-        <div class="cdet"><div class="cico">🚛</div><span data-i18n="contact.d2">DispatchOS 導入相談 — 九州エリア無償サポート</span></div>
-        <div class="cdet"><div class="cico">🤝</div><span data-i18n="contact.d3">投資・業務提携のご相談歓迎</span></div>
-        <div class="cdet"><div class="cico">💻</div><span data-i18n="contact.d4">受託開発・技術顧問のご相談</span></div>
-      </div>
-      <div class="cform">
-        <div class="frow">
-          <div class="fg"><label data-i18n="form.name">お名前 *</label><input type="text" id="fn" data-i18n-ph="form.name.ph"/></div>
-          <div class="fg"><label data-i18n="form.company">会社名</label><input type="text" id="fc" data-i18n-ph="form.company.ph"/></div>
+      <div class="founder-body">
+        <h3>Kevin O. Matta</h3>
+        <div class="role" data-i18n="founder.role">代表 · 個人事業主 / Founder, Sole Proprietor</div>
+        <p data-i18n="founder.p1">
+          プエルトリコ出身。アメリカ、オーストラリア、ニュージーランド、そして日本へ。
+          5カ国で働き、船長（USCG 50トンマスター）、カヤックインストラクター、
+          英語教師、足場職人、マルチメディアプロデューサー、コンシェルジュ、そして今はトラック運転手。
+        </p>
+        <p data-i18n="founder.p2">
+          佐賀県鳥栖市在住。筑後運送で日々JR・港湾コンテナ・危険物タンクを運びながら、
+          終業後に自宅でコードを書いています。運転手として現場の課題を知り、
+          その解決策を自分の手でプロダクトにする — それが重松テックの仕事です。
+        </p>
+        <div class="founder-tags">
+          <span class="founder-tag">🇵🇷 Puerto Rico</span>
+          <span class="founder-tag">🇺🇸 USA</span>
+          <span class="founder-tag">🇦🇺 Australia</span>
+          <span class="founder-tag">🇳🇿 New Zealand</span>
+          <span class="founder-tag">🇯🇵 Japan</span>
+          <span class="founder-tag">USCG Captain</span>
+          <span class="founder-tag">Truck Driver</span>
+          <span class="founder-tag">Software Engineer</span>
         </div>
-        <div class="fg"><label data-i18n="form.email">メールアドレス *</label><input type="email" id="fe" placeholder="example@company.co.jp"/></div>
-        <div class="fg">
-          <label data-i18n="form.type">お問い合わせ種別</label>
+        <a href="/kevin" class="founder-link" data-i18n="founder.more">
+          略歴を見る / Full biography &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact">
+  <div class="container reveal">
+    <div class="section-label">
+      <span class="num">04 ／</span>
+      <span data-i18n="contact.label">お問い合わせ · CONTACT</span>
+    </div>
+    <h2 class="section-title">
+      <span data-i18n="contact.title">一緒に、何か<br/>作りましょう。</span>
+      <span class="small" data-i18n="contact.titleEn">Let's build something.</span>
+    </h2>
+
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="label">Location</span>
+          <span class="value" data-i18n="contact.loc">佐賀県鳥栖市 · 九州（福岡近郊）<br/>Tosu, Saga Prefecture, Kyushu</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Scope</span>
+          <span class="value" data-i18n="contact.scope">ソフトウェア・ハードウェア開発<br/>Software &amp; Hardware Development</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Regional</span>
+          <span class="value" data-i18n="contact.reg">九州の企業様は訪問サポート無償<br/>Free in-person setup for Kyushu companies</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Reach</span>
+          <span class="value" data-i18n="contact.reach">事業提携・投資相談・受託開発<br/>Partnership, investment, custom dev</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Response</span>
+          <span class="value" data-i18n="contact.resp">2営業日以内<br/>Within 2 business days</span>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-row two">
+          <div>
+            <label>Name *</label>
+            <input type="text" id="fn" required/>
+          </div>
+          <div>
+            <label>Company</label>
+            <input type="text" id="fc"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Email *</label>
+          <input type="email" id="fe" required/>
+        </div>
+        <div class="form-row">
+          <label>Enquiry Type</label>
           <select id="ft">
-            <option value="" data-i18n="form.type.0">選択してください</option>
-            <option data-i18n="form.type.1">DispatchOS 導入相談</option>
-            <option data-i18n="form.type.2">投資・業務提携</option>
-            <option data-i18n="form.type.3">受託開発・技術顧問</option>
-            <option data-i18n="form.type.4">その他</option>
+            <option data-i18n="form.t1">DispatchOS について</option>
+            <option data-i18n="form.t2">受託開発のご相談</option>
+            <option data-i18n="form.t3">事業提携・投資</option>
+            <option data-i18n="form.t4">その他</option>
           </select>
         </div>
-        <div class="fg"><label data-i18n="form.msg">メッセージ</label><textarea id="fm" data-i18n-ph="form.msg.ph"></textarea></div>
-        <button class="btn btn-p" style="width:100%;justify-content:center;padding:12px" onclick="submitForm()" data-i18n="form.send">送信する →</button>
-        <div class="fsucc" id="fs" data-i18n="form.success">✅ ありがとうございます。2営業日以内にご連絡いたします。</div>
+        <div class="form-row">
+          <label>Message</label>
+          <textarea id="fm" rows="4" placeholder="..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">
+          <span data-i18n="form.send">送信する</span>
+          <span>→</span>
+        </button>
+        <div class="form-success" id="fs" data-i18n="form.success">
+          ✓ ありがとうございます。2営業日以内にご連絡いたします。
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
-  <div class="footer-wrap">
-    <div class="ftop">
-      <div class="fbrand">
-        <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
-          <div class="logo-mark">ST</div>
-          <div><div class="logo-text">SHIGEMATSU<span style="color:var(--blue)">TECH</span></div><div style="font-size:9px;color:var(--muted);letter-spacing:.1em">重松テック — 個人事業主</div></div>
-        </div>
-        <p data-i18n="footer.brand">九州・佐賀県鳥栖市発のソフトウェア会社。物流から教育、アウトドアまで、現場の課題をプロダクトで解決します。</p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">重松テック</div>
+        <div class="tag">SHIGEMATSU TECH · EST. 2025</div>
+        <p data-i18n="footer.about">
+          九州・佐賀県鳥栖市発の個人事業主。運送、教育、エンタメ、伝統文化の現場で必要とされる、ソフトウェアとハードウェアを作っています。
+        </p>
       </div>
-      <div class="fcol">
-        <h4 data-i18n="footer.col1">プロダクト</h4>
-        <a href="/dispatchos">DispatchOS</a>
-        <a href="#products">CastWise Japan</a>
-        <a href="#products">NihongoQuest</a>
-        <a href="#products">Boat Time Attack</a>
-        <a href="#products">AutoWatch</a>
-        <a href="#products">Memoria</a>
+      <div class="footer-col">
+        <h4 data-i18n="footer.prod">製品 / Products</h4>
+        <a href="https://chikugo-dispatch.vercel.app">DispatchOS</a>
+        <a href="#">NihongoQuest</a>
+        <a href="#">Memoria</a>
+        <a href="#">AutoWatch</a>
+        <a href="#">CastWise</a>
+        <a href="#">Aquanauts</a>
       </div>
-      <div class="fcol">
-        <h4 data-i18n="footer.col2">会社情報</h4>
-        <a href="#about" data-i18n="footer.about">私たちについて</a>
-        <a href="#stack" data-i18n="footer.stack">技術スタック</a>
-        <a href="#contact" data-i18n="footer.contact">採用・提携</a>
+      <div class="footer-col">
+        <h4 data-i18n="footer.co">会社 / Company</h4>
+        <a href="/kevin" data-i18n="footer.founder">代表プロフィール</a>
+        <a href="#philosophy" data-i18n="footer.philosophy">理念</a>
+        <a href="#contact" data-i18n="footer.contact">お問い合わせ</a>
       </div>
-      <div class="fcol">
-        <h4 data-i18n="footer.col3">リーガル</h4>
-        <a href="#" data-i18n="footer.privacy">プライバシーポリシー</a>
-        <a href="#" data-i18n="footer.terms">利用規約</a>
-        <a href="#" data-i18n="footer.tokutei">特定商取引法</a>
+      <div class="footer-col">
+        <h4 data-i18n="footer.res">リソース / Resources</h4>
+        <a href="https://chikugo-dispatch.vercel.app/demo" data-i18n="footer.demo">デモ</a>
+        <a href="https://chikugo-dispatch.vercel.app" data-i18n="footer.app">アプリを開く</a>
       </div>
     </div>
-    <div class="fbot">
-      <p>© 2025 重松テック / Shigematsu Tech · <span data-i18n="footer.city">佐賀県鳥栖市</span></p>
-      <p style="color:var(--bdm)">Built in Kyushu 🇯🇵 · Powered by Claude API</p>
+    <div class="footer-bottom">
+      <div>© 2025 SHIGEMATSU TECH · KEVIN O. MATTA · 個人事業主</div>
+      <div>MADE IN KYUSHU, 日本</div>
     </div>
   </div>
 </footer>
 
 <script>
-// ── i18n dictionary ──
-const T = {
+// ── I18N ─────────────────────────────────────
+const I18N = {
   ja: {
-    "nav.products":"プロダクト","nav.about":"会社情報","nav.stack":"技術","nav.contact":"お問い合わせ","nav.cta":"DispatchOS →",
-    "hero.eyebrow":"佐賀県鳥栖市 発 · Made in Kyushu","hero.tagline":"九州から、世界へ届くソフトウェアを。",
-    "hero.body":"物流・教育・アウトドア・エンターテインメント分野の課題を、テクノロジーで解決するプロダクトを開発しています。",
-    "hero.cta1":"プロダクトを見る →","hero.cta2":"お問い合わせ",
-    "hero.m1":"佐賀県鳥栖市拠点","hero.m2":"B2B SaaS · 消費者アプリ","hero.m3":"React · Firebase · Expo",
-    "ticker.dispatch":"AI配車管理SaaS","ticker.castwise":"釣りナビアプリ","ticker.nihongo":"日本語学習アプリ",
-    "ticker.boat":"モバイルレーシングゲーム","ticker.autowatch":"車両メンテナンストラッカー","ticker.memoria":"AIメモリアルデバイス",
-    "products.label":"プロダクト","products.title":"課題ごとに、<br/>専用のツールを。","products.body":"物流・教育・レジャー・エンタメ — それぞれの分野でユーザーが本当に必要とするものを設計・開発しています。",
-    "p.dispatch.sub":"AI配車管理システム","p.dispatch.desc":"毎朝の手動配車を自動化。JRコンテナ規格・危険物タンク・ウイング車の車両マッチングをAIが判定し最適なドライバーへ即時割当。",
-    "p.dispatch.m1":"月額","p.dispatch.m2":"日","p.dispatch.m2l":"無料試用","p.dispatch.m3":"分","p.dispatch.m3l":"導入","p.dispatch.link":"詳しく見る · 無料で試す →",
-    "p.cw.sub":"釣りナビ PRO","p.cw.desc":"日本全国16魚種の図鑑・フライフィッシング百科・テンカラ解説・ハッチカレンダーを収録。¥480/月のPROプラン搭載。",
-    "p.cw.m1":"魚種","p.cw.m2":"対応","p.cw.m3":"収益化","p.cw.link":"リリース情報を受け取る →",
-    "p.nq.sub":"日本語学習アプリ","p.nq.desc":"ひらがな→カタカナ→文法→会話→漢字の5ステージ構成。AIクイズ生成・XP・ストリーク搭載。Duolingo対抗の本格学習アプリ。",
-    "p.nq.m1":"ステージ","p.nq.m2":"クイズ","p.nq.m3":"システム","p.nq.link":"ベータ参加を申し込む →",
-    "p.boat.sub":"モバイルレーシングゲーム","p.boat.desc":"物理演算ボートレース×ゴーストレーシング×AdMob報酬広告。Expo + React Native + Skia で構築。iOS/Android対応。",
-    "p.boat.m1":"レース","p.boat.m2":"収益化","p.boat.link":"テスターに参加する →",
-    "p.aw.sub":"車両メンテナンストラッカー","p.aw.desc":"複数車両のメンテ記録・21項目チェックリスト・サービス履歴を管理。NFS風ガレージUI。",
-    "p.aw.m1":"点検項目","p.aw.m2":"複数台","p.aw.m2l":"管理","p.aw.link":"詳細を見る →",
-    "p.mem.sub":"AIメモリアルデバイス","p.mem.desc":"故人の声・記憶をオンデバイスAIで再現。クラウド不要・サブスク不要の現代仏壇。八女漆器×有田焼×最先端AI。",
-    "p.mem.m1":"完全","p.mem.m1l":"オフライン","p.mem.m2":"八女漆器","p.mem.m2l":"筐体","p.mem.m3":"投資家","p.mem.m3l":"募集中","p.mem.link":"投資・提携の相談 →",
-    "about.label":"会社について","about.title":"九州から、<br/>本物のプロダクトを。",
-    "about.p1":"重松テック — 個人事業主は、佐賀県鳥栖市を拠点に、現場の課題をソフトウェアで解決するプロダクトを開発しています。",
-    "about.p2":"創業者自身が物流会社のドライバーとして働きながら、毎日の配車作業の非効率さを実感したことがDispatchOS誕生のきっかけです。",
-    "about.p3":"B2B SaaSから消費者向けモバイルアプリ、ハードウェアコンセプトまで、多様な分野で開発を続けています。",
-    "v1.title":"現場ファースト","v1.body":"机上の設計より、実際の現場で使えるものを。自社の物流業務を検証環境として活用。",
-    "v2.title":"シンプルに届ける","v2.body":"機能を詰め込むより、1つのことを完璧に。設定5分・使い方1分が設計の基準。",
-    "v3.title":"日本から世界へ","v3.body":"九州・日本市場で実証してから、グローバル展開。日本品質を世界基準に。",
-    "v4.title":"作り続ける","v4.body":"アイデアより実行。設計より出荷。毎日コードを書き、毎週プロダクトを改善。",
-    "founder.role":"Founder — 重松テック — 個人事業主",
-    "founder.p1":"佐賀県鳥栖市在住。日中は筑後運送でトラックドライバーとして勤務しながら、夜間・休日にプロダクト開発を続けるフルスタック開発者。",
-    "founder.p2":"物流現場の一次情報をプロダクト設計に直結させることが強み。趣味はフライフィッシングと1994年式パジェロミニのメンテナンス。",
-    "founder.location":"佐賀県鳥栖市","founder.profile":"詳しいプロフィール・職歴 →",
-    "stack.label":"技術スタック","stack.title":"モダンで、実績あるスタックで。",
-    "contact.label":"お問い合わせ","contact.title":"一緒に何か作りませんか。","contact.h3":"お気軽にご連絡ください",
-    "contact.body":"プロダクトの導入相談・投資・業務提携・受託開発のご相談、なんでもお気軽にどうぞ。九州エリアは訪問対応も可能です。",
-    "contact.d1":"佐賀県鳥栖市（九州・福岡近郊）","contact.d2":"DispatchOS 導入相談 — 九州エリア無償サポート",
-    "contact.d3":"投資・業務提携のご相談歓迎","contact.d4":"受託開発・技術顧問のご相談",
-    "form.name":"お名前 *","form.name.ph":"山田 太郎","form.company":"会社名","form.company.ph":"株式会社〇〇",
-    "form.email":"メールアドレス *","form.type":"お問い合わせ種別","form.type.0":"選択してください",
-    "form.type.1":"DispatchOS 導入相談","form.type.2":"投資・業務提携","form.type.3":"受託開発・技術顧問","form.type.4":"その他",
-    "form.msg":"メッセージ","form.msg.ph":"ご質問・ご要望をご記入ください。","form.send":"送信する →",
-    "form.success":"✅ ありがとうございます。2営業日以内にご連絡いたします。",
-    "footer.brand":"九州・佐賀県鳥栖市発のソフトウェア会社。物流から教育、アウトドアまで、現場の課題をプロダクトで解決します。",
-    "footer.col1":"プロダクト","footer.col2":"会社情報","footer.col3":"リーガル",
-    "footer.about":"私たちについて","footer.stack":"技術スタック","footer.contact":"採用・提携",
-    "footer.privacy":"プライバシーポリシー","footer.terms":"利用規約","footer.tokutei":"特定商取引法","footer.city":"佐賀県鳥栖市"
+    "nav.products":"製品", "nav.philosophy":"理念", "nav.founder":"代表", "nav.contact":"お問い合わせ",
+    "hero.meta":"佐賀県鳥栖市 · 個人事業主",
+    "hero.jp":"現場から生まれる、<br/>次世代の道具。",
+    "hero.en":"Tools, born on the ground.",
+    "hero.lead":"九州・佐賀県鳥栖市発。物流、教育、エンターテイメント、伝統文化。<br/>現場で働く人たちが本当に必要とする、ソフトウェアとハードウェアを<br/>一つずつ、丁寧に作っています。",
+    "hero.cta1":"製品を見る","hero.cta2":"お問い合わせ",
+    "stats.products":"販売中の製品","stats.countries":"在住経験国","stats.languages":"使用言語","stats.founder":"代表・運営者",
+    "products.label":"製品一覧",
+    "products.title":"現場の課題から、<br/>一つひとつ。",
+    "products.titleEn":"One tool, one real problem.",
+    "products.intro":"重松テックは、複数の業界の現場で実際に困っている人たちの話を聞き、ソフトウェアとハードウェアで解決策を作っています。派手な機能ではなく、毎日使える道具を。",
+    "p.dispatch.cat":"運送業向け<br/>スマート配車","p.dispatch.body":"毎朝1〜2時間の手動配車を、AIが10秒で完了。車両×貨物マッチング、危険物判定、ドライバーモバイル、リアルタイム同期。日本の運送会社のために設計。","p.dispatch.status":"販売中 · LIVE",
+    "p.nihongo.cat":"日本語学習<br/>アプリ","p.nihongo.body":"5段階の構造化された日本語学習。AIが生成する問題、XP・ストリーク機能、習熟度に応じた復習。Duolingoを超える、本気の学習体験。","p.nihongo.status":"開発中 · IN DEVELOPMENT",
+    "p.memoria.cat":"AI追憶装置<br/>オフライン対応","p.memoria.body":"故人の声と記憶を保存し、家族が対話できる小型AI装置。仏壇文化と現代技術の融合。有田焼・八女提灯職人との連携も検討中。","p.memoria.status":"プロトタイプ · PROTOTYPE",
+    "p.auto.cat":"車両管理<br/>メンテナンス","p.auto.body":"複数車両の整備記録・消耗品管理。グランツーリスモ風UIで、作業者が使いたくなる設計。軽自動車から大型トラックまで対応。","p.auto.status":"販売中 · LIVE",
+    "p.cast.cat":"フライフィッシング<br/>コンパニオン","p.cast.body":"日本の渓流・管理釣り場向け。ハッチカレンダー、キャスティング教材、テンカラ解説、AI毛鉤選択。英語・日本語の完全バイリンガル。","p.cast.status":"販売中 · LIVE",
+    "p.aqua.cat":"ビーチウェア<br/>アパレル","p.aqua.body":"深海の美学をテーマにしたビーチウェアブランド。アジア太平洋地域に向けた段階的な展開を計画中。ソフトウェアとハードウェアだけが技術ではない。","p.aqua.status":"立ち上げ準備中 · LAUNCHING",
+    "philosophy.label":"理念 · PHILOSOPHY","philosophy.title":"作り手が、<br/>使い手でもあること。","philosophy.titleEn":"The builder is the user.",
+    "v1.title":"現場主義","v1.body":"代表自身がトラックドライバーとして日々JR・港湾コンテナ・危険物タンクを運んでいます。DispatchOSは、自分の配車表を改善するために書かれた最初の一行から生まれました。",
+    "v2.title":"丁寧な製品","v2.body":"速く作ることよりも、正しく作ること。バグ、UI、日本語、すべての細部を大切にします。お客様のデータを預かる以上、信頼に値する品質が必要です。",
+    "v3.title":"地域への還元","v3.body":"九州エリアの企業様には、無料の訪問セットアップを提供します。地元の仏壇職人、焼き物職人、技術者との協働で、新しい日本の道具を作ります。",
+    "founder.label":"代表 · FOUNDER","founder.title":"昼はトラック、<br/>夜はコード。","founder.titleEn":"Trucks by day, code by night.",
+    "founder.role":"代表 · 個人事業主 / Founder, Sole Proprietor",
+    "founder.p1":"プエルトリコ出身。アメリカ、オーストラリア、ニュージーランド、そして日本へ。5カ国で働き、船長（USCG 50トンマスター）、カヤックインストラクター、英語教師、足場職人、マルチメディアプロデューサー、コンシェルジュ、そして今はトラック運転手。",
+    "founder.p2":"佐賀県鳥栖市在住。筑後運送で日々JR・港湾コンテナ・危険物タンクを運びながら、終業後に自宅でコードを書いています。運転手として現場の課題を知り、その解決策を自分の手でプロダクトにする — それが重松テックの仕事です。",
+    "founder.more":"略歴を見る / Full biography →",
+    "contact.label":"お問い合わせ · CONTACT","contact.title":"一緒に、何か<br/>作りましょう。","contact.titleEn":"Let's build something.",
+    "contact.loc":"佐賀県鳥栖市 · 九州（福岡近郊）<br/>Tosu, Saga Prefecture, Kyushu",
+    "contact.scope":"ソフトウェア・ハードウェア開発<br/>Software &amp; Hardware Development",
+    "contact.reg":"九州の企業様は訪問サポート無償<br/>Free in-person setup for Kyushu companies",
+    "contact.reach":"事業提携・投資相談・受託開発<br/>Partnership, investment, custom dev",
+    "contact.resp":"2営業日以内<br/>Within 2 business days",
+    "form.t1":"DispatchOS について","form.t2":"受託開発のご相談","form.t3":"事業提携・投資","form.t4":"その他",
+    "form.send":"送信する","form.success":"✓ ありがとうございます。2営業日以内にご連絡いたします。",
+    "footer.prod":"製品 / Products","footer.co":"会社 / Company","footer.res":"リソース / Resources",
+    "footer.founder":"代表プロフィール","footer.philosophy":"理念","footer.contact":"お問い合わせ",
+    "footer.demo":"デモ","footer.app":"アプリを開く",
+    "footer.about":"九州・佐賀県鳥栖市発の個人事業主。運送、教育、エンタメ、伝統文化の現場で必要とされる、ソフトウェアとハードウェアを作っています。",
   },
   en: {
-    "nav.products":"Products","nav.about":"About","nav.stack":"Tech","nav.contact":"Contact","nav.cta":"DispatchOS →",
-    "hero.eyebrow":"Based in Tosu, Saga · Made in Kyushu, Japan","hero.tagline":"Software from Kyushu, built for the world.",
-    "hero.body":"We build products that solve real problems in logistics, education, outdoor recreation, and entertainment.",
-    "hero.cta1":"See our products →","hero.cta2":"Contact us",
-    "hero.m1":"Tosu, Saga Prefecture","hero.m2":"B2B SaaS · Consumer Apps","hero.m3":"React · Firebase · Expo",
-    "ticker.dispatch":"AI Dispatch SaaS","ticker.castwise":"Fishing Companion App","ticker.nihongo":"Japanese Learning App",
-    "ticker.boat":"Mobile Racing Game","ticker.autowatch":"Vehicle Maintenance Tracker","ticker.memoria":"AI Memorial Device",
-    "products.label":"Products","products.title":"A dedicated tool<br/>for every problem.","products.body":"Logistics, education, outdoor, entertainment — we design and build what users actually need in each domain.",
-    "p.dispatch.sub":"AI Dispatch Management","p.dispatch.desc":"Automates daily manual dispatch. AI matches vehicles to jobs — JR containers, hazmat tanks, wing trucks — and instantly assigns the optimal driver.",
-    "p.dispatch.m1":"/ month","p.dispatch.m2":" day","p.dispatch.m2l":"free trial","p.dispatch.m3":" min","p.dispatch.m3l":"setup","p.dispatch.link":"Learn more · Start free trial →",
-    "p.cw.sub":"Fishing Companion PRO","p.cw.desc":"Encyclopedia of 16 fish species across Japan, fly fishing guide, tenkara tutorials, and hatch calendar. Includes ¥480/month PRO plan.",
-    "p.cw.m1":"species","p.cw.m2":"bilingual","p.cw.m3":"monetised","p.cw.link":"Get release updates →",
-    "p.nq.sub":"Japanese Learning App","p.nq.desc":"5-stage curriculum: hiragana → katakana → grammar → conversation → kanji. AI-generated quizzes, XP, and streaks. A real Duolingo competitor.",
-    "p.nq.m1":"stages","p.nq.m2":"AI quiz","p.nq.m3":"XP system","p.nq.link":"Apply for beta →",
-    "p.boat.sub":"Mobile Racing Game","p.boat.desc":"Physics-based boat racing with ghost racing and AdMob rewarded ads. Built with Expo + React Native + Skia. iOS & Android.",
-    "p.boat.m1":"racing","p.boat.m2":"monetised","p.boat.link":"Join as tester →",
-    "p.aw.sub":"Vehicle Maintenance Tracker","p.aw.desc":"Track maintenance for multiple vehicles, 21-point checklists, service history. NFS-inspired garage UI for kei car and classic car owners.",
-    "p.aw.m1":"checklist items","p.aw.m2":"multi","p.aw.m2l":"vehicle","p.aw.link":"Learn more →",
-    "p.mem.sub":"AI Memorial Device","p.mem.desc":"Reconstructs a loved one's voice and memories on-device. No cloud, no subscription. Modern butsudan combining Yame lacquerware and Arita porcelain.",
-    "p.mem.m1":"fully","p.mem.m1l":"offline","p.mem.m2":"Yame","p.mem.m2l":"lacquer","p.mem.m3":"investors","p.mem.m3l":"welcome","p.mem.link":"Investment enquiries →",
-    "about.label":"About","about.title":"Real products,<br/>built in Kyushu.",
-    "about.p1":"Shigematsu Tech is a software company based in Tosu, Saga Prefecture, building products that solve real operational problems.",
-    "about.p2":"The founder drives trucks for a logistics company by day — the inefficiency of manual dispatch planning directly inspired DispatchOS.",
-    "about.p3":"From B2B SaaS to consumer mobile apps and hardware concepts, we build across multiple domains.",
-    "v1.title":"Field first","v1.body":"Real-world usability over desk-designed perfection. Our own logistics operation is the test environment.",
-    "v2.title":"Ship simple","v2.body":"Do one thing perfectly, not ten things adequately. 5-minute setup and 1-minute learning curve are design targets.",
-    "v3.title":"Japan to global","v3.body":"Validate in Japan, then expand globally. Japanese quality standards as the baseline.",
-    "v4.title":"Keep building","v4.body":"Ideas are cheap. Execution is everything. Code every day, ship every week.",
-    "founder.role":"Founder — Shigematsu Tech (Sole Proprietor)",
-    "founder.p1":"Lives in Tosu, Saga. Drives trucks for a logistics company during the day, builds products at night and on weekends.",
-    "founder.p2":"Uniquely positioned to design logistics software from the driver's seat up. Hobbies: fly fishing and maintaining a 1994 Pajero Mini.",
-    "founder.location":"Tosu, Saga, Japan","founder.profile":"Full profile & work history →",
-    "stack.label":"Tech Stack","stack.title":"Modern, proven, production-grade.",
-    "contact.label":"Contact","contact.title":"Let's build something together.","contact.h3":"Get in touch",
-    "contact.body":"Product enquiries, investment, partnerships, contract development — all welcome. In-person meetings available in the Kyushu region.",
-    "contact.d1":"Tosu, Saga Prefecture (near Fukuoka, Kyushu)","contact.d2":"DispatchOS onboarding support — free for Kyushu companies",
-    "contact.d3":"Investment & partnership enquiries welcome","contact.d4":"Contract development & technical advisory",
-    "form.name":"Name *","form.name.ph":"John Smith","form.company":"Company","form.company.ph":"Acme Logistics Co.",
-    "form.email":"Email *","form.type":"Enquiry type","form.type.0":"Please select",
-    "form.type.1":"DispatchOS enquiry","form.type.2":"Investment / partnership","form.type.3":"Contract dev / advisory","form.type.4":"Other",
-    "form.msg":"Message","form.msg.ph":"Tell us what you're working on.","form.send":"Send →",
-    "form.success":"✅ Thank you — we'll be in touch within 2 business days.",
-    "footer.brand":"Software company from Tosu, Saga, Kyushu. Solving real problems in logistics, education, and outdoor recreation.",
-    "footer.col1":"Products","footer.col2":"Company","footer.col3":"Legal",
-    "footer.about":"About us","footer.stack":"Tech stack","footer.contact":"Careers & partnerships",
-    "footer.privacy":"Privacy Policy","footer.terms":"Terms of Service","footer.tokutei":"Legal Notices","footer.city":"Tosu, Saga, Japan"
+    "nav.products":"Products", "nav.philosophy":"Philosophy", "nav.founder":"Founder", "nav.contact":"Contact",
+    "hero.meta":"Tosu, Saga · Sole Proprietor",
+    "hero.jp":"Tools born<br/>on the ground.",
+    "hero.en":"現場から生まれる、次世代の道具。",
+    "hero.lead":"Built in Tosu, Saga Prefecture, Kyushu. Logistics, education, entertainment, tradition.<br/>Software and hardware for the people who do the real work —<br/>one tool at a time, crafted with care.",
+    "hero.cta1":"See Products","hero.cta2":"Get in Touch",
+    "stats.products":"Products Shipping","stats.countries":"Countries Lived In","stats.languages":"Languages","stats.founder":"Founder, Operator",
+    "products.label":"Products",
+    "products.title":"Real problems,<br/>one at a time.",
+    "products.titleEn":"現場の課題から、一つひとつ。",
+    "products.intro":"Shigematsu Tech talks to people on the ground in multiple industries, and builds software and hardware solutions for them. Not flashy features — tools people use every day.",
+    "p.dispatch.cat":"Logistics · SaaS<br/>AI Dispatch","p.dispatch.body":"1-2 hours of manual dispatch every morning, done by AI in 10 seconds. Vehicle-cargo matching, hazmat rules, driver mobile app, real-time sync. Built for Japan's logistics industry.","p.dispatch.status":"LIVE",
+    "p.nihongo.cat":"EdTech<br/>Language Learning","p.nihongo.body":"Structured Japanese learning in 5 stages. AI-generated quizzes, XP and streaks, spaced repetition. A serious learning experience that goes beyond Duolingo.","p.nihongo.status":"IN DEVELOPMENT",
+    "p.memoria.cat":"Hardware<br/>Offline AI","p.memoria.body":"A small offline-first AI device that preserves the voice and memories of the departed. Japanese ancestor veneration meets modern technology. Working with Arita porcelain and Yame lantern artisans.","p.memoria.status":"PROTOTYPE",
+    "p.auto.cat":"SaaS<br/>Fleet Management","p.auto.body":"Multi-vehicle maintenance and parts tracking. Gran Turismo-inspired UI designed so technicians actually want to use it. From kei-cars to heavy trucks.","p.auto.status":"LIVE",
+    "p.cast.cat":"App<br/>Fly Fishing","p.cast.body":"For Japan's mountain streams and managed fisheries. Hatch calendar, casting tutorials, tenkara guide, AI fly selector. Fully bilingual EN/JP.","p.cast.status":"LIVE",
+    "p.aqua.cat":"Brand<br/>Apparel","p.aqua.body":"A deep-ocean aesthetic beachwear brand with a phased Asia-Pacific growth strategy. Software and hardware aren't the only kinds of craft.","p.aqua.status":"LAUNCHING",
+    "philosophy.label":"Philosophy","philosophy.title":"The builder<br/>is the user.","philosophy.titleEn":"作り手が、使い手でもあること。",
+    "v1.title":"Built on the Ground","v1.body":"The founder drives trucks full-time — JR containers, port containers, hazmat tanks across northern Kyushu. DispatchOS started as a line of code to improve his own dispatch sheet.",
+    "v2.title":"Quality Over Speed","v2.body":"Building it right matters more than building it fast. Bugs, UI, Japanese language — every detail is treated seriously. Your data deserves software that earns its trust.",
+    "v3.title":"Local Commitment","v3.body":"Free in-person setup for companies in Kyushu. Collaboration with local butsudan craftsmen, porcelain artisans, and engineers to build a new generation of Japanese tools.",
+    "founder.label":"Founder","founder.title":"Trucks by day,<br/>code by night.","founder.titleEn":"昼はトラック、夜はコード。",
+    "founder.role":"Founder · Sole Proprietor (個人事業主)",
+    "founder.p1":"Born in Puerto Rico. Lived and worked across five countries — USA, Australia, New Zealand, Japan. USCG 50-ton Master, kayak instructor, English teacher, scaffolder, multimedia producer, concierge, and now truck driver.",
+    "founder.p2":"Based in Tosu, Saga. Drives for Chikugo Unso every day, writing code at home in the evenings. Knowing the problem from the seat of the truck, and building the solution with his own hands — that's what Shigematsu Tech is.",
+    "founder.more":"Full biography →",
+    "contact.label":"Contact","contact.title":"Let's build<br/>something.","contact.titleEn":"一緒に、何か作りましょう。",
+    "contact.loc":"Tosu, Saga Prefecture · Kyushu<br/>(near Fukuoka)",
+    "contact.scope":"Software &amp; Hardware Development",
+    "contact.reg":"Free in-person setup for Kyushu companies",
+    "contact.reach":"Partnership · Investment · Custom Development",
+    "contact.resp":"Within 2 business days",
+    "form.t1":"About DispatchOS","form.t2":"Custom Development","form.t3":"Partnership / Investment","form.t4":"Other",
+    "form.send":"Send","form.success":"✓ Thank you — we'll be in touch within 2 business days.",
+    "footer.prod":"Products","footer.co":"Company","footer.res":"Resources",
+    "footer.founder":"Founder Profile","footer.philosophy":"Philosophy","footer.contact":"Contact",
+    "footer.demo":"Demo","footer.app":"Open App",
+    "footer.about":"A sole proprietorship based in Tosu, Saga Prefecture, Kyushu. We build software and hardware for the people on the ground in logistics, education, entertainment, and tradition.",
   },
   es: {
-    "nav.products":"Productos","nav.about":"Empresa","nav.stack":"Tecnología","nav.contact":"Contacto","nav.cta":"DispatchOS →",
-    "hero.eyebrow":"Desde Tosu, Saga · Hecho en Kyushu, Japón","hero.tagline":"Software desde Kyushu para el mundo.",
-    "hero.body":"Desarrollamos productos que resuelven problemas reales en logística, educación, deportes al aire libre y entretenimiento.",
-    "hero.cta1":"Ver productos →","hero.cta2":"Contactar",
-    "hero.m1":"Tosu, Prefectura de Saga","hero.m2":"SaaS B2B · Apps de consumo","hero.m3":"React · Firebase · Expo",
-    "ticker.dispatch":"SaaS de despacho con IA","ticker.castwise":"App de pesca","ticker.nihongo":"App de japonés",
-    "ticker.boat":"Juego de carreras móvil","ticker.autowatch":"Rastreador de mantenimiento","ticker.memoria":"Dispositivo memorial con IA",
-    "products.label":"Productos","products.title":"Una herramienta<br/>para cada problema.","products.body":"Logística, educación, aire libre, entretenimiento — diseñamos lo que los usuarios realmente necesitan en cada sector.",
-    "p.dispatch.sub":"Gestión de despacho con IA","p.dispatch.desc":"Automatiza el despacho manual diario. La IA asigna vehículos a trabajos — contenedores JR, cisternas, camiones abiertos — y asigna al conductor óptimo al instante.",
-    "p.dispatch.m1":"/ mes","p.dispatch.m2":" días","p.dispatch.m2l":"prueba gratis","p.dispatch.m3":" min","p.dispatch.m3l":"configuración","p.dispatch.link":"Ver más · Empezar gratis →",
-    "p.cw.sub":"Compañero de pesca PRO","p.cw.desc":"Enciclopedia de 16 especies de peces en Japón, guía de pesca con mosca, tutoriales de tenkara y calendario de eclosiones.",
-    "p.cw.m1":"especies","p.cw.m2":"bilingüe","p.cw.m3":"monetizado","p.cw.link":"Recibir novedades →",
-    "p.nq.sub":"App de aprendizaje de japonés","p.nq.desc":"5 etapas: hiragana → katakana → gramática → conversación → kanji. Cuestionarios con IA, XP y rachas. Competidor real de Duolingo.",
-    "p.nq.m1":"etapas","p.nq.m2":"quiz IA","p.nq.m3":"sistema XP","p.nq.link":"Solicitar beta →",
-    "p.boat.sub":"Juego de carreras móvil","p.boat.desc":"Carreras de botes con física real, ghost racing y anuncios recompensados AdMob. Expo + React Native + Skia. iOS y Android.",
-    "p.boat.m1":"carreras","p.boat.m2":"monetizado","p.boat.link":"Unirse como tester →",
-    "p.aw.sub":"Rastreador de mantenimiento","p.aw.desc":"Historial de mantenimiento de varios vehículos, listas de verificación de 21 puntos. Interfaz estilo garage NFS.",
-    "p.aw.m1":"elementos","p.aw.m2":"multi","p.aw.m2l":"vehículo","p.aw.link":"Ver más →",
-    "p.mem.sub":"Dispositivo memorial con IA","p.mem.desc":"Recrea la voz y los recuerdos de un ser querido sin conexión a internet. Sin suscripción. Combina laca japonesa y porcelana Arita con IA avanzada.",
-    "p.mem.m1":"100%","p.mem.m1l":"offline","p.mem.m2":"laca","p.mem.m2l":"Yame","p.mem.m3":"inversores","p.mem.m3l":"bienvenidos","p.mem.link":"Consultas de inversión →",
-    "about.label":"Empresa","about.title":"Productos reales,<br/>hechos en Kyushu.",
-    "about.p1":"Shigematsu Tech es una empresa de software en Tosu, Saga, Japón, que construye productos para resolver problemas operativos reales.",
-    "about.p2":"El fundador conduce camiones para una empresa de logística durante el día — la ineficiencia del despacho manual inspiró directamente DispatchOS.",
-    "about.p3":"Desde SaaS B2B hasta apps móviles de consumo y conceptos de hardware, desarrollamos en múltiples sectores.",
-    "v1.title":"El campo primero","v1.body":"Usabilidad real antes que perfección de escritorio. Nuestra propia operación logística es el entorno de prueba.",
-    "v2.title":"Lanzar simple","v2.body":"Hacer una cosa perfectamente, no diez cosas a medias. 5 minutos de configuración como objetivo de diseño.",
-    "v3.title":"Japón al mundo","v3.body":"Validar en Japón, luego expandirse globalmente. Estándares de calidad japoneses como base.",
-    "v4.title":"Seguir construyendo","v4.body":"Las ideas son baratas. La ejecución lo es todo. Código cada día, lanzamiento cada semana.",
-    "founder.role":"Fundador — Shigematsu Tech (Empresario Individual)",
-    "founder.p1":"Vive en Tosu, Saga. Conduce camiones para una empresa de logística durante el día y desarrolla productos por las noches y fines de semana.",
-    "founder.p2":"Posicionado de forma única para diseñar software logístico desde la cabina del conductor. Aficiones: pesca con mosca y mantenimiento de su Pajero Mini de 1994.",
-    "founder.location":"Tosu, Saga, Japón","founder.profile":"Perfil completo e historial →",
-    "stack.label":"Stack tecnológico","stack.title":"Moderno, probado, en producción.",
-    "contact.label":"Contacto","contact.title":"Construyamos algo juntos.","contact.h3":"Ponte en contacto",
-    "contact.body":"Consultas de productos, inversión, asociaciones, desarrollo a medida — todo bienvenido. Reuniones presenciales disponibles en la región de Kyushu.",
-    "contact.d1":"Tosu, Saga (cerca de Fukuoka, Kyushu)","contact.d2":"Soporte de incorporación DispatchOS — gratuito para empresas de Kyushu",
-    "contact.d3":"Consultas de inversión y asociación bienvenidas","contact.d4":"Desarrollo a medida y asesoría técnica",
-    "form.name":"Nombre *","form.name.ph":"Juan García","form.company":"Empresa","form.company.ph":"Logística S.A.",
-    "form.email":"Correo electrónico *","form.type":"Tipo de consulta","form.type.0":"Seleccionar",
-    "form.type.1":"Consulta DispatchOS","form.type.2":"Inversión / asociación","form.type.3":"Desarrollo / asesoría","form.type.4":"Otro",
-    "form.msg":"Mensaje","form.msg.ph":"Cuéntanos en qué estás trabajando.","form.send":"Enviar →",
-    "form.success":"✅ Gracias — te contactaremos en 2 días hábiles.",
-    "footer.brand":"Empresa de software desde Tosu, Saga, Kyushu. Resolviendo problemas reales en logística, educación y deportes al aire libre.",
-    "footer.col1":"Productos","footer.col2":"Empresa","footer.col3":"Legal",
-    "footer.about":"Sobre nosotros","footer.stack":"Stack tecnológico","footer.contact":"Carreras y asociaciones",
-    "footer.privacy":"Política de privacidad","footer.terms":"Términos de servicio","footer.tokutei":"Avisos legales","footer.city":"Tosu, Saga, Japón"
+    "nav.products":"Productos", "nav.philosophy":"Filosofía", "nav.founder":"Fundador", "nav.contact":"Contacto",
+    "hero.meta":"Tosu, Saga · Autónomo",
+    "hero.jp":"Herramientas<br/>del terreno.",
+    "hero.en":"現場から生まれる、次世代の道具。",
+    "hero.lead":"Desde Tosu, Saga, Kyushu. Logística, educación, entretenimiento, tradición.<br/>Software y hardware para quienes hacen el trabajo real,<br/>una herramienta a la vez.",
+    "hero.cta1":"Ver Productos","hero.cta2":"Contacto",
+    "stats.products":"Productos Activos","stats.countries":"Países Vividos","stats.languages":"Idiomas","stats.founder":"Fundador y Operador",
+    "products.label":"Productos",
+    "products.title":"Problemas reales,<br/>uno a la vez.",
+    "products.titleEn":"現場の課題から、一つひとつ。",
+    "products.intro":"Shigematsu Tech habla con la gente de terreno en múltiples industrias y construye soluciones de software y hardware para ellos. Herramientas para usar todos los días.",
+    "p.dispatch.cat":"Logística · SaaS<br/>Despacho IA","p.dispatch.body":"1-2 horas de despacho manual cada mañana, ahora IA lo hace en 10 segundos. Compatibilidad de vehículos y cargas, materiales peligrosos, app móvil para conductores, sincronización en tiempo real.","p.dispatch.status":"EN VIVO",
+    "p.nihongo.cat":"EdTech<br/>Idiomas","p.nihongo.body":"Aprendizaje estructurado del japonés en 5 etapas. Cuestionarios generados por IA, XP y rachas, repetición espaciada. Una experiencia seria más allá de Duolingo.","p.nihongo.status":"EN DESARROLLO",
+    "p.memoria.cat":"Hardware<br/>IA Offline","p.memoria.body":"Un pequeño dispositivo IA offline que preserva voz y memorias de los seres queridos. Cultura japonesa de veneración y tecnología moderna. Con artesanos de Arita y Yame.","p.memoria.status":"PROTOTIPO",
+    "p.auto.cat":"SaaS<br/>Flotas","p.auto.body":"Mantenimiento y repuestos multi-vehículo. Interfaz tipo Gran Turismo para que los técnicos quieran usarla. Desde kei-cars hasta camiones pesados.","p.auto.status":"EN VIVO",
+    "p.cast.cat":"App<br/>Pesca con Mosca","p.cast.body":"Para arroyos y pesquerías gestionadas de Japón. Calendario de eclosión, tutoriales de lanzamiento, guía tenkara, selector IA de moscas. Bilingüe EN/JP.","p.cast.status":"EN VIVO",
+    "p.aqua.cat":"Marca<br/>Ropa","p.aqua.body":"Marca de ropa de playa con estética de océano profundo y estrategia de crecimiento por fases en Asia-Pacífico. El software y el hardware no son los únicos oficios.","p.aqua.status":"LANZANDO",
+    "philosophy.label":"Filosofía","philosophy.title":"Quien construye,<br/>también usa.","philosophy.titleEn":"作り手が、使い手でもあること。",
+    "v1.title":"Desde el Terreno","v1.body":"El fundador maneja camiones a tiempo completo — contenedores JR, contenedores portuarios, tanques de materiales peligrosos. DispatchOS empezó con una línea de código para mejorar su propia hoja de despacho.",
+    "v2.title":"Calidad Antes que Velocidad","v2.body":"Construirlo bien importa más que construirlo rápido. Bugs, UI, el japonés — cada detalle se toma en serio. Tus datos merecen software que se gana la confianza.",
+    "v3.title":"Compromiso Local","v3.body":"Configuración gratuita in situ para empresas en Kyushu. Colaboración con artesanos locales de butsudan, porcelana, e ingenieros para construir una nueva generación de herramientas japonesas.",
+    "founder.label":"Fundador","founder.title":"Camiones de día,<br/>código de noche.","founder.titleEn":"昼はトラック、夜はコード。",
+    "founder.role":"Fundador · Autónomo (個人事業主)",
+    "founder.p1":"Nació en Puerto Rico. Ha vivido y trabajado en cinco países — USA, Australia, Nueva Zelanda, Japón. Capitán USCG 50-toneladas, instructor de kayak, profesor de inglés, andamios, productor multimedia, conserje, y ahora camionero.",
+    "founder.p2":"Basado en Tosu, Saga. Conduce para Chikugo Unso todos los días, y escribe código en casa por la noche. Conocer el problema desde el asiento del camión y construir la solución con sus propias manos — eso es Shigematsu Tech.",
+    "founder.more":"Biografía completa →",
+    "contact.label":"Contacto","contact.title":"Construyamos<br/>algo juntos.","contact.titleEn":"一緒に、何か作りましょう。",
+    "contact.loc":"Tosu, Prefectura de Saga · Kyushu<br/>(cerca de Fukuoka)",
+    "contact.scope":"Desarrollo de Software y Hardware",
+    "contact.reg":"Configuración gratuita in situ en Kyushu",
+    "contact.reach":"Alianzas · Inversión · Desarrollo a medida",
+    "contact.resp":"En 2 días hábiles",
+    "form.t1":"Sobre DispatchOS","form.t2":"Desarrollo a Medida","form.t3":"Alianza / Inversión","form.t4":"Otro",
+    "form.send":"Enviar","form.success":"✓ Gracias — te contactaremos en 2 días hábiles.",
+    "footer.prod":"Productos","footer.co":"Empresa","footer.res":"Recursos",
+    "footer.founder":"Perfil del Fundador","footer.philosophy":"Filosofía","footer.contact":"Contacto",
+    "footer.demo":"Demo","footer.app":"Abrir App",
+    "footer.about":"Empresa unipersonal en Tosu, Saga, Kyushu. Construimos software y hardware para quienes hacen el trabajo en logística, educación, entretenimiento y tradición.",
   }
 };
 
 let lang = 'ja';
-
 function setLang(l) {
   lang = l;
-  document.documentElement.lang = l === 'ja' ? 'ja' : l === 'es' ? 'es' : 'en';
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === (l==='ja'?'日本語':l==='en'?'EN':'ES')));
+  document.documentElement.lang = l;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    const val = T[l][key];
-    if (val !== undefined) el.innerHTML = val;
+    if (I18N[l] && I18N[l][key]) el.innerHTML = I18N[l][key];
   });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const key = el.getAttribute('data-i18n-ph');
-    const val = T[l][key];
-    if (val !== undefined) el.placeholder = val;
-  });
+  document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+  const targetBtn = Array.from(document.querySelectorAll('.lang button')).find(b => b.textContent.toLowerCase() === l);
+  if (targetBtn) targetBtn.classList.add('active');
 }
 
+// ── Form ─────────────────────────────────────
 function submitForm() {
-  const n = document.getElementById('fn').value;
-  const e = document.getElementById('fe').value;
-  if (!n || !e) { alert(lang==='ja'?'お名前とメールアドレスをご入力ください。':lang==='es'?'Por favor ingresa tu nombre y correo.':'Please enter your name and email.'); return; }
+  const n = document.getElementById('fn').value.trim();
+  const e = document.getElementById('fe').value.trim();
+  if (!n || !e) {
+    alert(lang==='ja'?'お名前とメールアドレスを入力してください。':lang==='es'?'Por favor ingresa tu nombre y correo.':'Please enter your name and email.');
+    return;
+  }
   document.getElementById('fs').style.display = 'block';
+  // TODO: Wire to Formspree with your endpoint
+  // fetch('https://formspree.io/f/YOUR_FORM_ID', {method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify({name:n,email:e,company:document.getElementById('fc').value,type:document.getElementById('ft').value,message:document.getElementById('fm').value})});
 }
 
-// Scroll reveal
-const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }}), {threshold:.08});
-document.querySelectorAll('.pcard,.vcard,.sitem,.cdet').forEach((el,i) => {
-  el.style.opacity='0'; el.style.transform='translateY(14px)';
-  el.style.transition=`opacity .5s ease ${i*.04}s,transform .5s ease ${i*.04}s`;
-  obs.observe(el);
-});
+// ── Scroll reveal ────────────────────────────
+const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }), {threshold: .1});
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// ── Smooth scroll ────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-  const t = document.querySelector(a.getAttribute('href'));
-  if (t) { e.preventDefault(); window.scrollTo({top:t.offsetTop-68,behavior:'smooth'}); }
+  const href = a.getAttribute('href');
+  if (href.length > 1) {
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({top: target.offsetTop - 68, behavior: 'smooth'});
+      document.getElementById('nav-links').classList.remove('open');
+    }
+  }
 }));
 </script>
 </body>
