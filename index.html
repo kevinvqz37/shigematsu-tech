@@ -517,8 +517,11 @@ section {
   align-items: start;
 }
 .founder-photo {
-  padding: 0;        /* remove spacing */
-  overflow: hidden;  /* crop image */
+  width: 180px;
+  height: 220px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
 }
 
 .founder-photo img {
@@ -527,7 +530,7 @@ section {
   object-fit: cover;
   display: block;
 }
-}
+
 .founder-photo::before {
   content: none;
 }
@@ -611,6 +614,10 @@ section {
   transition: all .15s;
 }
 .founder-link:hover { color: var(--red); border-color: var(--red); }
+  img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* ── CONTACT ──────────────────────────────────────── */
 .contact-inner {
