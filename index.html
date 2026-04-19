@@ -519,21 +519,18 @@ section {
 .founder-photo {
   width: 180px;
   height: 220px;
-  overflow: hidden;
-  padding: 0;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid var(--ink);
   position: relative;
 }
-
-.founder-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 .founder-photo::before {
-  content: none;
-}
+  content: '📷';
   font-size: 48px;
   opacity: .3;
   margin-bottom: 12px;
@@ -614,10 +611,6 @@ section {
   transition: all .15s;
 }
 .founder-link:hover { color: var(--red); border-color: var(--red); }
-  img {
-  max-width: 100%;
-  height: auto;
-}
 
 /* ── CONTACT ──────────────────────────────────────── */
 .contact-inner {
@@ -1112,15 +1105,11 @@ footer {
     </h2>
 
     <div class="founder-inner">
-  <div class="founder-photo">
-    <img src="IMG_7736.jpeg" alt="KEVIN O. MATTA">
-  </div>
-
-  <div class="founder-body">
-    <h3>Kevin O. Matta</h3>
-    ...
-  </div>
-</div>
+      <div class="founder-photo">
+        <div class="placeholder">KEVIN O. MATTA<br/>重松 ケビン</div>
+      </div>
+      <div class="founder-body">
+        <h3>Kevin O. Matta</h3>
         <div class="role" data-i18n="founder.role">代表 · 個人事業主 / Founder, Sole Proprietor</div>
         <p data-i18n="founder.p1">
           プエルトリコ出身。アメリカ、オーストラリア、ニュージーランド、そして日本へ。
@@ -1404,16 +1393,45 @@ function setLang(l) {
 }
 
 // ── Form ─────────────────────────────────────
-function submitForm() {
+async function submitForm() {
   const n = document.getElementById('fn').value.trim();
   const e = document.getElementById('fe').value.trim();
   if (!n || !e) {
     alert(lang==='ja'?'お名前とメールアドレスを入力してください。':lang==='es'?'Por favor ingresa tu nombre y correo.':'Please enter your name and email.');
     return;
   }
-  document.getElementById('fs').style.display = 'block';
-  // TODO: Wire to Formspree with your endpoint
-  // fetch('https://formspree.io/f/YOUR_FORM_ID', {method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify({name:n,email:e,company:document.getElementById('fc').value,type:document.getElementById('ft').value,message:document.getElementById('fm').value})});
+  const btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.style.opacity = '0.6';
+  btn.querySelector('span').textContent = lang==='ja'?'送信中...':lang==='es'?'Enviando...':'Sending...';
+  try {
+    const res = await fetch('https://formspree.io/f/mojywrqg', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:    n,
+        email:   e,
+        company: document.getElementById('fc').value.trim(),
+        type:    document.getElementById('ft').value,
+        message: document.getElementById('fm').value.trim(),
+        _subject: '[Shigematsu Tech] お問い合わせ: ' + document.getElementById('ft').value,
+      })
+    });
+    if (res.ok) {
+      document.getElementById('fs').style.display = 'block';
+      document.getElementById('fn').value = '';
+      document.getElementById('fe').value = '';
+      document.getElementById('fc').value = '';
+      document.getElementById('fm').value = '';
+    } else {
+      alert(lang==='ja'?'送信に失敗しました。もう一度お試しください。':'Failed to send. Please try again.');
+    }
+  } catch(err) {
+    alert(lang==='ja'?'ネットワークエラーが発生しました。':'Network error. Please try again.');
+  }
+  btn.disabled = false;
+  btn.style.opacity = '1';
+  btn.querySelector('span').textContent = lang==='ja'?'送信する':lang==='es'?'Enviar':'Send';
 }
 
 // ── Scroll reveal ────────────────────────────
