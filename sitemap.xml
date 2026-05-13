@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.shigematsutech.com/</loc>
+    <lastmod>2025-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.shigematsutech.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.shigematsutech.com/"/>
+  </url>
+
+  <url>
+    <loc>https://www.shigematsutech.com/dispatchos.html</loc>
+    <lastmod>2025-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.shigematsutech.com/dispatchos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.shigematsutech.com/dispatchos.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.shigematsutech.com/kevin.html</loc>
+    <lastmod>2025-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
