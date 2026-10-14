@@ -248,12 +248,20 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
   .team-member { grid-template-columns: 120px 1fr; gap: 20px; }
   .member-photo { width: 120px; height: 150px; }
   .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .contact-item { grid-template-columns: 96px minmax(0,1fr); }
+  .contact-item .value { overflow-wrap: anywhere; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   .nav-links { display: none; }
   .nav-links.open { display: flex; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: var(--paper); border-bottom: 1px solid var(--paper-3); padding: 16px 32px; gap: 16px; align-items: stretch; }
   .burger { display: flex; }
 }
 .hide { display: none !important; }
+.fm-strip { display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:18px 36px; background:#0e0e10; color:#f2efe9; text-decoration:none; border-top:1px solid #000; }
+.fm-strip:hover .fm-go { color:#ff7a6e; }
+.fm-new { font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.14em; background:var(--red); color:#fff; padding:3px 8px; border-radius:2px; }
+.fm-txt { font-family:var(--jp); font-size:16px; font-weight:500; flex:1 1 320px; }
+.fm-txt b { font-family:var(--serif); font-size:19px; }
+.fm-go { font-family:var(--jp); font-size:15px; font-weight:700; color:#fff; white-space:nowrap; transition:color .15s; }
 </style>
 </head>
 <body>
@@ -303,6 +311,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
       <span lang="ja">重松テック</span>
     </div>
     <div class="nav-links" id="nav-links">
+      <a href="/facemosaic-ja.html" data-href-ja="/facemosaic-ja.html" data-href-en="/facemosaic.html" data-href-es="/facemosaic.html" style="color:var(--red)">FaceMosaic <span style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;border:1px solid var(--red);padding:1px 5px;border-radius:2px;vertical-align:2px">NEW</span></a>
       <a href="#products" data-i18n="nav.products">製品</a>
       <a href="#philosophy" data-i18n="nav.philosophy">理念</a>
       <a href="#team" data-i18n="nav.team">チーム</a>
@@ -352,6 +361,13 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
   </div>
 </section>
 
+<!-- FACEMOSAIC LAUNCH -->
+<a href="/facemosaic-ja.html" data-href-ja="/facemosaic-ja.html" data-href-en="/facemosaic.html" data-href-es="/facemosaic.html" class="fm-strip">
+  <span class="fm-new">NEW</span>
+  <span class="fm-txt"><b>FaceMosaic</b> <span data-i18n="fm.strip">— あなた以外、全員モザイク。DaVinci Resolve用 顔の自動モザイク ¥5,980</span></span>
+  <span class="fm-go" data-i18n="fm.go">詳しく見る →</span>
+</a>
+
 <!-- STATS -->
 <div class="stats">
   <div class="stats-inner">
@@ -393,13 +409,13 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
         </div>
         <div class="p-arrow">↗</div>
       </a>
-      <a href="#contact" class="product">
+      <a href="/facemosaic-ja.html" data-href-ja="/facemosaic-ja.html" data-href-en="/facemosaic.html" data-href-es="/facemosaic.html" class="product">
         <div class="p-num">03</div>
         <div class="p-cat"><span class="tag">Plugin</span><br/><span data-i18n="p.fm.cat">映像編集<br/>プライバシー保護</span></div>
         <div class="p-body">
           <h3><span>FaceMosaic</span><span class="en">Automatic Face Mosaic for DaVinci Resolve</span></h3>
           <p data-i18n="p.fm.body">DaVinci Resolve用プラグイン。映像内の顔を自動で検出し、残したい人以外の全員にモザイクをかけます。通行人のプライバシーを守りながら、街歩き動画を安心して公開。処理はすべてMac上で完結し、映像を外部に送りません。</p>
-          <div class="status" data-i18n="p.fm.status">完成 · 販売準備中</div>
+          <div class="status" data-i18n="p.fm.status">販売中 · ¥5,980</div>
         </div>
         <div class="p-arrow">↗</div>
       </a>
@@ -577,7 +593,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
         <h4 data-i18n="footer.prod">製品 / Products</h4>
         <a href="https://chikugo-dispatch.vercel.app">DispatchOS</a>
         <a href="https://castwise-fly.vercel.app" target="_blank" rel="noopener">CastWise</a>
-        <a href="#products">FaceMosaic</a>
+        <a href="/facemosaic-ja.html" data-href-ja="/facemosaic-ja.html" data-href-en="/facemosaic.html" data-href-es="/facemosaic.html">FaceMosaic</a>
         <a href="#">AutoWatch</a>
         <a href="#">NihongoQuest</a>
         <a href="#">Memoria</a>
@@ -610,7 +626,7 @@ const I18N = {
     "hero.meta":"佐賀県鳥栖市 · 個人事業主","hero.jp":"現場から生まれる、<br/>次世代の道具。","hero.en":"Tools, born on the ground.",
     "hero.lead":"九州・佐賀県鳥栖市発。物流、教育、エンターテイメント、伝統文化。<br/>現場で働く人たちが本当に必要とする、ソフトウェアとハードウェアを<br/>一つずつ、丁寧に作っています。",
     "hero.cta1":"製品を見る","hero.cta2":"お問い合わせ",
-    "stats.products":"製品","stats.countries":"在住経験国","stats.languages":"使用言語","stats.team":"チームメンバー",
+    "fm.strip":"— あなた以外、全員モザイク。DaVinci Resolve用 顔の自動モザイク ¥5,980","fm.go":"詳しく見る →","stats.products":"製品","stats.countries":"在住経験国","stats.languages":"使用言語","stats.team":"チームメンバー",
     "products.label":"製品一覧","products.title":"現場の課題から、<br/>一つひとつ。","products.titleEn":"One tool, one real problem.",
     "products.intro":"重松テックは、複数の業界の現場で実際に困っている人たちの話を聞き、ソフトウェアとハードウェアで解決策を作っています。派手な機能ではなく、毎日使える道具を。",
     "p.dispatch.cat":"運送業向け<br/>スマート配車","p.dispatch.body":"毎朝1〜2時間の手動配車を、AIが10秒で完了。車両×貨物マッチング、危険物判定、ドライバーモバイル、リアルタイム同期。日本の運送会社のために設計。","p.dispatch.status":"販売中 · LIVE",
@@ -618,7 +634,7 @@ const I18N = {
     "p.memoria.cat":"AI追憶装置<br/>オフライン対応","p.memoria.body":"故人の声と記憶を保存し、家族が対話できる小型AI装置。仏壇文化と現代技術の融合。有田焼・八女提灯職人との連携も検討中。","p.memoria.status":"プロトタイプ · PROTOTYPE",
     "p.auto.cat":"車両管理<br/>メンテナンス","p.auto.body":"複数車両の整備記録・消耗品管理。グランツーリスモ風UIで、作業者が使いたくなる設計。軽自動車から大型トラックまで対応。","p.auto.status":"販売中 · LIVE",
     "products.done":"完成 · SHIPPED","products.wip":"開発中 · IN PROGRESS",
-    "p.fm.cat":"映像編集<br/>プライバシー保護","p.fm.body":"DaVinci Resolve用プラグイン。映像内の顔を自動で検出し、残したい人以外の全員にモザイクをかけます。通行人のプライバシーを守りながら、街歩き動画を安心して公開。処理はすべてMac上で完結し、映像を外部に送りません。","p.fm.status":"完成 · 販売準備中",
+    "p.fm.cat":"映像編集<br/>プライバシー保護","p.fm.body":"DaVinci Resolve用プラグイン。映像内の顔を自動で検出し、残したい人以外の全員にモザイクをかけます。通行人のプライバシーを守りながら、街歩き動画を安心して公開。処理はすべてMac上で完結し、映像を外部に送りません。","p.fm.status":"販売中 · ¥5,980 買い切り",
     "p.cast.cat":"フライフィッシング<br/>コンパニオン","p.cast.body":"日本の渓流・管理釣り場向け。ハッチカレンダー、キャスティング教材、テンカラ解説、AI毛鉤選択。英語・日本語の完全バイリンガル。","p.cast.status":"販売中 · LIVE",
     "p.aqua.cat":"ビーチウェア<br/>アパレル","p.aqua.body":"深海の美学をテーマにしたビーチウェアブランド。アジア太平洋地域に向けた段階的な展開を計画中。","p.aqua.status":"立ち上げ準備中 · LAUNCHING",
     "philosophy.label":"理念 · PHILOSOPHY","philosophy.title":"作り手が、<br/>使い手でもあること。","philosophy.titleEn":"The builder is the user.",
@@ -645,7 +661,7 @@ const I18N = {
     "hero.meta":"Tosu, Saga · Sole Proprietor","hero.jp":"Tools born<br/>on the ground.","hero.en":"現場から生まれる、次世代の道具。",
     "hero.lead":"Built in Tosu, Saga Prefecture, Kyushu. Logistics, education, entertainment, tradition.<br/>Software and hardware for the people who do the real work — one tool at a time.",
     "hero.cta1":"See Products","hero.cta2":"Get in Touch",
-    "stats.products":"Products","stats.countries":"Countries Lived In","stats.languages":"Languages","stats.team":"Team Members",
+    "fm.strip":"— Blur everyone, except you. Automatic face mosaic for DaVinci Resolve, ¥5,980","fm.go":"See how it works →","stats.products":"Products","stats.countries":"Countries Lived In","stats.languages":"Languages","stats.team":"Team Members",
     "products.label":"Products","products.title":"Real problems,<br/>one at a time.","products.titleEn":"現場の課題から、一つひとつ。",
     "products.intro":"Shigematsu Tech talks to people on the ground in multiple industries, and builds software and hardware solutions for them. Not flashy features — tools people use every day.",
     "p.dispatch.cat":"Logistics · SaaS<br/>AI Dispatch","p.dispatch.body":"1-2 hours of manual dispatch every morning, done by AI in 10 seconds. Vehicle-cargo matching, hazmat rules, driver mobile app, real-time sync. Built for Japan's logistics industry.","p.dispatch.status":"LIVE",
@@ -653,7 +669,7 @@ const I18N = {
     "p.memoria.cat":"Hardware<br/>Offline AI","p.memoria.body":"A small offline-first AI device that preserves the voice and memories of the departed. Japanese ancestor veneration meets modern technology.","p.memoria.status":"PROTOTYPE",
     "p.auto.cat":"SaaS<br/>Fleet Management","p.auto.body":"Multi-vehicle maintenance and parts tracking. Gran Turismo-inspired UI designed so technicians actually want to use it. From kei-cars to heavy trucks.","p.auto.status":"LIVE",
     "products.done":"Shipped","products.wip":"In progress",
-    "p.fm.cat":"Plugin<br/>Video Privacy","p.fm.body":"A DaVinci Resolve plugin that finds every face in your footage and mosaics everyone except the people you choose. Publish street vlogs without exposing bystanders. Runs entirely on your Mac — your footage never leaves it.","p.fm.status":"COMPLETE · LAUNCHING SOON",
+    "p.fm.cat":"Plugin<br/>Video Privacy","p.fm.body":"A DaVinci Resolve plugin that finds every face in your footage and mosaics everyone except the people you choose. Publish street vlogs without exposing bystanders. Runs entirely on your Mac — your footage never leaves it.","p.fm.status":"ON SALE · ¥5,980 ONE-TIME",
     "p.cast.cat":"App<br/>Fly Fishing","p.cast.body":"For Japan's mountain streams and managed fisheries. Hatch calendar, casting tutorials, tenkara guide, AI fly selector. Fully bilingual EN/JP.","p.cast.status":"LIVE",
     "p.aqua.cat":"Brand<br/>Apparel","p.aqua.body":"A deep-ocean aesthetic beachwear brand with a phased Asia-Pacific growth strategy.","p.aqua.status":"LAUNCHING",
     "philosophy.label":"Philosophy","philosophy.title":"The builder<br/>is the user.","philosophy.titleEn":"作り手が、使い手でもあること。",
@@ -680,7 +696,7 @@ const I18N = {
     "hero.meta":"Tosu, Saga · Autónomo","hero.jp":"Herramientas<br/>del terreno.","hero.en":"現場から生まれる、次世代の道具。",
     "hero.lead":"Desde Tosu, Saga, Kyushu. Logística, educación, entretenimiento, tradición.<br/>Software y hardware para quienes hacen el trabajo real, una herramienta a la vez.",
     "hero.cta1":"Ver Productos","hero.cta2":"Contacto",
-    "stats.products":"Productos","stats.countries":"Países Vividos","stats.languages":"Idiomas","stats.team":"Miembros del Equipo",
+    "fm.strip":"— Mosaico para todos, menos para ti. Mosaico facial automático para DaVinci Resolve, ¥5,980","fm.go":"Ver cómo funciona →","stats.products":"Productos","stats.countries":"Países Vividos","stats.languages":"Idiomas","stats.team":"Miembros del Equipo",
     "products.label":"Productos","products.title":"Problemas reales,<br/>uno a la vez.","products.titleEn":"現場の課題から、一つひとつ。",
     "products.intro":"Shigematsu Tech habla con la gente de terreno en múltiples industrias y construye soluciones de software y hardware para ellos.",
     "p.dispatch.cat":"Logística · SaaS<br/>Despacho IA","p.dispatch.body":"1-2 horas de despacho manual cada mañana, ahora IA lo hace en 10 segundos.","p.dispatch.status":"EN VIVO",
@@ -688,7 +704,7 @@ const I18N = {
     "p.memoria.cat":"Hardware<br/>IA Offline","p.memoria.body":"Dispositivo IA offline que preserva voz y memorias de seres queridos.","p.memoria.status":"PROTOTIPO",
     "p.auto.cat":"SaaS<br/>Flotas","p.auto.body":"Mantenimiento y repuestos multi-vehículo. Interfaz tipo Gran Turismo.","p.auto.status":"EN VIVO",
     "products.done":"Terminados","products.wip":"En desarrollo",
-    "p.fm.cat":"Plugin<br/>Privacidad en Video","p.fm.body":"Plugin para DaVinci Resolve que detecta cada rostro y aplica mosaico a todos excepto a las personas que elijas. Publica vlogs callejeros sin exponer a los transeúntes. Todo se procesa en tu Mac.","p.fm.status":"COMPLETO · PRÓXIMAMENTE",
+    "p.fm.cat":"Plugin<br/>Privacidad en Video","p.fm.body":"Plugin para DaVinci Resolve que detecta cada rostro y aplica mosaico a todos excepto a las personas que elijas. Publica vlogs callejeros sin exponer a los transeúntes. Todo se procesa en tu Mac.","p.fm.status":"A LA VENTA · ¥5,980 PAGO ÚNICO",
     "p.cast.cat":"App<br/>Pesca con Mosca","p.cast.body":"Para arroyos de Japón. Calendario de eclosión, tutoriales, guía tenkara, selector IA.","p.cast.status":"EN VIVO",
     "p.aqua.cat":"Marca<br/>Ropa","p.aqua.body":"Ropa de playa con estética de océano profundo y estrategia Asia-Pacífico.","p.aqua.status":"LANZANDO",
     "philosophy.label":"Filosofía","philosophy.title":"Quien construye,<br/>también usa.","philosophy.titleEn":"作り手が、使い手でもあること。",
@@ -720,6 +736,7 @@ function setLang(l) {
   document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
   const targetBtn = Array.from(document.querySelectorAll('.lang button')).find(b => b.textContent.toLowerCase() === l);
   if (targetBtn) targetBtn.classList.add('active');
+  document.querySelectorAll('[data-href-' + l + ']').forEach(a => a.setAttribute('href', a.getAttribute('data-href-' + l)));
 }
 
 async function submitForm() {

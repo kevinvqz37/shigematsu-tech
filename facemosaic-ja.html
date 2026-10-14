@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FaceMosaic｜DaVinci Resolve用 顔の自動モザイク｜重松テック</title>
+<meta name="description" content="あなた以外、全員モザイク。FaceMosaicは、映像に映る通行人の顔を自動でモザイク処理するDaVinci Resolve Studio用スクリプト（Mac）。自分や仲間の顔はそのまま。処理はすべてMac上で完結。¥5,980の買い切り。">
+<meta property="og:title" content="FaceMosaic — あなた以外、全員モザイク。">
+<meta property="og:description" content="DaVinci Resolve用 顔の自動モザイク。自分と仲間はそのまま、通行人だけモザイク。Mac上で完結。¥5,980 買い切り。">
+<meta property="og:image" content="https://www.shigematsutech.com/facemosaic/hero-ja.jpg">
+<meta property="og:url" content="https://www.shigematsutech.com/facemosaic-ja.html">
+<meta property="og:locale" content="ja_JP">
+<link rel="canonical" href="https://www.shigematsutech.com/facemosaic-ja.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&amp;family=IBM+Plex+Sans+JP:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0e0e10}
+a{color:#ff7a6e}a:hover{color:#ffa49b}
+</style>
+<link rel="alternate" hreflang="en" href="https://www.shigematsutech.com/facemosaic.html">
+<link rel="alternate" hreflang="ja" href="https://www.shigematsutech.com/facemosaic-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://www.shigematsutech.com/facemosaic.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FaceMosaic","operatingSystem":"macOS","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"5980","priceCurrency":"JPY","url":"https://buy.stripe.com/aFa7sL1yV31U5CVg8i9MY02"},"publisher":{"@type":"Organization","name":"重松テック / Shigematsu Tech","url":"https://www.shigematsutech.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8BBZGCF1NG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8BBZGCF1NG');</script>
+</head>
+<body>
+<div style="background: #0e0e10; color: #f2efe9; font-family: 'IBM Plex Sans JP', system-ui, sans-serif; font-size: 17px; line-height: 1.6; min-height: 100vh">
+
+<header style="max-width: 1160px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+  <a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #f2efe9">
+    <span aria-hidden="true" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; width: 26px; height: 26px">
+      <span style="background: #e5483b"></span><span style="background: #6b6b70"></span><span style="background: #e5483b"></span>
+      <span style="background: #6b6b70"></span><span style="background: #f2efe9"></span><span style="background: #6b6b70"></span>
+      <span style="background: #e5483b"></span><span style="background: #6b6b70"></span><span style="background: #e5483b"></span>
+    </span>
+    <span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 115%; font-size: 21px; letter-spacing: -0.01em">FaceMosaic</span>
+  </a>
+  <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-size: 15px">
+    <a href="#how" style="color: #c9c5bd; text-decoration: none">使い方</a>
+    <a href="#features" style="color: #c9c5bd; text-decoration: none">機能</a>
+    <a href="#faq" style="color: #c9c5bd; text-decoration: none">よくある質問</a>
+    <a href="/facemosaic.html" lang="en" hreflang="en" style="color: #c9c5bd; text-decoration: none; border: 1px solid #4a4a50; padding: 6px 10px; border-radius: 6px">English</a>
+    <a href="#buy" style="background: #d6453b; color: #ffffff; text-decoration: none; font-weight: 700; padding: 11px 18px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">購入 ¥5,980</a>
+  </nav>
+</header>
+
+<section id="top" style="max-width: 1160px; margin: 0 auto; padding: 56px 24px 40px">
+  <p style="margin: 0 0 18px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">DAVINCI RESOLVE STUDIO 用スクリプト · INTEL MAC</p>
+  <h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 900; font-stretch: 112%; font-size: clamp(48px, 8vw, 104px); line-height: 0.95; letter-spacing: -0.03em">あなた以外、<br><span style="color: #d6453b">全員モザイク。</span></h1>
+  <p lang="en" style="margin: 18px 0 0; font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; color: #d8d4cc">Blur everyone. Except you.</p>
+  <p style="margin: 24px 0 0; max-width: 640px; font-size: 19px; color: #c9c5bd">自分の顔を一度覚えさせれば、撮影素材すべてに映る通行人の顔を自動でモザイク。ResolveのScriptsメニューから、あなたのMac上で動きます。</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px">
+    <a href="#buy" style="background: #d6453b; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 17px; padding: 15px 26px; border-radius: 10px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">FaceMosaic を購入 ¥5,980</a>
+    <a href="#demo" style="border: 1.5px solid #4a4a50; color: #f2efe9; text-decoration: none; font-weight: 500; font-size: 17px; padding: 15px 26px; border-radius: 10px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">デモ動画を見る</a>
+  </div>
+  <figure style="margin: 48px 0 0">
+    <img src="/facemosaic/hero-ja.jpg" width="1280" height="720" alt="駐車場で撮ったVlogの一場面。通行人2人の顔はモザイク、撮影者本人の顔はそのまま映っている。" style="width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid #2a2a2e">
+    <figcaption style="margin-top: 12px; font-size: 14px; color: #a8a49c">4K iPhone Vlogの実際の出力。通行人は自動でモザイク、登録した本人はそのまま。</figcaption>
+  </figure>
+</section>
+
+<section style="border-top: 1px solid #222226; border-bottom: 1px solid #222226; background: #141417">
+  <div style="max-width: 1160px; margin: 0 auto; padding: 44px 24px; display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: baseline">
+    <h2 style="margin: 0; flex: 1 1 320px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: 30px; line-height: 1.15">顔のモザイクを手作業でかけるのは、時間がかかりすぎる。</h2>
+    <p style="margin: 0; flex: 2 1 420px; color: #c9c5bd">日本で街なかを撮影すると、どのカットにも通行人が映り込みます。顔を一つずつトラッキングしてマスクをかける作業は、編集そのものより時間がかかることも。FaceMosaicなら撮影素材をまとめて一度に処理。あなたは確認するだけです。</p>
+  </div>
+</section>
+
+<section id="how" style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 24px">
+  <p style="margin: 0 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">使い方</p>
+  <h2 style="margin: 0 0 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: clamp(32px, 4vw, 48px); line-height: 1.05">Resolveの中で、3ステップ。</h2>
+  <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 20px">
+    <li style="flex: 1 1 300px; background: #16161a; border: 1px solid #2a2a2e; border-radius: 14px; padding: 28px">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #d6453b">01</span>
+      <h3 style="margin: 10px 0 8px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px">自分の顔を登録</h3>
+      <p style="margin: 0; color: #c9c5bd">自撮りのクリップを選んで自分を追加。顔写真を約25枚保存します。仲間や家族も同じ方法で追加できます。</p>
+    </li>
+    <li style="flex: 1 1 300px; background: #16161a; border: 1px solid #2a2a2e; border-radius: 14px; padding: 28px">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #d6453b">02</span>
+      <h3 style="margin: 10px 0 8px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px">クリップを選んで、残す人にチェック</h3>
+      <p style="margin: 0; color: #c9c5bd">メディアプールでクリップ（またはビン全体）を選び、顔を残す人にチェックを入れてスタート。処理中も編集を続けられます。</p>
+    </li>
+    <li style="flex: 1 1 300px; background: #16161a; border: 1px solid #2a2a2e; border-radius: 14px; padding: 28px">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #d6453b">03</span>
+      <h3 style="margin: 10px 0 8px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px">読み込んで確認</h3>
+      <p style="margin: 0; color: #c9c5bd">モザイク済みのクリップは専用のビンに入るか、タイムラインの元クリップと自動で差し替え。確認すべき箇所にはマーカーが付きます。</p>
+    </li>
+  </ol>
+</section>
+
+<section id="features" style="max-width: 1160px; margin: 0 auto; padding: 72px 24px 24px">
+  <p style="margin: 0 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">機能</p>
+  <h2 style="margin: 0 0 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: clamp(32px, 4vw, 48px); line-height: 1.05">街なかで撮る人のために。</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 36px 40px">
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">撮影素材をまとめて一括処理</h3>
+      <p style="margin: 0; color: #c9c5bd">何十本ものクリップを続けて処理。途中で止めても、終わったクリップはそのまま残ります。</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">自分と仲間はそのまま</h3>
+      <p style="margin: 0; color: #c9c5bd">顔認識で、登録した人は動いても振り向いてもモザイクなしのまま。</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">映像は外部に送信しません</h3>
+      <p style="margin: 0; color: #c9c5bd">顔の検出も認識もすべてオフラインで処理。映像も顔写真もアップロードされません。</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">確認用マーカー</h3>
+      <p style="margin: 0; color: #c9c5bd">赤：判定が微妙なまま顔を残した箇所。黄：誤ってモザイクしたかもしれない箇所。</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">そのまま編集に使えるファイル</h3>
+      <p style="margin: 0; color: #c9c5bd">元の音声・タイムコード・長さを保持し、iPhoneのHLGカラーもそのまま。ProRes／HEVC／H.264で書き出し。</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">手やタイヤの誤検出を除外</h3>
+      <p style="margin: 0; color: #c9c5bd">大きな「顔」は複数のサイズで再確認。手・タイヤ・エンジン・上着などに誤ってモザイクがかかりません。</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">最後はあなたが決める</h3>
+      <p style="margin: 0; color: #c9c5bd">外したいモザイクに「Keep」という名前のマーカーを付けて再実行するだけ。顔検出をやり直さないので、すぐ終わります。</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">テレビでおなじみのモザイク</h3>
+      <p style="margin: 0; color: #c9c5bd">顔の動きに追従する粗めのブロック。髪や額までしっかり覆う、日本の視聴者になじみのある見た目です。</p>
+    </div>
+  </div>
+</section>
+
+<section id="demo" style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 24px">
+  <p style="margin: 0 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">デモ</p>
+  <h2 style="margin: 0 0 28px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: clamp(32px, 4vw, 48px); line-height: 1.05">実際の映像で見る。</h2>
+  <video controls playsinline preload="metadata" poster="/facemosaic/demo-poster.jpg" style="width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 14px; border: 1px solid #2a2a2e; background: #000"><source src="/facemosaic/demo.mp4" type="video/mp4"></video>
+</section>
+
+<section style="max-width: 1160px; margin: 0 auto; padding: 72px 24px 24px">
+  <div style="background: #16161a; border: 1px solid #2a2a2e; border-radius: 14px; padding: 32px; display: flex; flex-wrap: wrap; gap: 16px 40px">
+    <h2 style="margin: 0; flex: 1 1 260px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.2">正直なお知らせ</h2>
+    <p style="margin: 0; flex: 3 1 420px; color: #c9c5bd">どんな顔検出も完璧ではありません。真横を向いた顔、遠くの小さな顔、激しいブレは検出漏れすることがあります。FaceMosaicは確実に本人と判定できない顔はすべてモザイクにし、判定が微妙な箇所にはマーカーを付けますが、公開前には必ず映像全体を確認してください。</p>
+  </div>
+</section>
+
+<section id="buy" style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 24px">
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: stretch">
+    <div style="flex: 1 1 380px; background: #d6453b; color: #ffffff; border-radius: 16px; padding: 40px">
+      <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em">買い切り</p>
+      <p style="margin: 14px 0 6px; font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 64px; line-height: 1">¥5,980</p>
+      <p style="margin: 0 0 28px">Mac 2台まで使えるライセンス。新しいMacへの移行もいつでも可能。サブスクではありません。</p>
+      <a href="https://buy.stripe.com/aFa7sL1yV31U5CVg8i9MY02" style="background: #0e0e10; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 17px; padding: 15px 26px; border-radius: 10px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">FaceMosaic を購入</a>
+      <p style="margin: 18px 0 0; font-size: 14px; opacity: .9">決済はStripeで安全に。お支払い後すぐにライセンスキーとダウンロードリンクが表示されます。</p>
+    </div>
+    <div style="flex: 1 1 380px; padding: 8px 0">
+      <h2 style="margin: 0 0 18px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 26px">動作環境</h2>
+      <ul style="margin: 0; padding-left: 20px; color: #c9c5bd; display: flex; flex-direction: column; gap: 10px">
+        <li>DaVinci Resolve Studio（バージョン21で動作確認）</li>
+        <li>Intel搭載のMac（Apple シリコン版は準備中）</li>
+        <li>Windowsは現在非対応</li>
+        <li>約300 MBの空き容量（出力ファイル用の容量は別途）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 24px">
+  <p style="margin: 0 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">FAQ</p>
+  <h2 style="margin: 0 0 32px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: clamp(32px, 4vw, 48px); line-height: 1.05">質問</h2>
+  <div style="display: flex; flex-direction: column; gap: 0">
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">映像はどこかにアップロードされますか？</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">いいえ。処理はすべてお使いのMac上で行います。顔写真はホームフォルダ内に保存され、いつでも削除できます。</p>
+    </details>
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">処理にどれくらい時間がかかりますか？</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">テスト用のIntel Macでは、4KのiPhone映像でクリップの長さの約5〜6倍でした。Macの性能、解像度、映っている顔の数によって変わります。</p>
+    </details>
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">複数の人の顔を残せますか？</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">はい。一人ずつ一度登録すれば、処理のたびに残したい人を選べます。</p>
+    </details>
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">元のクリップは変更されますか？</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">いいえ。元の素材の横にモザイク済みのコピーを新しく作ります。タイムラインで差し替えるかどうかは選べます。</p>
+    </details>
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">無料版のResolveでも使えますか？</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">FaceMosaicはDaVinci Resolve Studio向けに開発・動作確認しています。無料版には対応していません。</p>
+    </details>
+    <details style="border-bottom: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">ライセンスキーをなくした／別のMacに移したい</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">移す場合は、元のMacで Workspace › Scripts › FaceMosaic - License を開いて Deactivate を押し、新しいMacで有効化してください。キーをなくした場合は、購入時のメールアドレスを添えて<a href="/#contact">お問い合わせ</a>ください。</p>
+    </details>
+  </div>
+</section>
+
+<footer style="max-width: 1160px; margin: 0 auto; padding: 72px 24px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: #a8a49c; font-size: 14px">
+  <span>© 2026 <a href="/" style="color: #a8a49c">Shigematsu Tech (重松テック)</a> · 佐賀県鳥栖市 · <a href="/#contact" style="color: #a8a49c">お問い合わせ</a></span>
+  <span>DaVinci ResolveはBlackmagic Designの商標です。FaceMosaicはBlackmagic Designとは関係ありません。</span>
+</footer>
+
+</div>
+</body>
+</html>
