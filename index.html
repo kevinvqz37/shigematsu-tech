@@ -172,6 +172,7 @@ section { padding: 96px 32px 96px 36px; border-bottom: 1px solid var(--paper-3);
 .p-body .status { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink); margin-top: 16px; display: flex; align-items: center; gap: 8px; }
 .p-body .status::before { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
 .p-body .status.dev::before { background: var(--ink-4); }
+.p-group { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: var(--red); text-transform: uppercase; padding: 28px 0 4px; border-bottom: 1px solid var(--paper-3); }
 .p-arrow { font-family: var(--serif); font-size: 28px; color: var(--ink-3); padding-top: 4px; transition: all .2s; }
 
 .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
@@ -354,7 +355,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
 <!-- STATS -->
 <div class="stats">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-val">06</div><div class="stat-lbl" data-i18n="stats.products">Products Shipping</div></div>
+    <div class="stat"><div class="stat-val">07</div><div class="stat-lbl" data-i18n="stats.products">Products</div></div>
     <div class="stat"><div class="stat-val">05</div><div class="stat-lbl" data-i18n="stats.countries">Countries Lived In</div></div>
     <div class="stat"><div class="stat-val">03</div><div class="stat-lbl" data-i18n="stats.languages">Languages</div></div>
     <div class="stat"><div class="stat-val">02</div><div class="stat-lbl" data-i18n="stats.team">Team Members</div></div>
@@ -371,6 +372,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
     </h2>
     <p class="section-intro" data-i18n="products.intro">重松テックは、複数の業界の現場で実際に困っている人たちの話を聞き、ソフトウェアとハードウェアで解決策を作っています。派手な機能ではなく、毎日使える道具を。</p>
     <div class="products">
+      <div class="p-group" data-i18n="products.done">完成 · SHIPPED</div>
       <a href="https://chikugo-dispatch.vercel.app/demo.html" target="_blank" rel="noopener" class="product">
         <div class="p-num">01</div>
         <div class="p-cat"><span class="tag">SaaS</span><br/><span data-i18n="p.dispatch.cat">運送業向け<br/>スマート配車</span></div>
@@ -381,23 +383,23 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
         </div>
         <div class="p-arrow">↗</div>
       </a>
-      <a href="#" class="product">
+      <a href="https://castwise-fly.vercel.app" target="_blank" rel="noopener" class="product">
         <div class="p-num">02</div>
-        <div class="p-cat"><span class="tag">EdTech</span><br/><span data-i18n="p.nihongo.cat">日本語学習<br/>アプリ</span></div>
+        <div class="p-cat"><span class="tag">App</span><br/><span data-i18n="p.cast.cat">フライフィッシング<br/>コンパニオン</span></div>
         <div class="p-body">
-          <h3><span>NihongoQuest</span><span class="en">Structured Japanese Learning</span></h3>
-          <p data-i18n="p.nihongo.body">5段階の構造化された日本語学習。AIが生成する問題、XP・ストリーク機能、習熟度に応じた復習。Duolingoを超える、本気の学習体験。</p>
-          <div class="status dev" data-i18n="p.nihongo.status">開発中 · IN DEVELOPMENT</div>
+          <h3><span>CastWise</span><span class="en">釣りナビ PRO · Fly Fishing Companion</span></h3>
+          <p data-i18n="p.cast.body">日本の渓流・管理釣り場向け。ハッチカレンダー、キャスティング教材、テンカラ解説、AI毛鉤選択。英語・日本語の完全バイリンガル。</p>
+          <div class="status" data-i18n="p.cast.status">販売中 · LIVE</div>
         </div>
         <div class="p-arrow">↗</div>
       </a>
-      <a href="#" class="product">
+      <a href="#contact" class="product">
         <div class="p-num">03</div>
-        <div class="p-cat"><span class="tag">Hardware</span><br/><span data-i18n="p.memoria.cat">AI追憶装置<br/>オフライン対応</span></div>
+        <div class="p-cat"><span class="tag">Plugin</span><br/><span data-i18n="p.fm.cat">映像編集<br/>プライバシー保護</span></div>
         <div class="p-body">
-          <h3><span>Memoria</span><span class="en">Offline-first Remembrance Device</span></h3>
-          <p data-i18n="p.memoria.body">故人の声と記憶を保存し、家族が対話できる小型AI装置。仏壇文化と現代技術の融合。有田焼・八女提灯職人との連携も検討中。</p>
-          <div class="status dev" data-i18n="p.memoria.status">プロトタイプ · PROTOTYPE</div>
+          <h3><span>FaceMosaic</span><span class="en">Automatic Face Mosaic for DaVinci Resolve</span></h3>
+          <p data-i18n="p.fm.body">DaVinci Resolve用プラグイン。映像内の顔を自動で検出し、残したい人以外の全員にモザイクをかけます。通行人のプライバシーを守りながら、街歩き動画を安心して公開。処理はすべてMac上で完結し、映像を外部に送りません。</p>
+          <div class="status" data-i18n="p.fm.status">完成 · 販売準備中</div>
         </div>
         <div class="p-arrow">↗</div>
       </a>
@@ -411,18 +413,29 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
         </div>
         <div class="p-arrow">↗</div>
       </a>
-      <a href="https://castwise-fly.vercel.app" target="_blank" rel="noopener" class="product">
+      <div class="p-group" data-i18n="products.wip">開発中 · IN PROGRESS</div>
+      <a href="#" class="product">
         <div class="p-num">05</div>
-        <div class="p-cat"><span class="tag">App</span><br/><span data-i18n="p.cast.cat">フライフィッシング<br/>コンパニオン</span></div>
+        <div class="p-cat"><span class="tag">EdTech</span><br/><span data-i18n="p.nihongo.cat">日本語学習<br/>アプリ</span></div>
         <div class="p-body">
-          <h3><span>CastWise</span><span class="en">釣りナビ PRO · Fly Fishing Companion</span></h3>
-          <p data-i18n="p.cast.body">日本の渓流・管理釣り場向け。ハッチカレンダー、キャスティング教材、テンカラ解説、AI毛鉤選択。英語・日本語の完全バイリンガル。</p>
-          <div class="status" data-i18n="p.cast.status">販売中 · LIVE</div>
+          <h3><span>NihongoQuest</span><span class="en">Structured Japanese Learning</span></h3>
+          <p data-i18n="p.nihongo.body">5段階の構造化された日本語学習。AIが生成する問題、XP・ストリーク機能、習熟度に応じた復習。Duolingoを超える、本気の学習体験。</p>
+          <div class="status dev" data-i18n="p.nihongo.status">開発中 · IN DEVELOPMENT</div>
         </div>
         <div class="p-arrow">↗</div>
       </a>
       <a href="#" class="product">
         <div class="p-num">06</div>
+        <div class="p-cat"><span class="tag">Hardware</span><br/><span data-i18n="p.memoria.cat">AI追憶装置<br/>オフライン対応</span></div>
+        <div class="p-body">
+          <h3><span>Memoria</span><span class="en">Offline-first Remembrance Device</span></h3>
+          <p data-i18n="p.memoria.body">故人の声と記憶を保存し、家族が対話できる小型AI装置。仏壇文化と現代技術の融合。有田焼・八女提灯職人との連携も検討中。</p>
+          <div class="status dev" data-i18n="p.memoria.status">プロトタイプ · PROTOTYPE</div>
+        </div>
+        <div class="p-arrow">↗</div>
+      </a>
+      <a href="#" class="product">
+        <div class="p-num">07</div>
         <div class="p-cat"><span class="tag">Brand</span><br/><span data-i18n="p.aqua.cat">ビーチウェア<br/>アパレル</span></div>
         <div class="p-body">
           <h3><span>Aquanauts</span><span class="en">Beachwear &amp; Ocean Lifestyle</span></h3>
@@ -563,10 +576,11 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
       <div class="footer-col">
         <h4 data-i18n="footer.prod">製品 / Products</h4>
         <a href="https://chikugo-dispatch.vercel.app">DispatchOS</a>
+        <a href="https://castwise-fly.vercel.app" target="_blank" rel="noopener">CastWise</a>
+        <a href="#products">FaceMosaic</a>
+        <a href="#">AutoWatch</a>
         <a href="#">NihongoQuest</a>
         <a href="#">Memoria</a>
-        <a href="#">AutoWatch</a>
-        <a href="https://castwise-fly.vercel.app" target="_blank" rel="noopener">CastWise</a>
         <a href="#">Aquanauts</a>
       </div>
       <div class="footer-col">
@@ -596,13 +610,15 @@ const I18N = {
     "hero.meta":"佐賀県鳥栖市 · 個人事業主","hero.jp":"現場から生まれる、<br/>次世代の道具。","hero.en":"Tools, born on the ground.",
     "hero.lead":"九州・佐賀県鳥栖市発。物流、教育、エンターテイメント、伝統文化。<br/>現場で働く人たちが本当に必要とする、ソフトウェアとハードウェアを<br/>一つずつ、丁寧に作っています。",
     "hero.cta1":"製品を見る","hero.cta2":"お問い合わせ",
-    "stats.products":"販売中の製品","stats.countries":"在住経験国","stats.languages":"使用言語","stats.team":"チームメンバー",
+    "stats.products":"製品","stats.countries":"在住経験国","stats.languages":"使用言語","stats.team":"チームメンバー",
     "products.label":"製品一覧","products.title":"現場の課題から、<br/>一つひとつ。","products.titleEn":"One tool, one real problem.",
     "products.intro":"重松テックは、複数の業界の現場で実際に困っている人たちの話を聞き、ソフトウェアとハードウェアで解決策を作っています。派手な機能ではなく、毎日使える道具を。",
     "p.dispatch.cat":"運送業向け<br/>スマート配車","p.dispatch.body":"毎朝1〜2時間の手動配車を、AIが10秒で完了。車両×貨物マッチング、危険物判定、ドライバーモバイル、リアルタイム同期。日本の運送会社のために設計。","p.dispatch.status":"販売中 · LIVE",
     "p.nihongo.cat":"日本語学習<br/>アプリ","p.nihongo.body":"5段階の構造化された日本語学習。AIが生成する問題、XP・ストリーク機能、習熟度に応じた復習。Duolingoを超える、本気の学習体験。","p.nihongo.status":"開発中 · IN DEVELOPMENT",
     "p.memoria.cat":"AI追憶装置<br/>オフライン対応","p.memoria.body":"故人の声と記憶を保存し、家族が対話できる小型AI装置。仏壇文化と現代技術の融合。有田焼・八女提灯職人との連携も検討中。","p.memoria.status":"プロトタイプ · PROTOTYPE",
     "p.auto.cat":"車両管理<br/>メンテナンス","p.auto.body":"複数車両の整備記録・消耗品管理。グランツーリスモ風UIで、作業者が使いたくなる設計。軽自動車から大型トラックまで対応。","p.auto.status":"販売中 · LIVE",
+    "products.done":"完成 · SHIPPED","products.wip":"開発中 · IN PROGRESS",
+    "p.fm.cat":"映像編集<br/>プライバシー保護","p.fm.body":"DaVinci Resolve用プラグイン。映像内の顔を自動で検出し、残したい人以外の全員にモザイクをかけます。通行人のプライバシーを守りながら、街歩き動画を安心して公開。処理はすべてMac上で完結し、映像を外部に送りません。","p.fm.status":"完成 · 販売準備中",
     "p.cast.cat":"フライフィッシング<br/>コンパニオン","p.cast.body":"日本の渓流・管理釣り場向け。ハッチカレンダー、キャスティング教材、テンカラ解説、AI毛鉤選択。英語・日本語の完全バイリンガル。","p.cast.status":"販売中 · LIVE",
     "p.aqua.cat":"ビーチウェア<br/>アパレル","p.aqua.body":"深海の美学をテーマにしたビーチウェアブランド。アジア太平洋地域に向けた段階的な展開を計画中。","p.aqua.status":"立ち上げ準備中 · LAUNCHING",
     "philosophy.label":"理念 · PHILOSOPHY","philosophy.title":"作り手が、<br/>使い手でもあること。","philosophy.titleEn":"The builder is the user.",
@@ -629,13 +645,15 @@ const I18N = {
     "hero.meta":"Tosu, Saga · Sole Proprietor","hero.jp":"Tools born<br/>on the ground.","hero.en":"現場から生まれる、次世代の道具。",
     "hero.lead":"Built in Tosu, Saga Prefecture, Kyushu. Logistics, education, entertainment, tradition.<br/>Software and hardware for the people who do the real work — one tool at a time.",
     "hero.cta1":"See Products","hero.cta2":"Get in Touch",
-    "stats.products":"Products Shipping","stats.countries":"Countries Lived In","stats.languages":"Languages","stats.team":"Team Members",
+    "stats.products":"Products","stats.countries":"Countries Lived In","stats.languages":"Languages","stats.team":"Team Members",
     "products.label":"Products","products.title":"Real problems,<br/>one at a time.","products.titleEn":"現場の課題から、一つひとつ。",
     "products.intro":"Shigematsu Tech talks to people on the ground in multiple industries, and builds software and hardware solutions for them. Not flashy features — tools people use every day.",
     "p.dispatch.cat":"Logistics · SaaS<br/>AI Dispatch","p.dispatch.body":"1-2 hours of manual dispatch every morning, done by AI in 10 seconds. Vehicle-cargo matching, hazmat rules, driver mobile app, real-time sync. Built for Japan's logistics industry.","p.dispatch.status":"LIVE",
     "p.nihongo.cat":"EdTech<br/>Language Learning","p.nihongo.body":"Structured Japanese learning in 5 stages. AI-generated quizzes, XP and streaks, spaced repetition. A serious learning experience that goes beyond Duolingo.","p.nihongo.status":"IN DEVELOPMENT",
     "p.memoria.cat":"Hardware<br/>Offline AI","p.memoria.body":"A small offline-first AI device that preserves the voice and memories of the departed. Japanese ancestor veneration meets modern technology.","p.memoria.status":"PROTOTYPE",
     "p.auto.cat":"SaaS<br/>Fleet Management","p.auto.body":"Multi-vehicle maintenance and parts tracking. Gran Turismo-inspired UI designed so technicians actually want to use it. From kei-cars to heavy trucks.","p.auto.status":"LIVE",
+    "products.done":"Shipped","products.wip":"In progress",
+    "p.fm.cat":"Plugin<br/>Video Privacy","p.fm.body":"A DaVinci Resolve plugin that finds every face in your footage and mosaics everyone except the people you choose. Publish street vlogs without exposing bystanders. Runs entirely on your Mac — your footage never leaves it.","p.fm.status":"COMPLETE · LAUNCHING SOON",
     "p.cast.cat":"App<br/>Fly Fishing","p.cast.body":"For Japan's mountain streams and managed fisheries. Hatch calendar, casting tutorials, tenkara guide, AI fly selector. Fully bilingual EN/JP.","p.cast.status":"LIVE",
     "p.aqua.cat":"Brand<br/>Apparel","p.aqua.body":"A deep-ocean aesthetic beachwear brand with a phased Asia-Pacific growth strategy.","p.aqua.status":"LAUNCHING",
     "philosophy.label":"Philosophy","philosophy.title":"The builder<br/>is the user.","philosophy.titleEn":"作り手が、使い手でもあること。",
@@ -662,13 +680,15 @@ const I18N = {
     "hero.meta":"Tosu, Saga · Autónomo","hero.jp":"Herramientas<br/>del terreno.","hero.en":"現場から生まれる、次世代の道具。",
     "hero.lead":"Desde Tosu, Saga, Kyushu. Logística, educación, entretenimiento, tradición.<br/>Software y hardware para quienes hacen el trabajo real, una herramienta a la vez.",
     "hero.cta1":"Ver Productos","hero.cta2":"Contacto",
-    "stats.products":"Productos Activos","stats.countries":"Países Vividos","stats.languages":"Idiomas","stats.team":"Miembros del Equipo",
+    "stats.products":"Productos","stats.countries":"Países Vividos","stats.languages":"Idiomas","stats.team":"Miembros del Equipo",
     "products.label":"Productos","products.title":"Problemas reales,<br/>uno a la vez.","products.titleEn":"現場の課題から、一つひとつ。",
     "products.intro":"Shigematsu Tech habla con la gente de terreno en múltiples industrias y construye soluciones de software y hardware para ellos.",
     "p.dispatch.cat":"Logística · SaaS<br/>Despacho IA","p.dispatch.body":"1-2 horas de despacho manual cada mañana, ahora IA lo hace en 10 segundos.","p.dispatch.status":"EN VIVO",
     "p.nihongo.cat":"EdTech<br/>Idiomas","p.nihongo.body":"Aprendizaje estructurado del japonés en 5 etapas. IA, XP, rachas, repetición espaciada.","p.nihongo.status":"EN DESARROLLO",
     "p.memoria.cat":"Hardware<br/>IA Offline","p.memoria.body":"Dispositivo IA offline que preserva voz y memorias de seres queridos.","p.memoria.status":"PROTOTIPO",
     "p.auto.cat":"SaaS<br/>Flotas","p.auto.body":"Mantenimiento y repuestos multi-vehículo. Interfaz tipo Gran Turismo.","p.auto.status":"EN VIVO",
+    "products.done":"Terminados","products.wip":"En desarrollo",
+    "p.fm.cat":"Plugin<br/>Privacidad en Video","p.fm.body":"Plugin para DaVinci Resolve que detecta cada rostro y aplica mosaico a todos excepto a las personas que elijas. Publica vlogs callejeros sin exponer a los transeúntes. Todo se procesa en tu Mac.","p.fm.status":"COMPLETO · PRÓXIMAMENTE",
     "p.cast.cat":"App<br/>Pesca con Mosca","p.cast.body":"Para arroyos de Japón. Calendario de eclosión, tutoriales, guía tenkara, selector IA.","p.cast.status":"EN VIVO",
     "p.aqua.cat":"Marca<br/>Ropa","p.aqua.body":"Ropa de playa con estética de océano profundo y estrategia Asia-Pacífico.","p.aqua.status":"LANZANDO",
     "philosophy.label":"Filosofía","philosophy.title":"Quien construye,<br/>también usa.","philosophy.titleEn":"作り手が、使い手でもあること。",
