@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FaceMosaic — automatic face mosaic for DaVinci Resolve | 重松テック</title>
+<meta name="description" content="FaceMosaic mosaics every face in your footage except the people you choose. A DaVinci Resolve Studio script for Mac. ¥5,980 one-time. あなた以外、全員モザイク。">
+<meta property="og:title" content="FaceMosaic — Blur everyone. Except you.">
+<meta property="og:description" content="Automatic face mosaic for DaVinci Resolve. Keeps you and your crew visible. Runs on your Mac. ¥5,980 one-time.">
+<meta property="og:image" content="https://www.shigematsutech.com/facemosaic/hero.jpg">
+<meta property="og:url" content="https://www.shigematsutech.com/facemosaic.html">
+<link rel="canonical" href="https://www.shigematsutech.com/facemosaic.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&amp;family=IBM+Plex+Sans+JP:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0e0e10}
+a{color:#ff7a6e}a:hover{color:#ffa49b}
+</style>
+</head>
+<body>
+<div style="background: #0e0e10; color: #f2efe9; font-family: 'IBM Plex Sans JP', system-ui, sans-serif; font-size: 17px; line-height: 1.6; min-height: 100vh">
+
+<header style="max-width: 1160px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+  <a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #f2efe9">
+    <span aria-hidden="true" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; width: 26px; height: 26px">
+      <span style="background: #e5483b"></span><span style="background: #6b6b70"></span><span style="background: #e5483b"></span>
+      <span style="background: #6b6b70"></span><span style="background: #f2efe9"></span><span style="background: #6b6b70"></span>
+      <span style="background: #e5483b"></span><span style="background: #6b6b70"></span><span style="background: #e5483b"></span>
+    </span>
+    <span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 115%; font-size: 21px; letter-spacing: -0.01em">FaceMosaic</span>
+  </a>
+  <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-size: 15px">
+    <a href="#how" style="color: #c9c5bd; text-decoration: none">How it works</a>
+    <a href="#features" style="color: #c9c5bd; text-decoration: none">Features</a>
+    <a href="#faq" style="color: #c9c5bd; text-decoration: none">FAQ</a>
+    <a href="#buy" style="background: #d6453b; color: #ffffff; text-decoration: none; font-weight: 700; padding: 11px 18px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Buy — ¥5,980</a>
+  </nav>
+</header>
+
+<section id="top" style="max-width: 1160px; margin: 0 auto; padding: 56px 24px 40px">
+  <p style="margin: 0 0 18px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">A SCRIPT FOR DAVINCI RESOLVE STUDIO · INTEL MAC</p>
+  <h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 900; font-stretch: 112%; font-size: clamp(48px, 8vw, 104px); line-height: 0.95; letter-spacing: -0.03em">Blur everyone.<br><span style="color: #d6453b">Except you.</span></h1>
+  <p lang="ja" style="margin: 18px 0 0; font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; color: #d8d4cc">あなた以外、全員モザイク。</p>
+  <p style="margin: 24px 0 0; max-width: 640px; font-size: 19px; color: #c9c5bd">FaceMosaic learns your face once, then mosaics every stranger across your whole shoot. It runs on your own computer, straight from Resolve's Scripts menu.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px">
+    <a href="#buy" style="background: #d6453b; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 17px; padding: 15px 26px; border-radius: 10px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Buy FaceMosaic — ¥5,980</a>
+    <a href="#demo" style="border: 1.5px solid #4a4a50; color: #f2efe9; text-decoration: none; font-weight: 500; font-size: 17px; padding: 15px 26px; border-radius: 10px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Watch the 30-second demo</a>
+  </div>
+  <figure style="margin: 48px 0 0">
+    <img src="/facemosaic/hero.jpg" width="1280" height="720" alt="A parking-lot vlog frame: two strangers' faces are mosaicked and labelled stranger, while the creator's face stays visible and is labelled you, kept." style="width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid #2a2a2e">
+    <figcaption style="margin-top: 12px; font-size: 14px; color: #a8a49c">Real output from a 4K iPhone vlog. Strangers are mosaicked automatically, and the enrolled creator stays visible.</figcaption>
+  </figure>
+</section>
+
+<section style="border-top: 1px solid #222226; border-bottom: 1px solid #222226; background: #141417">
+  <div style="max-width: 1160px; margin: 0 auto; padding: 44px 24px; display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: baseline">
+    <h2 style="margin: 0; flex: 1 1 320px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: 30px; line-height: 1.15">Masking faces by hand eats your editing time.</h2>
+    <p style="margin: 0; flex: 2 1 420px; color: #c9c5bd">Film in public in Japan and strangers end up in every shot. Tracking each face with a mask, clip after clip, can take longer than the edit itself. FaceMosaic does that pass for your whole shoot in one run, and you just review it.</p>
+  </div>
+</section>
+
+<section id="how" style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 24px">
+  <p style="margin: 0 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">HOW IT WORKS</p>
+  <h2 style="margin: 0 0 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: clamp(32px, 4vw, 48px); line-height: 1.05">Three steps, all inside Resolve.</h2>
+  <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 20px">
+    <li style="flex: 1 1 300px; background: #16161a; border: 1px solid #2a2a2e; border-radius: 14px; padding: 28px">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #d6453b">01</span>
+      <h3 style="margin: 10px 0 8px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px">Teach it your face</h3>
+      <p style="margin: 0; color: #c9c5bd">Select a selfie clip and add yourself. FaceMosaic saves about 25 face photos. Add your crew or family the same way.</p>
+    </li>
+    <li style="flex: 1 1 300px; background: #16161a; border: 1px solid #2a2a2e; border-radius: 14px; padding: 28px">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #d6453b">02</span>
+      <h3 style="margin: 10px 0 8px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px">Select clips, tick who stays</h3>
+      <p style="margin: 0; color: #c9c5bd">Select clips in the Media Pool, or a whole bin. Tick the people to keep visible and press Start. Keep editing while it works.</p>
+    </li>
+    <li style="flex: 1 1 300px; background: #16161a; border: 1px solid #2a2a2e; border-radius: 14px; padding: 28px">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #d6453b">03</span>
+      <h3 style="margin: 10px 0 8px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px">Import and review</h3>
+      <p style="margin: 0; color: #c9c5bd">Mosaic copies land in their own bin, or swap straight into your timeline. Markers point you to the few spots worth a second look.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="features" style="max-width: 1160px; margin: 0 auto; padding: 72px 24px 24px">
+  <p style="margin: 0 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">FEATURES</p>
+  <h2 style="margin: 0 0 40px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: clamp(32px, 4vw, 48px); line-height: 1.05">Built for people who film in public.</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 36px 40px">
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">Your whole shoot in one run</h3>
+      <p style="margin: 0; color: #c9c5bd">Dozens of clips are batch-processed back to back. Finished clips are kept if you stop and restart.</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">Keeps you and your crew</h3>
+      <p style="margin: 0; color: #c9c5bd">Face recognition keeps enrolled people clear across the clip, even as they move or turn.</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">Nothing leaves your computer</h3>
+      <p style="margin: 0; color: #c9c5bd">Detection and recognition run fully offline. Your footage and face photos are never uploaded.</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">Review markers</h3>
+      <p style="margin: 0; color: #c9c5bd">Red marks a face left visible on a borderline match. Yellow marks a face that might be mosaicked by mistake.</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">Edit-ready files</h3>
+      <p style="margin: 0; color: #c9c5bd">Original audio, timecode and length are kept, and iPhone HLG color carries through. Export as ProRes, HEVC or H.264.</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">Ignores hands, wheels and look-alikes</h3>
+      <p style="margin: 0; color: #c9c5bd">Every large "face" is double-checked at several sizes, so hands, tires, engines and jackets don't get a mosaic by mistake.</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">You have the final say</h3>
+      <p style="margin: 0; color: #c9c5bd">Drop a marker named Keep on any mosaic you want gone and run it again. Re-renders skip the face search, so they're quick.</p>
+    </div>
+    <div style="flex: 1 1 300px">
+      <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 700">Classic TV-style mosaic</h3>
+      <p style="margin: 0; color: #c9c5bd">Coarse blocks that follow each face, padded to cover hair and forehead, in the look Japanese viewers expect.</p>
+    </div>
+  </div>
+</section>
+
+<section id="demo" style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 24px">
+  <p style="margin: 0 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">DEMO</p>
+  <h2 style="margin: 0 0 28px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: clamp(32px, 4vw, 48px); line-height: 1.05">See it on real footage.</h2>
+  <video controls playsinline preload="metadata" poster="/facemosaic/demo-poster.jpg" style="width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 14px; border: 1px solid #2a2a2e; background: #000"><source src="/facemosaic/demo.mp4" type="video/mp4"></video>
+</section>
+
+<section style="max-width: 1160px; margin: 0 auto; padding: 72px 24px 24px">
+  <div style="background: #16161a; border: 1px solid #2a2a2e; border-radius: 14px; padding: 32px; display: flex; flex-wrap: wrap; gap: 16px 40px">
+    <h2 style="margin: 0; flex: 1 1 260px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.2">An honest note</h2>
+    <p style="margin: 0; flex: 3 1 420px; color: #c9c5bd">No face detector catches everything. Faces in sharp profile, tiny faces far in the background and heavy motion blur can slip through. FaceMosaic mosaics any face it can't confidently match and marks borderline spots for you, but always scrub through your video before you publish.</p>
+  </div>
+</section>
+
+<section id="buy" style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 24px">
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: stretch">
+    <div style="flex: 1 1 380px; background: #d6453b; color: #ffffff; border-radius: 16px; padding: 40px">
+      <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em">ONE-TIME PURCHASE</p>
+      <p style="margin: 14px 0 6px; font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 64px; line-height: 1">¥5,980</p>
+      <p style="margin: 0 0 28px">License for 2 Macs. Move it to a new Mac any time. No subscription.</p>
+      <a href="https://buy.stripe.com/aFa7sL1yV31U5CVg8i9MY02" style="background: #0e0e10; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 17px; padding: 15px 26px; border-radius: 10px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Buy FaceMosaic</a>
+      <p style="margin: 18px 0 0; font-size: 14px; opacity: .9">Secure checkout by Stripe. Your license key appears right after payment, with the download link.</p>
+    </div>
+    <div style="flex: 1 1 380px; padding: 8px 0">
+      <h2 style="margin: 0 0 18px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 26px">Requirements</h2>
+      <ul style="margin: 0; padding-left: 20px; color: #c9c5bd; display: flex; flex-direction: column; gap: 10px">
+        <li>DaVinci Resolve Studio (tested on version 21)</li>
+        <li>An Intel Mac (Apple silicon version coming)</li>
+        <li>Windows isn't supported yet</li>
+        <li>About 300 MB of disk space, plus room for the output files</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 24px">
+  <p style="margin: 0 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: #a8a49c">FAQ</p>
+  <h2 style="margin: 0 0 32px; font-family: 'Archivo', sans-serif; font-weight: 800; font-stretch: 108%; font-size: clamp(32px, 4vw, 48px); line-height: 1.05">Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 0">
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">Is my footage uploaded anywhere?</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">No. Everything runs on your own Mac. Face photos stay in a folder in your home directory, and you can delete them any time.</p>
+    </details>
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">How long does it take?</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">On a test Intel Mac, 4K iPhone footage took roughly five to six times the clip's length. Speed depends on your Mac, the resolution and how many faces are in the shot.</p>
+    </details>
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">Can I keep more than one person visible?</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">Yes. Enroll each person once, then tick whoever should stay visible for that batch.</p>
+    </details>
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">Does it change my original clips?</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">Never. It writes new mosaic copies next to your originals, and you choose whether they replace the originals in your timeline.</p>
+    </details>
+    <details style="border-top: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">Does it work with the free version of Resolve?</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">FaceMosaic is built and tested for DaVinci Resolve Studio. The free version isn't supported.</p>
+    </details>
+    <details style="border-bottom: 1px solid #2a2a2e; padding: 20px 0">
+      <summary style="cursor: pointer; font-weight: 700; font-size: 18px; min-height: 44px; display: flex; align-items: center">I lost my license key, or need to move it</summary>
+      <p style="margin: 10px 0 0; color: #c9c5bd">To move it, open Workspace › Scripts › FaceMosaic - License on the old Mac and click Deactivate, then activate on the new one. Lost the key? <a href="/#contact">Contact us</a> with your purchase email.</p>
+    </details>
+  </div>
+</section>
+
+<footer style="max-width: 1160px; margin: 0 auto; padding: 72px 24px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: #a8a49c; font-size: 14px">
+  <span>© 2026 <a href="/" style="color: #a8a49c">Shigematsu Tech (重松テック)</a> · Tosu, Saga · <a href="/#contact" style="color: #a8a49c">Contact</a></span>
+  <span>DaVinci Resolve is a trademark of Blackmagic Design. FaceMosaic is not affiliated with Blackmagic Design.</span>
+</footer>
+
+</div>
+</body>
+</html>
