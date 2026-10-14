@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex"/>
+<title>FaceMosaic — ご購入ありがとうございます / Thank you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@500;700&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+<style>
+:root { --paper:#ffffff; --paper-2:#f6f4f0; --paper-3:#e4e0d8; --ink:#000; --ink-3:#3a3a38; --ink-4:#5a5a55; --red:#b91c27;
+  --serif:'Noto Serif JP',serif; --jp:'Noto Sans JP',sans-serif; --mono:'IBM Plex Mono',monospace; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--paper); color:var(--ink); font-family:var(--jp); line-height:1.7; border-left:4px solid var(--red); min-height:100vh; }
+.wrap { max-width:760px; margin:0 auto; padding:56px 24px 80px; }
+.top { display:flex; justify-content:space-between; align-items:center; margin-bottom:48px; gap:16px; flex-wrap:wrap; }
+.logo { font-family:var(--serif); font-weight:900; font-size:20px; color:var(--ink); text-decoration:none; }
+.lang button { font-family:var(--mono); font-size:12px; font-weight:700; background:none; border:none; padding:4px 8px; cursor:pointer; color:var(--ink-4); }
+.lang button.on { color:var(--red); border-bottom:2px solid var(--red); }
+.label { font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.16em; color:var(--red); text-transform:uppercase; margin-bottom:12px; }
+h1 { font-family:var(--serif); font-weight:900; font-size:clamp(32px,6vw,52px); line-height:1.1; margin-bottom:16px; }
+.lead { font-size:18px; font-weight:500; color:var(--ink); margin-bottom:40px; }
+.keybox { border:2px solid var(--ink); padding:28px; margin-bottom:48px; }
+.keybox .k { font-family:var(--mono); font-size:clamp(15px,3.6vw,22px); font-weight:700; word-break:break-all; margin:10px 0 18px; user-select:all; }
+.btn { display:inline-flex; align-items:center; gap:8px; background:var(--ink); color:#fff; border:none; padding:14px 22px; font-family:var(--jp); font-size:16px; font-weight:700; cursor:pointer; border-radius:2px; text-decoration:none; }
+.btn:hover { background:var(--red); }
+.note { font-size:14px; color:var(--ink-3); margin-top:14px; }
+.err { border-left:3px solid var(--red); background:var(--paper-2); padding:16px 18px; font-size:16px; margin-bottom:48px; }
+ol li a { color:var(--ink); text-decoration-color:var(--red); text-underline-offset:3px; }
+ol { list-style:none; counter-reset:s; border-top:1px solid var(--ink); }
+ol li { counter-increment:s; display:grid; grid-template-columns:48px 1fr; gap:12px; padding:22px 0; border-bottom:1px solid var(--paper-3); font-size:17px; font-weight:500; }
+ol li::before { content:counter(s,decimal-leading-zero); font-family:var(--mono); font-weight:700; color:var(--red); padding-top:2px; }
+ol li b { font-weight:700; }
+code { font-family:var(--mono); font-size:.92em; background:var(--paper-2); padding:1px 6px; }
+.foot { margin-top:56px; font-family:var(--mono); font-size:12px; color:var(--ink-4); }
+.foot a { color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="logo" href="/">重松テック</a>
+    <div class="lang"><button data-l="ja">JA</button><button data-l="en">EN</button><button data-l="es">ES</button></div>
+  </div>
+
+  <div class="label">FaceMosaic</div>
+  <h1 data-t="title"></h1>
+  <p class="lead" data-t="lead"></p>
+
+  <div id="box" class="keybox">
+    <div class="label" data-t="yourKey"></div>
+    <div id="key" class="k">…</div>
+    <button class="btn" id="copy" data-t="copy"></button>
+    <p class="note" data-t="keep"></p>
+  </div>
+
+  <div class="label" data-t="next"></div>
+  <ol>
+    <li><span data-t="s1"></span></li>
+    <li><span data-t="s2"></span></li>
+    <li><span data-t="s3"></span></li>
+    <li><span data-t="s4"></span></li>
+  </ol>
+
+  <p class="foot"><span data-t="help"></span> <a href="/#contact">shigematsutech.com/#contact</a> · TEL 070-5625-7249</p>
+</div>
+
+<script>
+const DL = "/downloads/FaceMosaic-mac.zip";
+const T = {
+  ja: { title:"ご購入ありがとうございます。", lead:"お支払いが完了しました。下のライセンスキーで FaceMosaic を有効化できます。",
+    yourKey:"ライセンスキー", copy:"キーをコピー", copied:"コピーしました ✓",
+    keep:"このキーは大切に保管してください。Mac 2台まで有効化できます。",
+    next:"使い方", s1:`<a href="${DL}"><b>FaceMosaic をダウンロード</b></a>して、ZIP を開きます。`,
+    s2:"<b>install.command</b> を右クリック →「開く」。インストールが終わったら DaVinci Resolve を再起動します。",
+    s3:"Resolve で <b>Workspace › Scripts › FaceMosaic - Process Selected Clips</b> を実行し、上のキーを貼り付けて「Activate」。",
+    s4:"残したい人を選んで「Start Mosaic」。それ以外の顔はすべて自動でモザイクになります。",
+    help:"キーが表示されない・ご質問は：", wait:"お支払いを確認しています…",
+    notpaid:"お支払いの確認がまだ取れていません。数十秒後にこのページを再読み込みしてください。",
+    bad:"購入情報が見つかりませんでした。下記までご連絡ください。" },
+  en: { title:"Thank you for your purchase.", lead:"Your payment went through. Use the license key below to activate FaceMosaic.",
+    yourKey:"Your license key", copy:"Copy key", copied:"Copied ✓",
+    keep:"Keep this key somewhere safe. It activates FaceMosaic on up to 2 Macs.",
+    next:"Getting started", s1:`<a href="${DL}"><b>Download FaceMosaic</b></a> and open the ZIP.`,
+    s2:"Right-click <b>install.command</b> → Open. When it finishes, restart DaVinci Resolve.",
+    s3:"In Resolve run <b>Workspace › Scripts › FaceMosaic - Process Selected Clips</b>, paste the key above and click Activate.",
+    s4:"Tick the people to keep and press Start Mosaic. Every other face is mosaicked automatically.",
+    help:"No key showing, or questions?", wait:"Confirming your payment…",
+    notpaid:"We can't confirm the payment yet. Reload this page in a few seconds.",
+    bad:"We couldn't find this purchase. Please contact us below." },
+  es: { title:"Gracias por tu compra.", lead:"Tu pago se completó. Usa la clave de licencia de abajo para activar FaceMosaic.",
+    yourKey:"Tu clave de licencia", copy:"Copiar clave", copied:"Copiada ✓",
+    keep:"Guarda esta clave en un lugar seguro. Activa FaceMosaic en hasta 2 Macs.",
+    next:"Cómo empezar", s1:`<a href="${DL}"><b>Descarga FaceMosaic</b></a> y abre el ZIP.`,
+    s2:"Clic derecho en <b>install.command</b> → Abrir. Al terminar, reinicia DaVinci Resolve.",
+    s3:"En Resolve ejecuta <b>Workspace › Scripts › FaceMosaic - Process Selected Clips</b>, pega la clave y pulsa Activate.",
+    s4:"Marca a las personas que quieres mostrar y pulsa Start Mosaic. Todos los demás rostros reciben mosaico automáticamente.",
+    help:"¿No aparece la clave o tienes preguntas?", wait:"Confirmando tu pago…",
+    notpaid:"Aún no podemos confirmar el pago. Recarga esta página en unos segundos.",
+    bad:"No encontramos esta compra. Contáctanos abajo." },
+};
+let lang = (() => { try { const s = localStorage.getItem("fm-lang"); if (T[s]) return s; } catch (e) {}
+  const n = (navigator.language || "ja").slice(0, 2); return T[n] ? n : "en"; })();
+let state = "wait", key = "";
+function render() {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = t[el.dataset.t] || ""; });
+  document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("on", b.dataset.l === lang));
+  const box = document.getElementById("box");
+  if (state === "ok") { document.getElementById("key").textContent = key; }
+  else if (state === "wait") { document.getElementById("key").textContent = t.wait; }
+  else { box.className = "err"; box.textContent = t[state]; document.querySelector(".lead").textContent = ""; }
+}
+document.querySelectorAll(".lang button").forEach(b => b.onclick = () => {
+  lang = b.dataset.l; try { localStorage.setItem("fm-lang", lang); } catch (e) {} render(); });
+document.addEventListener("click", e => {
+  if (e.target.id !== "copy" || !key) return;
+  navigator.clipboard.writeText(key).then(() => { e.target.textContent = T[lang].copied; });
+});
+render();
+const sid = new URLSearchParams(location.search).get("session_id");
+if (!sid) { state = "bad"; render(); }
+else fetch("/api/fm/claim?session_id=" + encodeURIComponent(sid))
+  .then(r => r.json().then(j => [r.status, j]))
+  .then(([s, j]) => { if (j.key) { key = j.key; state = "ok"; } else state = s === 402 ? "notpaid" : "bad"; render(); })
+  .catch(() => { state = "notpaid"; render(); });
+</script>
+</body>
+</html>
