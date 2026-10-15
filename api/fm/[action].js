@@ -19,6 +19,11 @@
 //   FM_LICENSE_SECRET    random string (makes keys unforgeable) — never change it after launch
 //   FM_RESPONSE_SECRET   random string, also stamped into the release build
 //   FM_MAX_MACS          optional, default 2
+//   FM_ADMIN_TOKEN       random string; lets the owner mint free ("comp") keys:  POST comp  label=<name>  (Bearer token)
+//   FM_REVOKED           optional, comma-separated comp labels that no longer work
+//
+// Free keys look like FMC-<label>-<10-char HMAC>. They aren't tied to a payment, work on any number of
+// computers, and are switched off by adding the label to FM_REVOKED.
 
 const crypto = require("crypto");
 
@@ -60,6 +65,36 @@ function keyToPi(key) {
   const want = makeKey(pi);
   const a = Buffer.from(want), b = Buffer.from(String(key).trim());
   return a.length === b.length && crypto.timingSafeEqual(a, b) ? pi : null;
+}
+
+function compKey(label) {
+  const tag = hmac(process.env.FM_LICENSE_SECRET, "fm-comp:" + label).slice(0, 10).toUpperCase();
+  return `FMC-${label}-${tag}`;
+}
+
+// free key -> label, or null
+function keyToComp(key) {
+  const m = /^FMC-([a-z0-9][a-z0-9-]{0,39})-([0-9A-F]{10})$/.exec(String(key || "").trim());
+  if (!m) return null;
+  const a = Buffer.from(compKey(m[1])), b = Buffer.from(String(key).trim());
+  return a.length === b.length && crypto.timingSafeEqual(a, b) ? m[1] : null;
+}
+
+function compRevoked(label) {
+  return (process.env.FM_REVOKED || "").split(",").map((s) => s.trim().toLowerCase()).includes(label);
+}
+
+async function comp(req, res) {
+  const want = process.env.FM_ADMIN_TOKEN || "";
+  const got = String(req.headers.authorization || "").replace(/^Bearer\s+/i, "");
+  const a = Buffer.from(want), b = Buffer.from(got);
+  if (want.length < 32 || a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
+    return res.status(401).json({ error: "not allowed" });
+  }
+  const label = String((req.body || {}).label || "").toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
+  if (!label) return res.status(400).json({ error: "give the key a name, e.g. label=taro" });
+  return res.json({ key: compKey(label), label, revoke_with: `add "${label}" to FM_REVOKED in Vercel` });
 }
 
 function machinesOf(pi) {
@@ -123,6 +158,19 @@ async function licenseAction(action, req, res) {
   const nonce = String(b.nonce || "");
   const reply = (ok, body) => res.json({ ...body, sig: sign(nonce, action, ok, key) });
 
+  const label = keyToComp(key);
+  if (label) {   // free key: no payment behind it, no per-computer limit
+    const ok = !compRevoked(label);
+    const info = { status: ok ? "active" : "disabled", activation_usage: 1, activation_limit: "unlimited" };
+    if (action === "activate") {
+      const id = String(b.machine || "").replace(/[^a-f0-9]/g, "").slice(0, 16);
+      return reply(ok, ok ? { activated: true, instance: { id }, license_key: info }
+                          : { activated: false, error: "license disabled", license_key: info });
+    }
+    if (action === "validate") return reply(ok, { valid: ok, license_key: info, error: ok ? null : "license disabled" });
+    return reply(true, { deactivated: true, license_key: info });
+  }
+
   const pi = await loadPi(key);
   const status = licenseStatus(pi);
   if (status === "invalid") {
@@ -166,6 +214,7 @@ module.exports = async (req, res) => {
       return res.status(503).json({ error: "licensing not configured" });
     }
     if (action === "claim" && req.method === "GET") return await claim(req, res);
+    if (action === "comp" && req.method === "POST") return await comp(req, res);
     if (["activate", "validate", "deactivate"].includes(action) && req.method === "POST") {
       return await licenseAction(action, req, res);
     }
