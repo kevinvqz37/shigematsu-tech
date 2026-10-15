@@ -67,13 +67,13 @@ code { font-family:var(--mono); font-size:.92em; background:var(--paper-2); padd
 </div>
 
 <script>
-const DL = "/downloads/FaceMosaic-mac.zip";
+const DL = "/downloads/FaceMosaic-mac.zip", DLW = "/downloads/FaceMosaic-windows.zip";
 const T = {
   ja: { title:"ご購入ありがとうございます。", lead:"お支払いが完了しました。下のライセンスキーで FaceMosaic を有効化できます。",
     yourKey:"ライセンスキー", copy:"キーをコピー", copied:"コピーしました ✓",
     keep:"このキーは大切に保管してください。Mac 2台まで有効化できます。",
-    next:"使い方", s1:`<a href="${DL}"><b>FaceMosaic をダウンロード</b></a>して、ZIP を開きます。`,
-    s2:"<b>install.command</b> を右クリック →「開く」。インストールが終わったら DaVinci Resolve を再起動します。",
+    next:"使い方", s1:`FaceMosaic をダウンロードして ZIP を開きます：<a href="${DL}"><b>Mac 版</b></a> ／ <a href="${DLW}"><b>Windows 版（ベータ）</b></a>`,
+    s2:"Mac：<b>install.command</b> を右クリック →「開く」。Windows：ZIP を「すべて展開」して <b>install.bat</b> をダブルクリック。終わったら DaVinci Resolve を再起動します。",
     s3:"Resolve で <b>Workspace › Scripts › FaceMosaic - Process Selected Clips</b> を実行し、上のキーを貼り付けて「Activate」。",
     s4:"残したい人を選んで「Start Mosaic」。それ以外の顔はすべて自動でモザイクになります。",
     help:"キーが表示されない・ご質問は：", wait:"お支払いを確認しています…",
@@ -82,8 +82,8 @@ const T = {
   en: { title:"Thank you for your purchase.", lead:"Your payment went through. Use the license key below to activate FaceMosaic.",
     yourKey:"Your license key", copy:"Copy key", copied:"Copied ✓",
     keep:"Keep this key somewhere safe. It activates FaceMosaic on up to 2 Macs.",
-    next:"Getting started", s1:`<a href="${DL}"><b>Download FaceMosaic</b></a> and open the ZIP.`,
-    s2:"Right-click <b>install.command</b> → Open. When it finishes, restart DaVinci Resolve.",
+    next:"Getting started", s1:`Download FaceMosaic and open the ZIP: <a href="${DL}"><b>Mac</b></a> / <a href="${DLW}"><b>Windows (beta)</b></a>`,
+    s2:"Mac: right-click <b>install.command</b> → Open. Windows: Extract All, then double-click <b>install.bat</b>. When it finishes, restart DaVinci Resolve.",
     s3:"In Resolve run <b>Workspace › Scripts › FaceMosaic - Process Selected Clips</b>, paste the key above and click Activate.",
     s4:"Tick the people to keep and press Start Mosaic. Every other face is mosaicked automatically.",
     help:"No key showing, or questions?", wait:"Confirming your payment…",
@@ -92,8 +92,8 @@ const T = {
   es: { title:"Gracias por tu compra.", lead:"Tu pago se completó. Usa la clave de licencia de abajo para activar FaceMosaic.",
     yourKey:"Tu clave de licencia", copy:"Copiar clave", copied:"Copiada ✓",
     keep:"Guarda esta clave en un lugar seguro. Activa FaceMosaic en hasta 2 Macs.",
-    next:"Cómo empezar", s1:`<a href="${DL}"><b>Descarga FaceMosaic</b></a> y abre el ZIP.`,
-    s2:"Clic derecho en <b>install.command</b> → Abrir. Al terminar, reinicia DaVinci Resolve.",
+    next:"Cómo empezar", s1:`Descarga FaceMosaic y abre el ZIP: <a href="${DL}"><b>Mac</b></a> / <a href="${DLW}"><b>Windows (beta)</b></a>`,
+    s2:"Mac: clic derecho en <b>install.command</b> → Abrir. Windows: Extraer todo y doble clic en <b>install.bat</b>. Al terminar, reinicia DaVinci Resolve.",
     s3:"En Resolve ejecuta <b>Workspace › Scripts › FaceMosaic - Process Selected Clips</b>, pega la clave y pulsa Activate.",
     s4:"Marca a las personas que quieres mostrar y pulsa Start Mosaic. Todos los demás rostros reciben mosaico automáticamente.",
     help:"¿No aparece la clave o tienes preguntas?", wait:"Confirmando tu pago…",
