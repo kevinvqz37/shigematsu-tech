@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/demo", "destination": "https://chikugo-dispatch.vercel.app/demo.html", "permanent": false },
+    { "source": "/trial", "destination": "https://chikugo-dispatch.vercel.app/trial", "permanent": false }
+  ]
+}
