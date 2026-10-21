@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
   <!-- SEO -->
-  <meta name="description" content="佐賀県鳥栖市発。トラック運転手が作ったAI配車SaaS「DispatchOS」を開発・提供。九州の運送会社向け。14日間無料トライアル。"/>
+  <meta name="description" content="佐賀県鳥栖市発。トラック運転手が作ったAI配車SaaS「DispatchOS」を開発・提供。九州の運送会社向け。実証実験パートナー募集中・最初の6ヶ月間無料。"/>
   <meta name="robots" content="index, follow"/>
   <meta name="author" content="重松テック / Shigematsu Tech"/>
   <meta name="geo.region" content="JP-41"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="重松テック | AI配車システム DispatchOS"/>
-  <meta property="og:description" content="佐賀県鳥栖市発。トラック運転手が作ったAI配車SaaS「DispatchOS」を開発・提供。九州の運送会社向け。14日間無料トライアル。"/>
+  <meta property="og:description" content="佐賀県鳥栖市発。トラック運転手が作ったAI配車SaaS「DispatchOS」を開発・提供。九州の運送会社向け。実証実験パートナー募集中・最初の6ヶ月間無料。"/>
   <meta property="og:url" content="https://www.shigematsutech.com/"/>
   <meta property="og:image" content="https://www.shigematsutech.com/og-image.png"/>
   <meta property="og:image:width" content="1200"/>
@@ -17,7 +17,7 @@
   <meta property="og:site_name" content="重松テック / Shigematsu Tech"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="重松テック | AI配車システム DispatchOS"/>
-  <meta name="twitter:description" content="佐賀県鳥栖市発。トラック運転手が作ったAI配車SaaS「DispatchOS」を開発・提供。九州の運送会社向け。14日間無料トライアル。"/>
+  <meta name="twitter:description" content="佐賀県鳥栖市発。トラック運転手が作ったAI配車SaaS「DispatchOS」を開発・提供。九州の運送会社向け。実証実験パートナー募集中・最初の6ヶ月間無料。"/>
   <meta name="twitter:image" content="https://www.shigematsutech.com/og-image.png"/>
   <link rel="canonical" href="https://www.shigematsutech.com/"/>
   <link rel="alternate" hreflang="ja" href="https://www.shigematsutech.com/"/>
@@ -34,7 +34,7 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>重松テック / Shigematsu Tech — AI配車・ソフトウェア開発 | 佐賀県鳥栖市</title>
+<title>運送会社向けAI配車システム DispatchOS | 重松テック（佐賀県鳥栖市）</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -238,6 +238,9 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .hero-plate { display: none; }
+  .hero h1 { font-size: 42px; line-height: 1.1; }
+  .hero h1 .en { font-size: 24px; }
+  .hero-tel a { font-size: 18px; }
   .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .product { grid-template-columns: 40px 1fr; gap: 20px; }
   .product .p-cat, .product .p-arrow { display: none; }
@@ -256,6 +259,11 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
   .burger { display: flex; }
 }
 .hide { display: none !important; }
+.nav-tel { font-family: var(--mono) !important; font-size: 14px !important; white-space: nowrap; }
+.hero-tel { font-family: var(--jp); font-size: 16px; font-weight: 500; margin-top: 24px; color: var(--ink); opacity: 0; animation: rise .7s cubic-bezier(.2,.6,.2,1) .45s forwards; }
+.hero-tel a { white-space: nowrap; font-family: var(--mono); font-weight: 700; font-size: 20px; border-bottom: 2px solid var(--red); margin: 0 4px; }
+.hero-tel-note { font-size: 13px; color: var(--ink-4); }
+.stat-val { white-space: nowrap; }
 .fm-strip { display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:18px 36px; background:#0e0e10; color:#f2efe9; text-decoration:none; border-top:1px solid #000; }
 .fm-strip:hover .fm-go { color:#ff7a6e; }
 .fm-new { font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.14em; background:var(--red); color:#fff; padding:3px 8px; border-radius:2px; }
@@ -282,7 +290,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
   <span lang="ja">実証実験パートナー募集中 · 最初の6ヶ月間 完全無料</span>
   <span style="margin:0 10px;opacity:.5;">|</span>
   <span lang="en" style="opacity:.85;">PoC partners wanted · First 6 months free</span>
-  <a href="https://chikugo-dispatch.vercel.app/demo.html" target="_blank" rel="noopener" style="
+  <a href="https://chikugo-dispatch.vercel.app/trial" target="_blank" rel="noopener" style="
     display:inline-block;
     margin-left:14px;
     background:#fff;
@@ -311,11 +319,11 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
       <span lang="ja">重松テック</span>
     </div>
     <div class="nav-links" id="nav-links">
-      <a href="/facemosaic-ja.html" data-href-ja="/facemosaic-ja.html" data-href-en="/facemosaic.html" data-href-es="/facemosaic.html" style="color:var(--red)">FaceMosaic <span style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;border:1px solid var(--red);padding:1px 5px;border-radius:2px;vertical-align:2px">NEW</span></a>
       <a href="#products" data-i18n="nav.products">製品</a>
       <a href="#philosophy" data-i18n="nav.philosophy">理念</a>
       <a href="#team" data-i18n="nav.team">チーム</a>
       <a href="#contact" data-i18n="nav.contact">お問い合わせ</a>
+      <a href="tel:07056257249" class="nav-tel">☎ 070-5625-7249</a>
       <div class="lang">
         <button class="active" onclick="setLang('ja')">JA</button>
         <button onclick="setLang('en')">EN</button>
@@ -336,45 +344,38 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
       <div class="hero-meta">
         <span>REG. 2025</span>
         <span class="dash"></span>
-        <span data-i18n="hero.meta">佐賀県鳥栖市 · 個人事業主</span>
+        <span data-i18n="hero.meta">運送会社向け配車システム · 佐賀県鳥栖市</span>
         <span class="dash"></span>
         <span>SAGA, JP</span>
       </div>
       <h1>
-        <span data-i18n="hero.jp">現場から生まれる、<br/>次世代の道具。</span>
-        <span class="en" data-i18n="hero.en">Tools, born on the ground.</span>
+        <span data-i18n="hero.jp">毎朝の配車を、<br/>AIで10秒に。</span>
+        <span class="en" data-i18n="hero.en">AI dispatch for Kyushu trucking.</span>
       </h1>
       <p class="hero-lead" data-i18n="hero.lead">
-        九州・佐賀県鳥栖市発。物流、教育、エンターテイメント、伝統文化。<br/>
-        現場で働く人たちが本当に必要とする、ソフトウェアとハードウェアを<br/>
-        一つずつ、丁寧に作っています。
+        DispatchOS（ディスパッチOS）は、現役のトラックドライバーが作った運送会社向けの配車システムです。<br/>
+        ホワイトボードと電話の配車を、AIとスマホに置き換えます。実証実験パートナーは最初の6ヶ月間 完全無料。
       </p>
       <div class="hero-actions">
-        <a href="#products" class="btn btn-primary">
-          <span data-i18n="hero.cta1">製品を見る</span>
+        <a href="https://chikugo-dispatch.vercel.app/trial" class="btn btn-primary">
+          <span data-i18n="hero.cta1">6ヶ月無料で試す</span>
           <span class="arrow">→</span>
         </a>
-        <a href="#contact" class="btn btn-ghost" data-i18n="hero.cta2">お問い合わせ</a>
+        <a href="https://chikugo-dispatch.vercel.app/demo.html" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="hero.cta2">デモを見る（音声つき）</a>
       </div>
+      <p class="hero-tel"><span data-i18n="hero.tel">お電話でのお問い合わせ</span> <a href="tel:07056257249">070-5625-7249</a> <span class="hero-tel-note" data-i18n="hero.telnote">（不在時は折り返しご連絡します）</span></p>
     </div>
     <div class="hero-plate">SHIGEMATSU TECH · EST. 2025 · KYUSHU</div>
   </div>
 </section>
 
-<!-- FACEMOSAIC LAUNCH -->
-<a href="/facemosaic-ja.html" data-href-ja="/facemosaic-ja.html" data-href-en="/facemosaic.html" data-href-es="/facemosaic.html" class="fm-strip">
-  <span class="fm-new">NEW</span>
-  <span class="fm-txt"><b>FaceMosaic</b> <span data-i18n="fm.strip">— あなた以外、全員モザイク。DaVinci Resolve用 顔の自動モザイク ¥5,980</span></span>
-  <span class="fm-go" data-i18n="fm.go">詳しく見る →</span>
-</a>
-
 <!-- STATS -->
 <div class="stats">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-val">07</div><div class="stat-lbl" data-i18n="stats.products">Products</div></div>
-    <div class="stat"><div class="stat-val">05</div><div class="stat-lbl" data-i18n="stats.countries">Countries Lived In</div></div>
-    <div class="stat"><div class="stat-val">03</div><div class="stat-lbl" data-i18n="stats.languages">Languages</div></div>
-    <div class="stat"><div class="stat-val">02</div><div class="stat-lbl" data-i18n="stats.team">Team Members</div></div>
+    <div class="stat"><div class="stat-val">10秒</div><div class="stat-lbl" data-i18n="stats.s1">AIが配車を作成</div></div>
+    <div class="stat"><div class="stat-val">¥0</div><div class="stat-lbl" data-i18n="stats.s2">最初の6ヶ月間</div></div>
+    <div class="stat"><div class="stat-val">不要</div><div class="stat-lbl" data-i18n="stats.s3">ドライバーのアプリ</div></div>
+    <div class="stat"><div class="stat-val">無償</div><div class="stat-lbl" data-i18n="stats.s4">九州は訪問設定</div></div>
   </div>
 </div>
 
@@ -419,18 +420,18 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
         </div>
         <div class="p-arrow">↗</div>
       </a>
-      <a href="#" class="product">
+      <div class="p-group" data-i18n="products.wip">開発中 · IN PROGRESS</div>
+      <div class="product">
         <div class="p-num">04</div>
         <div class="p-cat"><span class="tag">SaaS</span><br/><span data-i18n="p.auto.cat">車両管理<br/>メンテナンス</span></div>
         <div class="p-body">
           <h3><span>AutoWatch</span><span class="en">Vehicle Maintenance Tracker</span></h3>
           <p data-i18n="p.auto.body">複数車両の整備記録・消耗品管理。グランツーリスモ風UIで、作業者が使いたくなる設計。軽自動車から大型トラックまで対応。</p>
-          <div class="status" data-i18n="p.auto.status">販売中 · IN DEVELOPMENT</div>
+          <div class="status dev" data-i18n="p.auto.status">開発中 · IN DEVELOPMENT</div>
         </div>
-        <div class="p-arrow">↗</div>
-      </a>
-      <div class="p-group" data-i18n="products.wip">開発中 · IN PROGRESS</div>
-      <a href="#" class="product">
+        <div class="p-arrow"></div>
+      </div>
+      <div class="product">
         <div class="p-num">05</div>
         <div class="p-cat"><span class="tag">EdTech</span><br/><span data-i18n="p.nihongo.cat">日本語学習<br/>アプリ</span></div>
         <div class="p-body">
@@ -438,9 +439,9 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
           <p data-i18n="p.nihongo.body">5段階の構造化された日本語学習。AIが生成する問題、XP・ストリーク機能、習熟度に応じた復習。Duolingoを超える、本気の学習体験。</p>
           <div class="status dev" data-i18n="p.nihongo.status">開発中 · IN DEVELOPMENT</div>
         </div>
-        <div class="p-arrow">↗</div>
-      </a>
-      <a href="#" class="product">
+        <div class="p-arrow"></div>
+      </div>
+      <div class="product">
         <div class="p-num">06</div>
         <div class="p-cat"><span class="tag">Hardware</span><br/><span data-i18n="p.memoria.cat">AI追憶装置<br/>オフライン対応</span></div>
         <div class="p-body">
@@ -448,9 +449,9 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
           <p data-i18n="p.memoria.body">故人の声と記憶を保存し、家族が対話できる小型AI装置。仏壇文化と現代技術の融合。有田焼・八女提灯職人との連携も検討中。</p>
           <div class="status dev" data-i18n="p.memoria.status">プロトタイプ · PROTOTYPE</div>
         </div>
-        <div class="p-arrow">↗</div>
-      </a>
-      <a href="#" class="product">
+        <div class="p-arrow"></div>
+      </div>
+      <div class="product">
         <div class="p-num">07</div>
         <div class="p-cat"><span class="tag">Brand</span><br/><span data-i18n="p.aqua.cat">ビーチウェア<br/>アパレル</span></div>
         <div class="p-body">
@@ -458,8 +459,8 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
           <p data-i18n="p.aqua.body">深海の美学をテーマにしたビーチウェアブランド。アジア太平洋地域に向けた段階的な展開を計画中。ソフトウェアとハードウェアだけが技術ではない。</p>
           <div class="status dev" data-i18n="p.aqua.status">立ち上げ準備中 · LAUNCHING</div>
         </div>
-        <div class="p-arrow">↗</div>
-      </a>
+        <div class="p-arrow"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -473,7 +474,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
       <span class="small" data-i18n="philosophy.titleEn">The builder is the user.</span>
     </h2>
     <div class="values">
-      <div class="value"><div class="v-num">01</div><h3 data-i18n="v1.title">現場主義</h3><p data-i18n="v1.body">代表自身がトラックドライバーとして日々JR・港湾コンテナ・危険物タンクを運んでいます。DispatchOSは、自分の配車表を改善するために書かれた最初の一行から生まれました。</p></div>
+      <div class="value"><div class="v-num">01</div><h3 data-i18n="v1.title">現場主義</h3><p data-i18n="v1.body">代表自身が現役のトラックドライバーとして、毎日現場を走っています。DispatchOSは、自分の配車表を改善するために書かれた最初の一行から生まれました。</p></div>
       <div class="value"><div class="v-num">02</div><h3 data-i18n="v2.title">丁寧な製品</h3><p data-i18n="v2.body">速く作ることよりも、正しく作ること。バグ、UI、日本語、すべての細部を大切にします。お客様のデータを預かる以上、信頼に値する品質が必要です。</p></div>
       <div class="value"><div class="v-num">03</div><h3 data-i18n="v3.title">地域への還元</h3><p data-i18n="v3.body">九州エリアの企業様には、無料の訪問セットアップを提供します。地元の仏壇職人、焼き物職人、技術者との協働で、新しい日本の道具を作ります。</p></div>
     </div>
@@ -500,7 +501,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
           <h3>Kevin O. Matta</h3>
           <div class="role" data-i18n="kevin.role">代表 · 個人事業主 / Founder</div>
           <p data-i18n="kevin.p1">プエルトリコ出身。5カ国で働き、船長、カヤックインストラクター、英語教師、足場職人、マルチメディアプロデューサー、そして今はトラック運転手。</p>
-          <p data-i18n="kevin.p2">佐賀県鳥栖市在住。筑後運送で日々JRコンテナ・危険物タンクを運びながら、夜にコードを書いています。</p>
+          <p data-i18n="kevin.p2">佐賀県鳥栖市在住。筑後運送でトラックを運転しながら、夜にコードを書いています。</p>
           <div class="member-tags">
             <span class="member-tag">🇵🇷 Puerto Rico</span>
             <span class="member-tag">🇺🇸 USA</span>
@@ -553,16 +554,18 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
         <div class="contact-item"><span class="label">Regional</span><span class="value" data-i18n="contact.reg">九州の企業様は訪問サポート無償<br/>Free in-person setup for Kyushu companies</span></div>
         <div class="contact-item"><span class="label">Reach</span><span class="value" data-i18n="contact.reach">事業提携・投資相談・受託開発<br/>Partnership, investment, custom dev</span></div>
         <div class="contact-item"><span class="label">Response</span><span class="value" data-i18n="contact.resp">2営業日以内<br/>Within 2 business days</span></div>
+        <div class="contact-item"><span class="label">TEL</span><span class="value"><a href="tel:07056257249" style="border-bottom:1px solid var(--ink)">070-5625-7249</a><br/><span data-i18n="contact.telnote">不在時は折り返しご連絡します</span></span></div>
+        <div class="contact-item"><span class="label">FAX</span><span class="value">050-5306-7525</span></div>
         <div class="contact-item"><span class="label">日本語</span><span class="value">重松佐紀まで<br/>saki@shigematsutech.com</span></div>
       </div>
       <div class="contact-form">
         <div class="form-row two">
-          <div><label>Name *</label><input type="text" id="fn" required/></div>
-          <div><label>Company</label><input type="text" id="fc"/></div>
+          <div><label>お名前 / Name *</label><input type="text" id="fn" required/></div>
+          <div><label>会社名 / Company</label><input type="text" id="fc"/></div>
         </div>
-        <div class="form-row"><label>Email *</label><input type="email" id="fe" required/></div>
+        <div class="form-row"><label>メールアドレス / Email *</label><input type="email" id="fe" required/></div>
         <div class="form-row">
-          <label>Enquiry Type</label>
+          <label>お問い合わせ内容 / Type</label>
           <select id="ft">
             <option data-i18n="form.t1">DispatchOS について</option>
             <option data-i18n="form.t2">受託開発のご相談</option>
@@ -570,7 +573,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
             <option data-i18n="form.t4">その他</option>
           </select>
         </div>
-        <div class="form-row"><label>Message</label><textarea id="fm" rows="4" placeholder="..."></textarea></div>
+        <div class="form-row"><label>メッセージ / Message</label><textarea id="fm" rows="4" placeholder="..."></textarea></div>
         <button class="form-submit" onclick="submitForm()">
           <span data-i18n="form.send">送信する</span><span>→</span>
         </button>
@@ -594,10 +597,6 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
         <a href="https://chikugo-dispatch.vercel.app">DispatchOS</a>
         <a href="https://castwise-fly.vercel.app" target="_blank" rel="noopener">CastWise</a>
         <a href="/facemosaic-ja.html" data-href-ja="/facemosaic-ja.html" data-href-en="/facemosaic.html" data-href-es="/facemosaic.html">FaceMosaic</a>
-        <a href="#">AutoWatch</a>
-        <a href="#">NihongoQuest</a>
-        <a href="#">Memoria</a>
-        <a href="#">Aquanauts</a>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.co">会社 / Company</h4>
@@ -613,7 +612,7 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
       </div>
     </div>
     <div class="footer-bottom">
-            <div>© 2026 SHIGEMATSU TECH · KEVIN O. MATTA · 個人事業主<br/>TEL 070-5625-7249 · FAX 050-5306-7525</div>
+            <div>© 2026 SHIGEMATSU TECH · KEVIN O. MATTA · 個人事業主<br/>TEL <a href="tel:07056257249">070-5625-7249</a> · FAX 050-5306-7525</div>
       <div>MADE IN KYUSHU, 日本</div>
     </div>
   </div>
@@ -622,27 +621,34 @@ footer { background: var(--ink); color: var(--paper); padding: 64px 32px 24px 36
 <script>
 const I18N = {
   ja: {
+    "contact.telnote":"不在時は折り返しご連絡します",
+    "stats.s4":"九州は訪問設定",
+    "stats.s3":"ドライバーのアプリ",
+    "stats.s2":"最初の6ヶ月間",
+    "stats.s1":"AIが配車を作成",
+    "hero.telnote":"（不在時は折り返しご連絡します）",
+    "hero.tel":"お電話でのお問い合わせ",
     "nav.products":"製品","nav.philosophy":"理念","nav.team":"チーム","nav.contact":"お問い合わせ",
-    "hero.meta":"佐賀県鳥栖市 · 個人事業主","hero.jp":"現場から生まれる、<br/>次世代の道具。","hero.en":"Tools, born on the ground.",
-    "hero.lead":"九州・佐賀県鳥栖市発。物流、教育、エンターテイメント、伝統文化。<br/>現場で働く人たちが本当に必要とする、ソフトウェアとハードウェアを<br/>一つずつ、丁寧に作っています。",
-    "hero.cta1":"製品を見る","hero.cta2":"お問い合わせ",
+    "hero.meta":"運送会社向け配車システム · 佐賀県鳥栖市","hero.jp":"毎朝の配車を、<br/>AIで10秒に。","hero.en":"AI dispatch for Kyushu trucking.",
+    "hero.lead":"DispatchOS（ディスパッチOS）は、現役のトラックドライバーが作った運送会社向けの配車システムです。<br/>ホワイトボードと電話の配車を、AIとスマホに置き換えます。実証実験パートナーは最初の6ヶ月間 完全無料。",
+    "hero.cta1":"6ヶ月無料で試す","hero.cta2":"デモを見る（音声つき）",
     "fm.strip":"— あなた以外、全員モザイク。DaVinci Resolve用 顔の自動モザイク ¥5,980","fm.go":"詳しく見る →","stats.products":"製品","stats.countries":"在住経験国","stats.languages":"使用言語","stats.team":"チームメンバー",
     "products.label":"製品一覧","products.title":"現場の課題から、<br/>一つひとつ。","products.titleEn":"One tool, one real problem.",
     "products.intro":"重松テックは、複数の業界の現場で実際に困っている人たちの話を聞き、ソフトウェアとハードウェアで解決策を作っています。派手な機能ではなく、毎日使える道具を。",
     "p.dispatch.cat":"運送業向け<br/>スマート配車","p.dispatch.body":"毎朝1〜2時間の手動配車を、AIが10秒で完了。車両×貨物マッチング、危険物判定、ドライバーモバイル、リアルタイム同期。日本の運送会社のために設計。","p.dispatch.status":"販売中 · LIVE",
     "p.nihongo.cat":"日本語学習<br/>アプリ","p.nihongo.body":"5段階の構造化された日本語学習。AIが生成する問題、XP・ストリーク機能、習熟度に応じた復習。Duolingoを超える、本気の学習体験。","p.nihongo.status":"開発中 · IN DEVELOPMENT",
     "p.memoria.cat":"AI追憶装置<br/>オフライン対応","p.memoria.body":"故人の声と記憶を保存し、家族が対話できる小型AI装置。仏壇文化と現代技術の融合。有田焼・八女提灯職人との連携も検討中。","p.memoria.status":"プロトタイプ · PROTOTYPE",
-    "p.auto.cat":"車両管理<br/>メンテナンス","p.auto.body":"複数車両の整備記録・消耗品管理。グランツーリスモ風UIで、作業者が使いたくなる設計。軽自動車から大型トラックまで対応。","p.auto.status":"販売中 · LIVE",
+    "p.auto.cat":"車両管理<br/>メンテナンス","p.auto.body":"複数車両の整備記録・消耗品管理。グランツーリスモ風UIで、作業者が使いたくなる設計。軽自動車から大型トラックまで対応。","p.auto.status":"開発中 · IN DEVELOPMENT",
     "products.done":"完成 · SHIPPED","products.wip":"開発中 · IN PROGRESS",
     "p.fm.cat":"映像編集<br/>プライバシー保護","p.fm.body":"DaVinci Resolve用プラグイン。映像内の顔を自動で検出し、残したい人以外の全員にモザイクをかけます。通行人のプライバシーを守りながら、街歩き動画を安心して公開。処理はすべてMac上で完結し、映像を外部に送りません。","p.fm.status":"販売中 · ¥5,980 買い切り",
     "p.cast.cat":"フライフィッシング<br/>コンパニオン","p.cast.body":"日本の渓流・管理釣り場向け。ハッチカレンダー、キャスティング教材、テンカラ解説、AI毛鉤選択。英語・日本語の完全バイリンガル。","p.cast.status":"販売中 · LIVE",
     "p.aqua.cat":"ビーチウェア<br/>アパレル","p.aqua.body":"深海の美学をテーマにしたビーチウェアブランド。アジア太平洋地域に向けた段階的な展開を計画中。","p.aqua.status":"立ち上げ準備中 · LAUNCHING",
     "philosophy.label":"理念 · PHILOSOPHY","philosophy.title":"作り手が、<br/>使い手でもあること。","philosophy.titleEn":"The builder is the user.",
-    "v1.title":"現場主義","v1.body":"代表自身がトラックドライバーとして日々JR・港湾コンテナ・危険物タンクを運んでいます。DispatchOSは、自分の配車表を改善するために書かれた最初の一行から生まれました。",
+    "v1.title":"現場主義","v1.body":"代表自身が現役のトラックドライバーとして、毎日現場を走っています。DispatchOSは、自分の配車表を改善するために書かれた最初の一行から生まれました。",
     "v2.title":"丁寧な製品","v2.body":"速く作ることよりも、正しく作ること。バグ、UI、日本語、すべての細部を大切にします。お客様のデータを預かる以上、信頼に値する品質が必要です。",
     "v3.title":"地域への還元","v3.body":"九州エリアの企業様には、無料の訪問セットアップを提供します。地元の仏壇職人、焼き物職人、技術者との協働で、新しい日本の道具を作ります。",
     "team.label":"チーム · TEAM","team.title":"昼はトラック、<br/>夜はコード。","team.titleEn":"Trucks by day, code by night.",
-    "kevin.role":"代表 · 個人事業主 / Founder","kevin.p1":"プエルトリコ出身。5カ国で働き、船長、カヤックインストラクター、英語教師、足場職人、マルチメディアプロデューサー、そして今はトラック運転手。","kevin.p2":"佐賀県鳥栖市在住。筑後運送で日々JRコンテナ・危険物タンクを運びながら、夜にコードを書いています。","kevin.more":"略歴を見る / Full biography →",
+    "kevin.role":"代表 · 個人事業主 / Founder","kevin.p1":"プエルトリコ出身。5カ国で働き、船長、カヤックインストラクター、英語教師、足場職人、マルチメディアプロデューサー、そして今はトラック運転手。","kevin.p2":"佐賀県鳥栖市在住。筑後運送でトラックを運転しながら、夜にコードを書いています。","kevin.more":"略歴を見る / Full biography →",
     "saki.role":"営業担当 / Sales","saki.p1":"日本語でのクライアント対応・営業を担当。九州エリアの運送会社様との窓口として、丁寧なサポートを提供します。",
     "contact.label":"お問い合わせ · CONTACT","contact.title":"一緒に、何か<br/>作りましょう。","contact.titleEn":"Let's build something.",
     "contact.loc":"佐賀県鳥栖市 · 九州（福岡近郊）<br/>Tosu, Saga Prefecture, Kyushu",
@@ -657,23 +663,30 @@ const I18N = {
     "footer.about":"九州・佐賀県鳥栖市発の個人事業主。運送、教育、エンタメ、伝統文化の現場で必要とされる、ソフトウェアとハードウェアを作っています。",
   },
   en: {
+    "contact.telnote":"We'll call back if we miss you",
+    "stats.s4":"On-site setup in Kyushu",
+    "stats.s3":"Driver app install",
+    "stats.s2":"First 6 months",
+    "stats.s1":"AI builds the dispatch",
+    "hero.telnote":"(we'll call back if we miss you)",
+    "hero.tel":"Call us",
     "nav.products":"Products","nav.philosophy":"Philosophy","nav.team":"Team","nav.contact":"Contact",
-    "hero.meta":"Tosu, Saga · Sole Proprietor","hero.jp":"Tools born<br/>on the ground.","hero.en":"現場から生まれる、次世代の道具。",
-    "hero.lead":"Built in Tosu, Saga Prefecture, Kyushu. Logistics, education, entertainment, tradition.<br/>Software and hardware for the people who do the real work — one tool at a time.",
-    "hero.cta1":"See Products","hero.cta2":"Get in Touch",
+    "hero.meta":"Dispatch software for trucking · Tosu, Saga","hero.jp":"Morning dispatch,<br/>done by AI in 10 seconds.","hero.en":"毎朝の配車を、AIで10秒に。",
+    "hero.lead":"DispatchOS is a dispatch system for trucking companies, built by a working truck driver.<br/>It replaces the whiteboard and phone calls with AI and smartphones. PoC partners get the first 6 months free.",
+    "hero.cta1":"Try free for 6 months","hero.cta2":"Watch the demo",
     "fm.strip":"— Blur everyone, except you. Automatic face mosaic for DaVinci Resolve, ¥5,980","fm.go":"See how it works →","stats.products":"Products","stats.countries":"Countries Lived In","stats.languages":"Languages","stats.team":"Team Members",
     "products.label":"Products","products.title":"Real problems,<br/>one at a time.","products.titleEn":"現場の課題から、一つひとつ。",
     "products.intro":"Shigematsu Tech talks to people on the ground in multiple industries, and builds software and hardware solutions for them. Not flashy features — tools people use every day.",
     "p.dispatch.cat":"Logistics · SaaS<br/>AI Dispatch","p.dispatch.body":"1-2 hours of manual dispatch every morning, done by AI in 10 seconds. Vehicle-cargo matching, hazmat rules, driver mobile app, real-time sync. Built for Japan's logistics industry.","p.dispatch.status":"LIVE",
     "p.nihongo.cat":"EdTech<br/>Language Learning","p.nihongo.body":"Structured Japanese learning in 5 stages. AI-generated quizzes, XP and streaks, spaced repetition. A serious learning experience that goes beyond Duolingo.","p.nihongo.status":"IN DEVELOPMENT",
     "p.memoria.cat":"Hardware<br/>Offline AI","p.memoria.body":"A small offline-first AI device that preserves the voice and memories of the departed. Japanese ancestor veneration meets modern technology.","p.memoria.status":"PROTOTYPE",
-    "p.auto.cat":"SaaS<br/>Fleet Management","p.auto.body":"Multi-vehicle maintenance and parts tracking. Gran Turismo-inspired UI designed so technicians actually want to use it. From kei-cars to heavy trucks.","p.auto.status":"LIVE",
+    "p.auto.cat":"SaaS<br/>Fleet Management","p.auto.body":"Multi-vehicle maintenance and parts tracking. Gran Turismo-inspired UI designed so technicians actually want to use it. From kei-cars to heavy trucks.","p.auto.status":"IN DEVELOPMENT",
     "products.done":"Shipped","products.wip":"In progress",
     "p.fm.cat":"Plugin<br/>Video Privacy","p.fm.body":"A DaVinci Resolve plugin that finds every face in your footage and mosaics everyone except the people you choose. Publish street vlogs without exposing bystanders. Runs entirely on your Mac — your footage never leaves it.","p.fm.status":"ON SALE · ¥5,980 ONE-TIME",
     "p.cast.cat":"App<br/>Fly Fishing","p.cast.body":"For Japan's mountain streams and managed fisheries. Hatch calendar, casting tutorials, tenkara guide, AI fly selector. Fully bilingual EN/JP.","p.cast.status":"LIVE",
     "p.aqua.cat":"Brand<br/>Apparel","p.aqua.body":"A deep-ocean aesthetic beachwear brand with a phased Asia-Pacific growth strategy.","p.aqua.status":"LAUNCHING",
     "philosophy.label":"Philosophy","philosophy.title":"The builder<br/>is the user.","philosophy.titleEn":"作り手が、使い手でもあること。",
-    "v1.title":"Built on the Ground","v1.body":"The founder drives trucks full-time — JR containers, port containers, hazmat tanks across northern Kyushu. DispatchOS started as a line of code to improve his own dispatch sheet.",
+    "v1.title":"Built on the Ground","v1.body":"The founder drives trucks full-time in northern Kyushu. DispatchOS started as a line of code to improve his own dispatch sheet.",
     "v2.title":"Quality Over Speed","v2.body":"Building it right matters more than building it fast. Bugs, UI, Japanese language — every detail is treated seriously. Your data deserves software that earns its trust.",
     "v3.title":"Local Commitment","v3.body":"Free in-person setup for companies in Kyushu. Collaboration with local butsudan craftsmen, porcelain artisans, and engineers to build a new generation of Japanese tools.",
     "team.label":"Team","team.title":"Trucks by day,<br/>code by night.","team.titleEn":"昼はトラック、夜はコード。",
@@ -692,17 +705,24 @@ const I18N = {
     "footer.about":"A sole proprietorship based in Tosu, Saga Prefecture, Kyushu. We build software and hardware for the people on the ground in logistics, education, entertainment, and tradition.",
   },
   es: {
+    "contact.telnote":"Te devolvemos la llamada",
+    "stats.s4":"Instalación en Kyushu",
+    "stats.s3":"App para conductores",
+    "stats.s2":"Primeros 6 meses",
+    "stats.s1":"La IA crea el despacho",
+    "hero.telnote":"(te devolvemos la llamada)",
+    "hero.tel":"Llámanos",
     "nav.products":"Productos","nav.philosophy":"Filosofía","nav.team":"Equipo","nav.contact":"Contacto",
-    "hero.meta":"Tosu, Saga · Autónomo","hero.jp":"Herramientas<br/>del terreno.","hero.en":"現場から生まれる、次世代の道具。",
-    "hero.lead":"Desde Tosu, Saga, Kyushu. Logística, educación, entretenimiento, tradición.<br/>Software y hardware para quienes hacen el trabajo real, una herramienta a la vez.",
-    "hero.cta1":"Ver Productos","hero.cta2":"Contacto",
+    "hero.meta":"Software de despacho para transporte · Tosu, Saga","hero.jp":"El despacho de cada mañana,<br/>con IA en 10 segundos.","hero.en":"毎朝の配車を、AIで10秒に。",
+    "hero.lead":"DispatchOS es un sistema de despacho para empresas de transporte, creado por un camionero en activo.<br/>Reemplaza la pizarra y las llamadas con IA y smartphones. Los socios piloto tienen los primeros 6 meses gratis.",
+    "hero.cta1":"Probar 6 meses gratis","hero.cta2":"Ver la demo",
     "fm.strip":"— Mosaico para todos, menos para ti. Mosaico facial automático para DaVinci Resolve, ¥5,980","fm.go":"Ver cómo funciona →","stats.products":"Productos","stats.countries":"Países Vividos","stats.languages":"Idiomas","stats.team":"Miembros del Equipo",
     "products.label":"Productos","products.title":"Problemas reales,<br/>uno a la vez.","products.titleEn":"現場の課題から、一つひとつ。",
     "products.intro":"Shigematsu Tech habla con la gente de terreno en múltiples industrias y construye soluciones de software y hardware para ellos.",
     "p.dispatch.cat":"Logística · SaaS<br/>Despacho IA","p.dispatch.body":"1-2 horas de despacho manual cada mañana, ahora IA lo hace en 10 segundos.","p.dispatch.status":"EN VIVO",
     "p.nihongo.cat":"EdTech<br/>Idiomas","p.nihongo.body":"Aprendizaje estructurado del japonés en 5 etapas. IA, XP, rachas, repetición espaciada.","p.nihongo.status":"EN DESARROLLO",
     "p.memoria.cat":"Hardware<br/>IA Offline","p.memoria.body":"Dispositivo IA offline que preserva voz y memorias de seres queridos.","p.memoria.status":"PROTOTIPO",
-    "p.auto.cat":"SaaS<br/>Flotas","p.auto.body":"Mantenimiento y repuestos multi-vehículo. Interfaz tipo Gran Turismo.","p.auto.status":"EN VIVO",
+    "p.auto.cat":"SaaS<br/>Flotas","p.auto.body":"Mantenimiento y repuestos multi-vehículo. Interfaz tipo Gran Turismo.","p.auto.status":"EN DESARROLLO",
     "products.done":"Terminados","products.wip":"En desarrollo",
     "p.fm.cat":"Plugin<br/>Privacidad en Video","p.fm.body":"Plugin para DaVinci Resolve que detecta cada rostro y aplica mosaico a todos excepto a las personas que elijas. Publica vlogs callejeros sin exponer a los transeúntes. Todo se procesa en tu Mac.","p.fm.status":"A LA VENTA · ¥5,980 PAGO ÚNICO",
     "p.cast.cat":"App<br/>Pesca con Mosca","p.cast.body":"Para arroyos de Japón. Calendario de eclosión, tutoriales, guía tenkara, selector IA.","p.cast.status":"EN VIVO",
