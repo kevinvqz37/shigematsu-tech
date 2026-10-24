@@ -207,12 +207,40 @@ async function licenseAction(action, req, res) {
   return reply(true, { activated: true, instance: { id }, license_key: { ...info, activation_usage: machines.length } });
 }
 
+// Trial download counter. Counts live in the FaceMosaic product's Stripe metadata (key fm_dl),
+// so the weekly report can read them with no extra database:
+//   {"t":{"mac":12,"win":3},"w":{"2026-10-26":{"mac":4,"win":1}, ...}}   (w = week starting Monday, JST; last 8 kept)
+// Counting never blocks the download: on any error the file is still served.
+const DL_FILES = { mac: "/downloads/FaceMosaic-mac.zip", win: "/downloads/FaceMosaic-windows.zip" };
+async function download(req, res) {
+  const os = req.query.os === "win" || req.query.os === "windows" ? "win" : "mac";
+  try {
+    const price = await stripe(`/prices/${process.env.FM_PRICE_ID}`);
+    const product = await stripe(`/products/${price.product}`);
+    let d = {};
+    try { d = JSON.parse(product.metadata?.fm_dl || "{}"); } catch { d = {}; }
+    d.t = d.t || {}; d.w = d.w || {};
+    const jst = new Date(Date.now() + 9 * 3600e3);
+    const monday = new Date(jst); monday.setUTCDate(jst.getUTCDate() - ((jst.getUTCDay() + 6) % 7));
+    const wk = monday.toISOString().slice(0, 10);
+    d.t[os] = (d.t[os] || 0) + 1;
+    d.w[wk] = d.w[wk] || {}; d.w[wk][os] = (d.w[wk][os] || 0) + 1;
+    for (const old of Object.keys(d.w).sort().slice(0, -8)) delete d.w[old]; // keep newest 8 weeks
+    await stripe(`/products/${price.product}`, { method: "POST", form: { "metadata[fm_dl]": JSON.stringify(d) } });
+  } catch (e) {
+    console.error("fm download count", e.message);
+  }
+  res.setHeader("Cache-Control", "no-store");
+  return res.redirect(302, DL_FILES[os]);
+}
+
 module.exports = async (req, res) => {
   const action = req.query.action;
   try {
     if (!process.env.STRIPE_SECRET_KEY || !process.env.FM_LICENSE_SECRET) {
       return res.status(503).json({ error: "licensing not configured" });
     }
+    if (action === "download" && req.method === "GET") return await download(req, res);
     if (action === "claim" && req.method === "GET") return await claim(req, res);
     if (action === "comp" && req.method === "POST") return await comp(req, res);
     if (["activate", "validate", "deactivate"].includes(action) && req.method === "POST") {
