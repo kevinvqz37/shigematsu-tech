@@ -16,5 +16,21 @@
       "destination": "https://castwise-fly.vercel.app/",
       "permanent": false
     }
-  ]
+  ],
+  "crons": [
+    {
+      "path": "/api/social-post",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/social-post",
+      "schedule": "0 10 * * *"
+    }
+  ],
+  "functions": {
+    "api/social-post.js": {
+      "maxDuration": 120,
+      "includeFiles": "social/queue.json"
+    }
+  }
 }
