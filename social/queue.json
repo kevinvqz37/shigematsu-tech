@@ -78,17 +78,17 @@
     "facebook": "週末の釣り、潮と天気はもうチェックしましたか？「Castwise 釣りナビPRO」なら、全国の潮汐・天気・釣り場マップがひとつのアプリで見られます。無料、インストール不要です。"
   },
   {
-    "id": "2026-11-09-castwise-flies",
+    "id": "2026-11-09-dispatchos-nippo",
     "date": "2026-11-09",
     "slot": "noon",
-    "product": "castwise",
-    "approved": true,
-    "image": "social/img/castwise.jpg",
-    "link": "https://shigematsutech.com/castwise",
-    "x": "フライ図鑑、ハッチカレンダー、テンカラ解説。\nフライフィッシングに必要な情報をまとめた無料アプリ「Castwise 釣りナビPRO」。日本語・英語対応。\n#フライフィッシング #テンカラ #釣りアプリ",
-    "threads": "フライ図鑑、ハッチカレンダー、キャスト技術、テンカラ解説。\n\nフライフィッシングに必要な情報をひとつにまとめた無料アプリ「Castwise 釣りナビPRO」。日本語・英語・スペイン語に対応しています。\nhttps://shigematsutech.com/castwise",
-    "instagram": "フライ図鑑、ハッチカレンダー、キャスト技術、テンカラ解説。\n\nフライフィッシングの情報をひとつにまとめた無料アプリ「Castwise 釣りナビPRO」。日本語・英語・スペイン語対応。\n\nshigematsutech.com/castwise\n\n#フライフィッシング #テンカラ #flyfishing #tenkara #釣りアプリ",
-    "facebook": "フライ図鑑、ハッチカレンダー、キャスト技術、テンカラ解説。フライフィッシングの情報をひとつにまとめた無料アプリ「Castwise 釣りナビPRO」。日本語・英語・スペイン語に対応しています。"
+    "product": "dispatchos",
+    "approved": false,
+    "image": "social/img/dispatchos.jpg",
+    "link": "https://shigematsutech.com/trial",
+    "x": "運行日報、まだ手書きですか？\nDispatchOSならAIが運行日報を自動作成。配車・伝票入力・GPSまでスマホひとつで完結します。\n九州の運送会社様向けに実証実験パートナー募集中（最初の6ヶ月無料）。\n#運送業 #2024年問題 #物流DX",
+    "threads": "運行日報、まだ手書きですか？\n\n運送会社向け配車システム「DispatchOS」なら、AIが運行日報を自動で作成します。配車、紙の伝票の読み取り、GPSでの車両位置の確認まで、スマホひとつで完結。ドライバーはアプリのインストール不要です。\n\n九州の運送会社様向けに、実証実験パートナーを募集中です。最初の6ヶ月間は完全無料。\nhttps://shigematsutech.com/trial",
+    "instagram": "運行日報、まだ手書きですか？\n\n配車システム「DispatchOS」なら、AIが運行日報を自動作成。配車・伝票の読み取り・GPSまでスマホひとつで。\n\n九州の運送会社様向けに実証実験パートナー募集中。最初の6ヶ月間 完全無料。\nshigematsutech.com/trial\n\n#運送業 #2024年問題 #物流DX #配車 #トラック",
+    "facebook": "運行日報、まだ手書きですか？運送会社向け配車システム「DispatchOS」なら、AIが運行日報を自動作成。配車・伝票の読み取り・GPSまでスマホひとつで完結します。九州の運送会社様向けに実証実験パートナーを募集中、最初の6ヶ月間は完全無料です。"
   },
   {
     "id": "2026-11-10-facemosaic-privacy",
@@ -117,17 +117,17 @@
     "facebook": "紙の伝票はスマホで撮影するだけで自動入力。GPSで全車両の位置もリアルタイムで確認できます。運送会社向け配車システム「DispatchOS」、九州の実証実験パートナーを募集中です。最初の6ヶ月間は完全無料です。"
   },
   {
-    "id": "2026-11-12-castwise-catchlog",
+    "id": "2026-11-12-facemosaic-batch",
     "date": "2026-11-12",
     "slot": "evening",
-    "product": "castwise",
-    "approved": true,
-    "image": "social/img/castwise.jpg",
-    "link": "https://shigematsutech.com/castwise",
-    "x": "釣果は記録していますか？\nCastwiseならその日の天気・水の状態・使ったフライをまとめて記録。次に同じ条件の日が来たら、どこで何が釣れたか思い出せます。\n#釣果記録 #釣り #釣りアプリ",
-    "threads": "釣果は記録していますか？\n\n「Castwise 釣りナビPRO」なら、その日の天気・水の状態・使ったフライをまとめて記録できます。次に同じような条件の日が来たら、どこで何が釣れたかすぐに思い出せます。無料です。\nhttps://shigematsutech.com/castwise",
-    "instagram": "釣果は記録していますか？\n\n「Castwise 釣りナビPRO」なら、その日の天気・水の状態・使ったフライをまとめて記録。次に同じような条件の日が来たら、どこで何が釣れたかすぐ思い出せます。無料。\n\nshigematsutech.com/castwise\n\n#釣果記録 #釣り #釣果 #釣りアプリ #釣りスタグラム",
-    "facebook": "釣果は記録していますか？「Castwise 釣りナビPRO」なら、その日の天気・水の状態・使ったフライをまとめて記録できます。無料です。"
+    "product": "facemosaic",
+    "approved": false,
+    "image": "facemosaic/hero-ja.jpg",
+    "link": "https://shigematsutech.com/facemosaic",
+    "x": "Vlog編集でいちばん時間がかかるのは、通行人のモザイクかもしれません。\nFaceMosaicなら撮影素材をまとめて一括処理。あとは確認用マーカーを見るだけ。\nDaVinci Resolve Studio用・無料体験版あり。\n#DaVinciResolve #動画編集 #Vlog",
+    "threads": "Vlog編集でいちばん時間がかかるのは、通行人のモザイクかもしれません。\n\nFaceMosaicなら、何十本ものクリップをまとめて一括処理。判定が微妙な箇所には確認用マーカーが付くので、あとはそこを確認するだけです。DaVinci Resolve Studio用、¥5,980の買い切り。無料体験版は全機能・期間無制限です。\nhttps://shigematsutech.com/facemosaic",
+    "instagram": "Vlog編集でいちばん時間がかかるのは、通行人のモザイクかもしれません。\n\nFaceMosaicなら撮影素材をまとめて一括処理。確認用マーカーを見るだけ。DaVinci Resolve Studio用、無料体験版あり。\n\nshigematsutech.com/facemosaic\n\n#DaVinciResolve #動画編集 #Vlog #街歩き #YouTuber",
+    "facebook": "Vlog編集でいちばん時間がかかるのは、通行人のモザイクかもしれません。FaceMosaicなら撮影素材をまとめて一括処理し、判定が微妙な箇所にはマーカーを付けます。DaVinci Resolve Studio用、無料体験版あり。"
   },
   {
     "id": "2026-11-13-facemosaic-en-trial",
