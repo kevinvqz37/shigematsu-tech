@@ -200,7 +200,7 @@ module.exports = async (req, res) => {
       results.push({ id: item.id, p, ok: false, error: String(e.message || e) });
     }
   }
-  console.log("social:", JSON.stringify(results));
+  console.log("social:", JSON.stringify(results), "enabled:", enabled.join(","), "due:", due.length);
   return res.json({ live: true, enabled, results });
 };
 
