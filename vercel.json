@@ -31,6 +31,9 @@
     "api/social-post.js": {
       "maxDuration": 120,
       "includeFiles": "social/queue.json"
+    },
+    "api/social-status.js": {
+      "includeFiles": "social/queue.json"
     }
   }
 }
